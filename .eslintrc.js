@@ -16,6 +16,7 @@ module.exports = {
         tabWidth: 2,
         printWidth: 80,
         bracketSpacing: true,
+        endOfLine: 'auto',
         // arrowParens: 'avoid',
       },
     ],
@@ -24,5 +25,6 @@ module.exports = {
     'no-console': 0,
     'operator-linebreak': 0,
     'implicit-arrow-linebreak': 0,
+    'linebreak-style': 0,
   },
 };
