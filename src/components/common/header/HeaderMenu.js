@@ -44,11 +44,11 @@ const HeaderContainer = styled.div`
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
 `;
-export default function HeaderMenu() {
+export default function HeaderMenu({ setNavOpen }) {
   return (
     <HeaderContainer>
       <MenuBtnBox>
-        <RiMenuLine />
+        <RiMenuLine onClick={() => setNavOpen(true)} />
       </MenuBtnBox>
 
       <HeaderBar>

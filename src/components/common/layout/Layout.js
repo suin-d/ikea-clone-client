@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import HeaderMenu from '../header/HeaderMenu';
+import NavDraw from '../menu/NavDraw';
 
 const MainContent = styled.div`
   grid-column: 2 / 14;
@@ -15,12 +16,14 @@ const LayoutBox = styled.main`
 `;
 
 export default function Layout({ children }) {
+  const [navOpen, setNavOpen] = useState(false);
   return (
     <>
-      <HeaderMenu />
+      <HeaderMenu setNavOpen={setNavOpen} />
       <LayoutBox>
         <MainContent>{children}</MainContent>
       </LayoutBox>
+      {navOpen && <NavDraw setNavOpen={setNavOpen} />}
     </>
   );
 }
