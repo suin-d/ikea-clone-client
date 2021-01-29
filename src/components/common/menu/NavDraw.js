@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { RiAddLine } from 'react-icons/ri';
 import LOGO from '../../../assets/img/logo.svg';
 import MainNav from './MainNav';
 import ProductNav from './ProductNav';
+
+const slideOn = keyframes`
+from{
+  transform:translateX(-500px)
+}
+to{
+  transform:translateX(0)
+}
+`;
 
 const NavBottom = styled.div`
   display: flex;
@@ -39,6 +48,7 @@ const NavDrawBox = styled.nav`
   top: 0;
   left: 0;
   bottom: 0;
+  animation: ${slideOn} 0.3s ease-in-out forwards;
   /* overflow-y: scroll; */
 `;
 const NavDrawContainer = styled.div`

@@ -32,16 +32,16 @@ const BtnWrapper = styled.div`
 export default function IconContainer() {
   return (
     <BtnWrapper>
-      <Link to="/">
+      <Link to="/signin">
         <RiTruckLine />
       </Link>
-      <Link to="/">
+      <Link to="/signin">
         <RiUser3Line />
       </Link>
-      <Link to="/">
+      <Link to="/signin">
         <RiHeartLine />
       </Link>
-      <Link to="/">
+      <Link to="/signin">
         <RiShoppingBagLine />
       </Link>
     </BtnWrapper>
