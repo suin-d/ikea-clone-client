@@ -1,5 +1,7 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components';
+import FindPasswordForm from '../components/user/login/FindPasswordForm';
 import LoginLeft from '../components/user/login/LoginLeft';
 import LoginRight from '../components/user/login/LoginRight';
 
@@ -14,11 +16,11 @@ const LoginPageLayout = styled.div`
 `;
 
 export default function LoginPage() {
-  // const [findPwMode, setFindPwMode] = useState(false);
   return (
     <LoginPageLayout>
       <LoginLeft />
-      <LoginRight />
+      <Route path="/signin" component={LoginRight} exact />
+      <Route path="/signin/find" component={FindPasswordForm} exact />
     </LoginPageLayout>
   );
 }

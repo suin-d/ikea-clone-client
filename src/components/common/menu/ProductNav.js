@@ -411,7 +411,6 @@ function NavItem({ data, setNavNumber, navNumber }) {
 }
 export default function ProductNav({ onToggleNav }) {
   const [navNumber, setNavNumber] = useState(0);
-  console.log(navNumber);
   return (
     <>
       <NavContentBox>

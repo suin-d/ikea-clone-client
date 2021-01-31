@@ -1,13 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useInput from '../../../hooks/useInput';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
 
-const Gap = styled.div`
+export const Gap = styled.div`
   height: 20px;
 `;
-const LoginRightSection = styled.section`
+export const LoginRightSection = styled.section`
   flex: 2.6;
   background: #fff;
   padding-left: 70px;
@@ -19,7 +20,7 @@ const LoginRightSection = styled.section`
       font-size: 12px;
       color: #df0a51;
     }
-    strong {
+    a {
       cursor: pointer;
       font-size: 13px;
       font-weight: 500;
@@ -52,7 +53,7 @@ export default function LoginRight() {
           label="비밀번호"
           type="password"
         />
-        <strong>비밀번호 찾기</strong>
+        <Link to="/signin/find">비밀번호 찾기</Link>
         <Gap />
         <ButtonBig type="submit">로그인</ButtonBig>
         <ButtonBig gray>회원가입</ButtonBig>

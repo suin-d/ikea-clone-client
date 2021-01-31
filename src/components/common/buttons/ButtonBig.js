@@ -16,11 +16,17 @@ const StyledBtn = styled.button`
   outline: none;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+  &:hover {
+    background: #004079;
+  }
   ${(props) =>
     props.gray &&
     css`
       background: #f5f5f5;
       color: #111;
+      &:hover {
+        background: #dfdfdf;
+      }
     `}
   &+& {
     margin-top: 15px;

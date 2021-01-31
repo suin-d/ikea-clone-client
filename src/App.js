@@ -12,7 +12,7 @@ function App() {
         {/* 메인페이지 */}
         <Route path="/" component={MainPage} exact />
         {/* 로그인 */}
-        <Route path="/signin" component={LoginPage} exact />
+        <Route path="/signin" component={LoginPage} />
         {/* 회원가입 */}
         <Route path="/signup" render={() => <div>회원가입페이지</div>} />
       </Layout>
