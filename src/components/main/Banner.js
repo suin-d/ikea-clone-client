@@ -22,7 +22,7 @@ const BannerBox = styled.div`
     }
     p {
       color: #ffffff;
-      font-size: 15px;
+      font-size: 14px;
       line-height: 1.5;
       word-break: keep-all;
       margin-bottom: 30px;
@@ -35,7 +35,7 @@ export default function Banner() {
     <BannerBox>
       <img
         src="https://www.ikea.com/images/6a/c2/6ac2eebf956c58a95684559a7b49d74b.jpg?f=xxl"
-        alt=""
+        alt="banner"
       />
       <div>
         <h1>모바일 쇼핑을 더 편리하게, IKEA 앱 출시!</h1>

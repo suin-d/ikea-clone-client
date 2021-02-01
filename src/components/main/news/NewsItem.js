@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonRound from '../common/buttons/ButtonRound';
+import ButtonRound from '../../common/buttons/ButtonRound';
 
 const ItemBox = styled.div`
   flex: 1;
@@ -12,14 +12,14 @@ const ItemBox = styled.div`
   }
 `;
 
-export default function NewsItem({ imgSrc, src, name }) {
+export default function NewsItem({ data }) {
   return (
     <ItemBox>
-      <a href={src}>
-        <img src={imgSrc} alt="" />
+      <a href={data.src}>
+        <img src={data.imgSrc} alt={data.name} />
       </a>
-      <a href={src}>
-        <ButtonRound>{name}</ButtonRound>
+      <a href={data.src}>
+        <ButtonRound>{data.name}</ButtonRound>
       </a>
     </ItemBox>
   );

@@ -3,10 +3,10 @@ import ButtonCart from '../components/common/buttons/ButtonCart';
 import ButtonFix from '../components/common/buttons/ButtonFix';
 import ButtonRound from '../components/common/buttons/ButtonRound';
 import Banner from '../components/main/Banner';
-import CustomerService from '../components/main/CustomerService';
-import NewPro from '../components/main/NewPro';
-import News from '../components/main/News';
-import Solution from '../components/main/Solution';
+import CustomerService from '../components/main/cs/CustomerService';
+import NewPro from '../components/main/product/NewPro';
+import News from '../components/main/news/News';
+import Solution from '../components/main/solution/Solution';
 
 const newsItems1 = [
   {

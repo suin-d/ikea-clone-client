@@ -28,12 +28,12 @@ const ItemBox = styled.div`
   }
 `;
 
-export default function CsItem({ icon, title, text }) {
+export default function CsItem({ data }) {
   return (
     <ItemBox>
-      <i>{icon}</i>
-      <span>{title}</span>
-      <p>{text}</p>
+      <i>{data.icon}</i>
+      <span>{data.title}</span>
+      <p>{data.text}</p>
       <a href="/">더 보기</a>
     </ItemBox>
   );

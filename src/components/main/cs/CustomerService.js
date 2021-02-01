@@ -35,12 +35,7 @@ export default function CustomerService() {
   return (
     <CsBox>
       {csItems.map((item) => (
-        <CsItem
-          key={item.id}
-          icon={item.icon}
-          title={item.title}
-          text={item.text}
-        />
+        <CsItem key={item.id} data={item} />
       ))}
     </CsBox>
   );

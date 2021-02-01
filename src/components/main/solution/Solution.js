@@ -1,5 +1,7 @@
 import React from 'react';
+import { IoArrowForwardOutline } from 'react-icons/io5';
 import styled from 'styled-components';
+import ButtonRound from '../../common/buttons/ButtonRound';
 import SolutionItem from './SolutionItem';
 
 const TitleBox = styled.div`
@@ -13,16 +15,48 @@ const TitleBox = styled.div`
   }
 `;
 
-const SolutionBox = styled.div`
+const SolutionBox = styled.ul`
   display: flex;
   gap: 20px;
   justify-content: space-between;
 `;
 
+const FirstBox = styled.li`
+  background: #00a553;
+  position: relative;
+  flex: 1;
+  /* padding: 20px; */
+  p {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    padding: 40px 30px;
+    width: 100%;
+    height: 100%;
+    line-height: 1.5rem;
+    word-break: keep-all;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  button {
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    width: 2.5rem;
+    padding: 0;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 const solutionItems = [
-  {
-    id: 0,
-  },
   {
     id: 1,
     src:
@@ -62,13 +96,14 @@ export default function Solution() {
         <h1>지속가능한 내일을 위한 솔루션</h1>
       </TitleBox>
       <SolutionBox>
+        <FirstBox>
+          <p>집에서 지속가능한 생활을 실천할 수 있는 아이디어</p>
+          <ButtonRound white>
+            <IoArrowForwardOutline />
+          </ButtonRound>
+        </FirstBox>
         {solutionItems.map((item) => (
-          <SolutionItem
-            key={item.id}
-            id={item.id}
-            src={item.src}
-            name={item.name}
-          />
+          <SolutionItem key={item.id} data={item} />
         ))}
       </SolutionBox>
     </>

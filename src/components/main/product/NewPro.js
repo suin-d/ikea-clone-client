@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import ButtonRound from '../common/buttons/ButtonRound';
-import NewProItem from './NewProItem';
+import ButtonDot from '../../common/buttons/ButtonDot';
+import ButtonRound from '../../common/buttons/ButtonRound';
+import ProInfoBox from './ProInfoBox';
 
 const TitleBox = styled.div`
   display: flex;
@@ -14,9 +15,18 @@ const TitleBox = styled.div`
   }
 `;
 
-const ItemBox = styled.div`
+const ItemsWrapper = styled.ul`
   display: flex;
   gap: 20px;
+`;
+
+const ItemBox = styled.li`
+  position: relative;
+  flex: 1;
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const proItem = [
@@ -34,6 +44,10 @@ const proItem = [
     shortId: '50288315',
     categoryId: 1,
     cateName: '거실',
+    proNameEn: 'VARDAGEN',
+    proNameKo: '바르다겐',
+    proInfo: '찻잔세트',
+    proPrice: '₩4,900',
   },
   {
     id: 1,
@@ -48,8 +62,39 @@ const proItem = [
     shortId: '20393412',
     categoryId: 1,
     cateName: '거실',
+    proNameEn: 'BRANAS',
+    proNameKo: '브라네스',
+    proInfo: '바구니',
+    proPrice: '₩19,900',
   },
 ];
+
+function NewProItem({ data }) {
+  const [infoActive, setInfoActive] = useState(false);
+  console.log(infoActive);
+  const onEnter = () => {
+    setInfoActive(true);
+  };
+  const onLeave = () => {
+    setInfoActive(false);
+  };
+  return (
+    <ItemBox>
+      <img
+        srcSet={data.srcset}
+        sizes={data.sizes}
+        src={data.src}
+        alt={data.fullId}
+      />
+      <ButtonDot
+        position={{ top: '50%', left: '50%' }}
+        active={infoActive}
+        onEnter={onEnter}
+      />
+      <ProInfoBox data={data} active={infoActive} onLeave={onLeave} />
+    </ItemBox>
+  );
+}
 
 export default function NewPro() {
   return (
@@ -58,21 +103,11 @@ export default function NewPro() {
         <h1>신제품을 만나보세요</h1>
         <ButtonRound>신제품 보러가기</ButtonRound>
       </TitleBox>
-      <ItemBox>
+      <ItemsWrapper>
         {proItem.map((pro) => (
-          <NewProItem
-            key={pro.id}
-            src={pro.src}
-            srcset={pro.srcset}
-            sizes={pro.sizes}
-            link={pro.link}
-            fullId={pro.fullId}
-            shortId={pro.shortId}
-            categoryId={pro.categoryId}
-            cateName={pro.cateName}
-          />
+          <NewProItem key={pro.id} data={pro} />
         ))}
-      </ItemBox>
+      </ItemsWrapper>
     </>
   );
 }

@@ -9,16 +9,10 @@ const NewsBox = styled.div`
 `;
 
 export default function News({ newsItems }) {
-  console.log(newsItems);
   return (
     <NewsBox>
       {newsItems.map((item) => (
-        <NewsItem
-          key={item.id}
-          imgSrc={item.imgSrc}
-          src={item.src}
-          name={item.name}
-        />
+        <NewsItem key={item.id} data={item} />
       ))}
     </NewsBox>
   );
