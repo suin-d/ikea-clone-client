@@ -3,7 +3,11 @@ import ButtonCart from '../components/common/buttons/ButtonCart';
 import ButtonFix from '../components/common/buttons/ButtonFix';
 import ButtonNext from '../components/common/buttons/ButtonNext';
 import ButtonRound from '../components/common/buttons/ButtonRound';
-import Promo from '../components/main/Promo';
+import Carousel from '../components/common/Carousel';
+import PromoItem, {
+  promoMocks,
+  promoSettings,
+} from '../components/main/PromoItem';
 
 export default function MainPage() {
   return (
@@ -15,7 +19,12 @@ export default function MainPage() {
       <ButtonCart />
       <ButtonFix />
       <ButtonNext />
-      <Promo />
+      <Carousel
+        title="진행 중인 이벤트 및 프로모션"
+        ItemComponent={PromoItem}
+        data={promoMocks}
+        setting={promoSettings}
+      />
     </div>
   );
 }
