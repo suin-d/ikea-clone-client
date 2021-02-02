@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RiArrowLeftLine, RiArrowRightSLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { NavContentBox } from './MainNav';
 
@@ -54,6 +55,12 @@ const DetailNavBox = styled(ProductNavBox)`
   white-space: nowrap;
   li {
     font-size: 13px;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   ${(props) =>
     props.active &&
@@ -393,7 +400,18 @@ function DetailNav({ data, active }) {
     <DetailNavBox active={active}>
       <h1>{data && data.name}</h1>
       <h2>전체보기</h2>
-      <ul>{data && data.detail.map((v) => <li>{v.name}</li>)}</ul>
+      <ul>
+        {data &&
+          data.detail.map((v) => (
+            <li>
+              <Link
+                to={`/list/${v.id}?bc=${data.name}&sc=${v.name}&id=${v.id}`}
+              >
+                {v.name}
+              </Link>
+            </li>
+          ))}
+      </ul>
     </DetailNavBox>
   );
 }

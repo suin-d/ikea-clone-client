@@ -8,7 +8,9 @@ const FixButton = styled(CircleButton)`
   background: #000;
   border-radius: 64px;
   overflow: hidden;
-  position: relative;
+  position: fixed;
+  bottom: 60px;
+  left: 50px;
   &:hover {
     width: 130px;
     background: #222;

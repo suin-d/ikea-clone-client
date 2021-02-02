@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ButtonRound from '../common/buttons/ButtonRound';
 import ListItem from './ListItem';
 
@@ -47,7 +47,10 @@ const ListWrapper = styled.div`
       span,
       b {
         display: inline-block;
-        padding: 0.75em;
+        padding: 1em;
+      }
+      b:nth-child(2) {
+        text-decoration: underline;
       }
       b {
         font-weight: bold;
@@ -55,12 +58,25 @@ const ListWrapper = styled.div`
       }
     }
   }
+  ${(props) =>
+    props.active &&
+    css`
+      div {
+        div {
+          b:nth-child(3) {
+            text-decoration: underline;
+          }
+          b:nth-child(2) {
+            text-decoration: none;
+          }
+        }
+      }
+    `}
 `;
-export default function List({ title, data }) {
+function List({ title, data }) {
   const [listState, setListState] = useState(0);
-
   return (
-    <ListWrapper>
+    <ListWrapper active={listState === 1}>
       <h1>{title}</h1>
       <div>
         <ul>
@@ -88,3 +104,4 @@ export default function List({ title, data }) {
     </ListWrapper>
   );
 }
+export default List;

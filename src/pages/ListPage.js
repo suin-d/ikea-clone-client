@@ -1,12 +1,14 @@
 import React from 'react';
-import data from '../components/list/data';
+import qs from 'qs';
+import data from '../mocks/productData';
 import List from '../components/list/List';
 
-export default function ListPage() {
+export default function ListPage({ location }) {
+  const query = qs.parse(location.search, { ignoreQueryPrefix: true });
   return (
     <>
       {/* 네비들어갈 자리 */}
-      <List title="리모콘/무선장치" data={data} />
+      <List title={query.sc} data={data} />
     </>
   );
 }
