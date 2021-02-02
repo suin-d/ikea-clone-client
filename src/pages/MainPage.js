@@ -3,12 +3,15 @@ import ButtonCart from '../components/common/buttons/ButtonCart';
 import ButtonFix from '../components/common/buttons/ButtonFix';
 import ButtonNext from '../components/common/buttons/ButtonNext';
 import ButtonRound from '../components/common/buttons/ButtonRound';
+import ButtonWish from '../components/common/buttons/ButtonWish';
 import Carousel from '../components/common/Carousel';
 import PromoItem, {
   promoMocks,
   promoSettings,
 } from '../components/main/PromoItem';
 import InputSimple from '../components/common/inputs/InputSimple';
+import List from '../components/list/List';
+import data from '../components/list/data';
 
 export default function MainPage() {
   return (
@@ -22,12 +25,14 @@ export default function MainPage() {
       <ButtonCart />
       <ButtonFix />
       <ButtonNext />
+      <ButtonWish />
       <Carousel
         title="진행 중인 이벤트 및 프로모션"
         ItemComponent={PromoItem}
         data={promoMocks}
         setting={promoSettings}
       />
+      <List title="리모콘/무선장치" data={data} />
     </div>
   );
 }
