@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ButtonRound from '../common/buttons/ButtonRound';
 import ListItem from './ListItem';
@@ -17,60 +17,74 @@ const ListContainer = styled.ul`
   }
 `;
 
-const ListHeader = styled.div`
-  h1 {
+const ListWrapper = styled.div`
+  position: relative;
+  & > h1 {
     font-size: 1.563rem;
     font-weight: bold;
     margin: 60px 0;
   }
-  div {
+  & > div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 90px;
-    span {
-      margin-right: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    background: #fff;
+    & > ul {
+      display: flex;
+      li {
+        margin-right: 10px;
+      }
     }
-    ul {
+    & > div {
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 0.75rem;
-      li {
+      span,
+      b {
+        display: inline-block;
         padding: 0.75em;
+      }
+      b {
+        font-weight: bold;
+        cursor: pointer;
       }
     }
   }
 `;
 export default function List({ title, data }) {
+  const [listState, setListState] = useState(0);
+
   return (
-    <div>
-      <ListHeader>
-        <h1>{title}</h1>
+    <ListWrapper>
+      <h1>{title}</h1>
+      <div>
+        <ul>
+          <li>
+            <ButtonRound>전체 상품</ButtonRound>
+          </li>
+          <li>
+            <ButtonRound gray>정렬</ButtonRound>
+          </li>
+          <li>
+            <ButtonRound gray>가격</ButtonRound>
+          </li>
+        </ul>
         <div>
-          <div>
-            <span>
-              <ButtonRound>비교</ButtonRound>
-            </span>
-            <span>
-              <ButtonRound gray>정렬</ButtonRound>
-            </span>
-            <span>
-              <ButtonRound gray>가격</ButtonRound>
-            </span>
-          </div>
-          <ul>
-            <li>8개</li>
-            <li>제품</li>
-            <li>디지털 쇼룸</li>
-          </ul>
+          <span>{`${data.length}개`}</span>
+          <b onClick={() => setListState(0)}>제품</b>
+          <b onClick={() => setListState(1)}>디지털 쇼룸</b>
         </div>
-      </ListHeader>
+      </div>
       <ListContainer>
         {data.map((item) => (
-          <ListItem data={item} key={item.id} />
+          <ListItem listState={listState} data={item} key={item.id} />
         ))}
       </ListContainer>
-    </div>
+    </ListWrapper>
   );
 }

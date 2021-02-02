@@ -17,7 +17,6 @@ const ListItemContainer = styled.li`
 const ListItemBox = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   font-size: 14px;
   width: 80%;
   height: 80%;
@@ -44,16 +43,18 @@ const ListItemBox = styled.div`
     }
   }
   article {
+    margin-top: 20px;
     position: relative;
     cursor: pointer;
     h2 {
       font-weight: bold;
-      margin-bottom: 10px;
+      margin-bottom: 7px;
     }
     span {
+      line-height: 1.5;
     }
     div {
-      margin-top: 14px;
+      margin-top: 12px;
       display: flex;
       align-items: flex-start;
       font-weight: bold;
@@ -86,7 +87,27 @@ const ListItemBox = styled.div`
     `}
 `;
 
-export default function ListItem({ data }) {
+function ImageBox({ data, listState, hover }) {
+  const imgIndex = data.images[1] ? 1 : 0;
+  return (
+    <div>
+      {listState === 0 ? (
+        data.images[1] ? (
+          <img
+            src={hover ? data.images[1].src : data.images[0].src}
+            alt={data.summary}
+          />
+        ) : (
+          <img src={data.images[0].src} alt={data.summary} />
+        )
+      ) : (
+        <img src={data.images[imgIndex].src} alt={data.summary} />
+      )}
+    </div>
+  );
+}
+
+export default function ListItem({ data, listState }) {
   const [hover, setHover] = useState(false);
   const onEnter = () => {
     setHover(true);
@@ -104,16 +125,7 @@ export default function ListItem({ data }) {
         <i style={iconStyle}>
           <RiHeartLine />
         </i>
-        <div>
-          {data.images[1] ? (
-            <img
-              src={hover ? data.images[1].src : data.images[0].src}
-              alt={data.summary}
-            />
-          ) : (
-            <img src={data.images[0].src} alt={data.summary} />
-          )}
-        </div>
+        <ImageBox data={data} listState={listState} hover={hover} />
         <article>
           <h2>{data.title}</h2>
           <span>{data.summary}</span>

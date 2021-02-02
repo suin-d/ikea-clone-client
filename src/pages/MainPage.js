@@ -10,8 +10,6 @@ import PromoItem, {
   promoSettings,
 } from '../components/main/PromoItem';
 import InputSimple from '../components/common/inputs/InputSimple';
-import List from '../components/list/List';
-import data from '../components/list/data';
 
 export default function MainPage() {
   return (
@@ -32,7 +30,6 @@ export default function MainPage() {
         data={promoMocks}
         setting={promoSettings}
       />
-      <List title="리모콘/무선장치" data={data} />
     </div>
   );
 }
