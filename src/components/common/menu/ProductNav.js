@@ -404,9 +404,7 @@ function DetailNav({ data, active }) {
         {data &&
           data.detail.map((v) => (
             <li>
-              <Link
-                to={`/list/${v.id}?bc=${data.name}&sc=${v.name}&id=${v.id}`}
-              >
+              <Link to={`/list/${v.id}?bc=${data.name}&sc=${v.name}`}>
                 {v.name}
               </Link>
             </li>
