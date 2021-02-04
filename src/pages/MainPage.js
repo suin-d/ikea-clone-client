@@ -1,14 +1,9 @@
 import React from 'react';
-import ButtonCart from '../components/common/buttons/ButtonCart';
-import ButtonFix from '../components/common/buttons/ButtonFix';
-import ButtonNext from '../components/common/buttons/ButtonNext';
-import ButtonRound from '../components/common/buttons/ButtonRound';
 import Carousel from '../components/common/Carousel';
 import PromoItem, {
   promoMocks,
   promoSettings,
 } from '../components/main/PromoItem';
-import InputSimple from '../components/common/inputs/InputSimple';
 import Banner from '../components/main/Banner';
 import CustomerService from '../components/main/cs/CustomerService';
 import NewPro from '../components/main/product/NewPro';

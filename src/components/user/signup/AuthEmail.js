@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+/* eslint-disable no-alert */
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import useInput from '../../../hooks/useInput';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import ModalLayout from '../../common/modal/ModalLayout';
 import useInterval from '../../../hooks/useInterval';
+import { verification } from '../../../modules/user/thunk';
 
 const AuthEmailContainer = styled.div`
   width: 400px;
@@ -35,6 +38,10 @@ const AuthEmailContainer = styled.div`
   }
 `;
 function AuthEmail({ email, close, history }) {
+  const dispatch = useDispatch();
+  const { signUpData, verificationData, verificationError } = useSelector(
+    (state) => state.user
+  );
   const [count, setCount] = useState(100);
   const [first, onChangeFirst] = useInput('');
   const [second, onChangeSecond] = useInput('');
@@ -44,6 +51,14 @@ function AuthEmail({ email, close, history }) {
     close();
     history.replace('/');
   };
+  const onSubmit = () => {
+    dispatch(
+      verification({
+        email: signUpData.email,
+        number: `${first}${second}${third}${fourth}`,
+      })
+    );
+  };
   useInterval(() => {
     setCount(count - 1);
   }, 1000);
@@ -51,31 +66,50 @@ function AuthEmail({ email, close, history }) {
     if (count < 100) {
       setCount(count + 300);
     } else {
-      // eslint-disable-next-line no-alert
       alert('100초 이하일 경우 가능합니다.');
     }
   };
+  useEffect(() => {
+    if (verificationData) {
+      alert(verificationData);
+      return history.replace('/signin');
+    }
+    if (verificationError) return alert(verificationError);
+    return null;
+  }, [history, verificationData, verificationError]);
   return (
     <ModalLayout title="이메일확인" close={goHome}>
       <AuthEmailContainer>
         <h2>{`${email}로 인증번호를 보냈습니다.`}</h2>
         <div>
-          <input type="number" value={first} onChange={onChangeFirst} max={9} />
           <input
-            type="number"
+            type="string"
+            value={first}
+            onChange={onChangeFirst}
+            maxLength={1}
+          />
+          <input
+            type="string"
             value={second}
             onChange={onChangeSecond}
-            max={9}
+            maxLength={1}
           />
-          <input type="number" value={third} onChange={onChangeThird} max={9} />
           <input
-            type="number"
+            type="string"
+            value={third}
+            onChange={onChangeThird}
+            maxLength={1}
+          />
+          <input
+            type="string"
             value={fourth}
             onChange={onChangeFourth}
-            max={9}
+            maxLength={1}
           />
         </div>
-        <ButtonBig>{`인증 - ${count}초 남았습니다.`}</ButtonBig>
+        <ButtonBig onClick={onSubmit}>
+          {`인증 - ${count}초 남았습니다.`}
+        </ButtonBig>
         <ButtonBig gray onClick={onAddCount}>
           5분 연장
         </ButtonBig>

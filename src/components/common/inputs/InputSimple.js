@@ -78,7 +78,10 @@ const StyledInputSet = styled.fieldset`
         background: #df0a51;
       }
       input {
-        border-bottom: 1px solid #df0a51;
+        border-bottom: 2px solid #df0a51;
+      }
+      label {
+        color: #df0a51;
       }
     `}
 `;

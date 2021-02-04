@@ -28,11 +28,17 @@ const StyledSelectBox = styled.div`
     `}
 `;
 
-export default function SelectSimple({ title, options, ...rest }) {
+export default function SelectSimple({
+  title,
+  options,
+  value,
+  onChange,
+  ...rest
+}) {
   return (
     <StyledSelectBox {...rest}>
       <label>{title}</label>
-      <select defaultValue={2}>
+      <select value={value} onChange={onChange}>
         {options.map((v) => (
           <option value={v.id}>{v.value}</option>
         ))}
