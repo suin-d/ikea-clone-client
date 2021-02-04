@@ -8,7 +8,11 @@ const StyledInputSet = styled.fieldset`
   border: none;
   overflow: visible;
   width: 100%;
-
+  ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width};
+    `}
   input {
     box-sizing: border-box;
     width: 100%;
@@ -78,12 +82,28 @@ const StyledInputSet = styled.fieldset`
       }
     `}
 `;
-export default function InputSimple({ label, type = 'text', ...rest }) {
+function InputSimple({
+  label,
+  value,
+  onChange,
+  placeholder,
+  type = 'text',
+  ...rest
+}) {
   return (
     <StyledInputSet {...rest}>
-      <input type={type} autoComplete="off" required />
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        autoComplete="off"
+        required
+      />
       <hr />
       <label>{label}</label>
     </StyledInputSet>
   );
 }
+
+export default InputSimple;

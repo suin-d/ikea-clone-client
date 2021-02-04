@@ -28,9 +28,22 @@ const StyledBtn = styled.button`
         background: #dfdfdf;
       }
     `}
-  &+& {
-    margin-top: 15px;
-  }
+  ${(props) =>
+    props.black &&
+    css`
+      color: #f5f5f5;
+      background: #111;
+      &:hover {
+        background: #333;
+      }
+    `}
+  ${(props) =>
+    props.width &&
+    css`
+      width: ${props.width};
+    `}
+  
+    margin-bottom: 15px;
 `;
 export default function ButtonBig({ children, type = 'button', ...rest }) {
   return (

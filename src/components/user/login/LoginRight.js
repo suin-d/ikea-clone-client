@@ -56,7 +56,9 @@ export default function LoginRight() {
         <Link to="/signin/find">비밀번호 찾기</Link>
         <Gap />
         <ButtonBig type="submit">로그인</ButtonBig>
-        <ButtonBig gray>회원가입</ButtonBig>
+        <Link to="/signup">
+          <ButtonBig gray>회원가입</ButtonBig>
+        </Link>
       </form>
     </LoginRightSection>
   );
