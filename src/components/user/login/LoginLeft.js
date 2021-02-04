@@ -72,6 +72,14 @@ function LoginArticle() {
     </article>
   );
 }
+function ChangePasswordArticle() {
+  return (
+    <article>
+      <h1>비밀번호 변경</h1>
+      <p>변경하실 비밀번호를 입력해주세요.</p>
+    </article>
+  );
+}
 function FindPasswordArticle() {
   return (
     <article>
@@ -93,6 +101,7 @@ function LoginLeft({ history }) {
         <img src={LOGO} alt="로고" />
         <Route path="/signin" exact component={LoginArticle} />
         <Route path="/signin/find" component={FindPasswordArticle} />
+        <Route path="/signin/change/:email" component={ChangePasswordArticle} />
         <div>
           <span>Cozi - 개인정보처리방침</span>
           <span>© Inter IKEA Systems B.V. 1999-2021</span>

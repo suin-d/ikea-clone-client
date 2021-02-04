@@ -1,5 +1,14 @@
 import axios from 'axios';
 import {
+  LOG_IN_ERROR,
+  LOG_IN_REQUEST,
+  LOG_IN_SUCCESS,
+  PASSWORD_CHANGE_ERROR,
+  PASSWORD_CHANGE_REQUEST,
+  PASSWORD_CHANGE_SUCCESS,
+  PASSWORD_SUBMIT_ERROR,
+  PASSWORD_SUBMIT_REQUEST,
+  PASSWORD_SUBMIT_SUCCESS,
   SIGN_UP_ERROR,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
@@ -42,6 +51,68 @@ export const verification = (data) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: VERIFICATION_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const passwordChange = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: PASSWORD_CHANGE_REQUEST,
+    });
+    const response = await axios.get(
+      `http://localhost:8000/api/user/find/${data}`
+    );
+    dispatch({
+      type: PASSWORD_CHANGE_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: PASSWORD_CHANGE_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const passwordSubmit = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: PASSWORD_SUBMIT_REQUEST,
+    });
+    const response = await axios.patch(
+      'http://localhost:8000/api/user/find/',
+      data
+    );
+    dispatch({
+      type: PASSWORD_SUBMIT_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: PASSWORD_SUBMIT_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const login = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOG_IN_REQUEST,
+    });
+    const response = await axios.post(
+      'http://localhost:8000/api/user/login',
+      data
+    );
+    dispatch({
+      type: LOG_IN_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: LOG_IN_ERROR,
       payload: e.response.data,
     });
   }

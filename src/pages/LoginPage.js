@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import FindPasswordForm from '../components/user/login/FindPasswordForm';
+import ChangePasswordForm from '../components/user/login/ChangePasswordForm';
 import LoginLeft from '../components/user/login/LoginLeft';
 import LoginRight from '../components/user/login/LoginRight';
 
@@ -21,6 +22,11 @@ export default function LoginPage() {
       <LoginLeft />
       <Route path="/signin" component={LoginRight} exact />
       <Route path="/signin/find" component={FindPasswordForm} exact />
+      <Route
+        path="/signin/change/:email"
+        component={ChangePasswordForm}
+        exact
+      />
     </LoginPageLayout>
   );
 }

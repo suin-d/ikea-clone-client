@@ -13,14 +13,14 @@ import AddressSearch from './AddressSearch';
 import AuthEmail from './AuthEmail';
 import { signUp } from '../../../modules/user/thunk';
 
-const Gap = styled.div`
+export const Gap = styled.div`
   ${(props) =>
     props.h &&
     css`
       height: ${props.h};
     `}
 `;
-const WarnText = styled.span`
+export const WarnText = styled.span`
   color: #df0a51;
   font-size: 14px;
 `;

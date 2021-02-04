@@ -1,7 +1,10 @@
-import React from 'react';
+/* eslint-disable no-alert */
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import useInput from '../../../hooks/useInput';
+import { login } from '../../../modules/user/thunk';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
 
@@ -32,20 +35,32 @@ export const LoginRightSection = styled.section`
   }
 `;
 
-export default function LoginRight() {
+export default function LoginRight({ history }) {
+  const dispatch = useDispatch();
+  const { logInData, logInError } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(login({ email, password }));
+  };
+  useEffect(() => {
+    if (logInData) {
+      alert('어서오세요');
+      return history.replace('/');
+    }
+    if (logInError) return alert(logInError);
+    return null;
+  }, [logInData, logInError, history]);
   return (
     <LoginRightSection>
-      <form>
+      <form onSubmit={onSubmit}>
         <InputSimple
           value={email}
           onChange={onChangeEmail}
-          label="이메일 또는 휴대폰 번호"
+          label="이메일"
           type="text"
-          warn
         />
-        <em>이메일 또는 휴대폰 번호를 확인</em>
         <Gap />
         <InputSimple
           value={password}
