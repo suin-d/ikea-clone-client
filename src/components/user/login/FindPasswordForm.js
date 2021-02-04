@@ -1,6 +1,5 @@
-/* eslint-disable no-alert */
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Gap, LoginRightSection } from './LoginRight';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
@@ -9,23 +8,11 @@ import { passwordChange } from '../../../modules/user/thunk';
 
 export default function FindPasswordForm() {
   const dispatch = useDispatch();
-  const { passwordChangeData, passwordChangeError } = useSelector(
-    (state) => state.user
-  );
   const [email, onChangeEmail] = useInput('');
   const onSubmit = (e) => {
     e.preventDefault();
-
     dispatch(passwordChange(email));
   };
-  useEffect(() => {
-    if (passwordChangeError) {
-      alert(passwordChangeError);
-    }
-    if (passwordChangeData) {
-      alert(`${email}로 이메일을 전송하였습니다.`);
-    }
-  }, [passwordChangeData, passwordChangeError, email]);
   return (
     <LoginRightSection>
       <form onSubmit={onSubmit}>

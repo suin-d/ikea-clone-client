@@ -39,9 +39,7 @@ const AuthEmailContainer = styled.div`
 `;
 function AuthEmail({ email, close, history }) {
   const dispatch = useDispatch();
-  const { signUpData, verificationData, verificationError } = useSelector(
-    (state) => state.user
-  );
+  const { signUpData, verificationData } = useSelector((state) => state.user);
   const [count, setCount] = useState(100);
   const [first, onChangeFirst] = useInput('');
   const [second, onChangeSecond] = useInput('');
@@ -71,12 +69,10 @@ function AuthEmail({ email, close, history }) {
   };
   useEffect(() => {
     if (verificationData) {
-      alert(verificationData);
       return history.replace('/signin');
     }
-    if (verificationError) return alert(verificationError);
     return null;
-  }, [history, verificationData, verificationError]);
+  }, [history, verificationData]);
   return (
     <ModalLayout title="이메일확인" close={goHome}>
       <AuthEmailContainer>

@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import './assets/css/reset.css';
 import Layout from './components/common/layout/Layout';
+import Alert from './components/common/message/Alert';
 import LoginPage from './pages/LoginPage';
 import MainPage from './pages/MainPage';
 import SignupPage from './pages/SignupPage';
@@ -17,6 +18,7 @@ function App() {
         {/* 회원가입 */}
         <Route path="/signup" component={SignupPage} />
       </Layout>
+      <Alert />
     </>
   );
 }

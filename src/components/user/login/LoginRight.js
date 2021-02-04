@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -37,7 +36,7 @@ export const LoginRightSection = styled.section`
 
 export default function LoginRight({ history }) {
   const dispatch = useDispatch();
-  const { logInData, logInError } = useSelector((state) => state.user);
+  const { logInData } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const onSubmit = (e) => {
@@ -46,12 +45,10 @@ export default function LoginRight({ history }) {
   };
   useEffect(() => {
     if (logInData) {
-      alert('어서오세요');
       return history.replace('/');
     }
-    if (logInError) return alert(logInError);
     return null;
-  }, [logInData, logInError, history]);
+  }, [logInData, history]);
   return (
     <LoginRightSection>
       <form onSubmit={onSubmit}>

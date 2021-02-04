@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import LOADING from '../../../assets/img/loading-small.gif';
 
 const StyledBtn = styled.button`
   width: 100%;
@@ -16,6 +17,9 @@ const StyledBtn = styled.button`
   outline: none;
   cursor: pointer;
   transition: all 0.25s ease-in-out;
+  img {
+    height: 90%;
+  }
   &:hover {
     background: #004079;
   }
@@ -45,10 +49,15 @@ const StyledBtn = styled.button`
   
     margin-bottom: 15px;
 `;
-export default function ButtonBig({ children, type = 'button', ...rest }) {
+export default function ButtonBig({
+  children,
+  loading = false,
+  type = 'button',
+  ...rest
+}) {
   return (
     <StyledBtn type={type} {...rest}>
-      {children}
+      {loading ? <img src={LOADING} alt="로딩" /> : children}
     </StyledBtn>
   );
 }

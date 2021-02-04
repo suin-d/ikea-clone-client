@@ -12,6 +12,7 @@ import SelectSimple from '../../common/inputs/SelectSimple';
 import AddressSearch from './AddressSearch';
 import AuthEmail from './AuthEmail';
 import { signUp } from '../../../modules/user/thunk';
+import { addAlert } from '../../../modules/interface';
 
 export const Gap = styled.div`
   ${(props) =>
@@ -36,7 +37,7 @@ const initialValid = {
 };
 function SignupForm() {
   const dispatch = useDispatch();
-  const { signUpError, signUpData } = useSelector((state) => state.user);
+  const { signUpData, signUpLoading } = useSelector((state) => state.user);
   const [authOpen, setAuthOpen] = useState(false);
   const [lastName, onChangeLastName] = useInput('');
   const [firstName, onChangeFirstName] = useInput('');
@@ -86,10 +87,10 @@ function SignupForm() {
   };
 
   const onSubmit = () => {
-    if (emailError) return alert(emailError);
-    if (phoneError) return alert(phoneError);
-    if (passwordError) return alert(passwordError);
-    if (!term) return alert('이용약관을 체크해주세요');
+    if (emailError) return dispatch(addAlert(emailError));
+    if (phoneError) return dispatch(addAlert(phoneError));
+    if (passwordError) return dispatch(addAlert(passwordError));
+    if (!term) return dispatch(addAlert('이용약관을 체크해주세요'));
     const data = {
       name: lastName + firstName,
       birth,
@@ -102,11 +103,6 @@ function SignupForm() {
     dispatch(signUp(data));
   };
 
-  useEffect(() => {
-    if (signUpError) {
-      alert(signUpError);
-    }
-  }, [signUpError]);
   useEffect(() => {
     if (signUpData) {
       setAuthOpen(true);
@@ -207,7 +203,13 @@ function SignupForm() {
           onChange={() => setTerm(!term)}
         />
         <Gap h="40px" />
-        <ButtonBig type="submit" width="500px" black onClick={onSubmit}>
+        <ButtonBig
+          type="submit"
+          width="500px"
+          black
+          onClick={onSubmit}
+          loading={signUpLoading}
+        >
           회원가입
         </ButtonBig>
       </div>
@@ -215,4 +217,5 @@ function SignupForm() {
     </>
   );
 }
+
 export default SignupForm;

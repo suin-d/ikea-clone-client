@@ -8,7 +8,7 @@ const DotButtonBox = styled.div`
   justify-content: center;
   align-items: center;
   position: absolute;
-  z-index: 9999;
+  z-index: 50;
   i {
     width: 35px;
     height: 35px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RiMenuLine } from 'react-icons/ri';
+import { Link } from 'react-router-dom';
 import LOGO from '../../../assets/img/logo.svg';
 import IconContainer from './IconContainer';
 import SearchBar from './SearchBar';
@@ -8,6 +9,7 @@ import SearchBar from './SearchBar';
 const HeaderBar = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   grid-column: 2 / 14;
   ul {
     display: flex;
@@ -52,7 +54,9 @@ export default function HeaderMenu({ setNavOpen }) {
       </MenuBtnBox>
 
       <HeaderBar>
-        <img src={LOGO} alt="" />
+        <Link to="/">
+          <img src={LOGO} alt="" />
+        </Link>
         <ul>
           <li>모든제품</li>
           <li>디지털 쇼룸</li>

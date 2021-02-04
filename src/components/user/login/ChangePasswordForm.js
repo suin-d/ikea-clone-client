@@ -1,4 +1,3 @@
-/* eslint-disable no-alert */
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoginRightSection } from './LoginRight';
@@ -8,11 +7,8 @@ import { WarnText, Gap } from '../signup/SignupForm';
 import { passwordSubmit } from '../../../modules/user/thunk';
 
 export default function ChangePasswordForm({ match, history }) {
-  console.log(match.params.email);
   const dispatch = useDispatch();
-  const { passwordSubmitData, passwordSubmitError } = useSelector(
-    (state) => state.user
-  );
+  const { passwordSubmitData } = useSelector((state) => state.user);
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
@@ -41,14 +37,10 @@ export default function ChangePasswordForm({ match, history }) {
   };
 
   useEffect(() => {
-    if (passwordSubmitError) {
-      alert(passwordSubmitError);
-    }
     if (passwordSubmitData) {
-      alert('비밀번호가 성공적으로 변경되었습니다.');
       history.replace('/signin');
     }
-  }, [passwordSubmitData, passwordSubmitError, history]);
+  }, [passwordSubmitData, history]);
   return (
     <LoginRightSection>
       <form onSubmit={onSubmit}>

@@ -50,7 +50,7 @@ const StyledInputSet = styled.fieldset`
     transition: all 200ms ease-out;
     transform: scaleX(0);
     visibility: hidden;
-    z-index: 10;
+    z-index: 2;
   }
   input:focus ~ hr {
     transform: scaleX(1);
