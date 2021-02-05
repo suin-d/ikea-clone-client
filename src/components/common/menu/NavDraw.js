@@ -22,10 +22,10 @@ to{
   transform:translateX(-700px)
 }
 `;
-const NavBottom = styled.div`
+export const NavBottom = styled.div`
   display: flex;
 `;
-const NavTop = styled.div`
+export const NavTop = styled.div`
   width: 420px;
   height: 92px;
   display: flex;
@@ -50,7 +50,7 @@ const NavTop = styled.div`
     flex: 2;
   }
 `;
-const NavDrawBox = styled.nav`
+export const NavDrawBox = styled.nav`
   background: #fff;
   position: fixed;
   top: 0;
@@ -65,7 +65,7 @@ const NavDrawBox = styled.nav`
       animation: ${slideOff} 0.3s ease-in-out forwards;
     `}
 `;
-const NavDrawContainer = styled.div`
+export const NavDrawContainer = styled.div`
   z-index: 9999;
   position: fixed;
   top: 0;
