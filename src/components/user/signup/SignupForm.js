@@ -25,7 +25,7 @@ export const WarnText = styled.span`
   color: #df0a51;
   font-size: 14px;
 `;
-const options = [
+export const options = [
   { id: 0, value: '남성' },
   { id: 1, value: '여성' },
   { id: 2, value: '선택하지 않음' },
