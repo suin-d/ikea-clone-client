@@ -65,10 +65,10 @@ export default function LoginRight({ history }) {
           label="비밀번호"
           type="password"
         />
-        <Link to="/signin/find">비밀번호 찾기</Link>
+        <Link to="/user/signin/find">비밀번호 찾기</Link>
         <Gap />
         <ButtonBig type="submit">로그인</ButtonBig>
-        <Link to="/signup">
+        <Link to="/user/signup">
           <ButtonBig gray>회원가입</ButtonBig>
         </Link>
       </form>

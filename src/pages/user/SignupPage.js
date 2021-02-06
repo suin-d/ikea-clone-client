@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import SignupBanner from '../components/user/signup/SignupBanner';
-import SignupForm from '../components/user/signup/SignupForm';
+import SignupBanner from '../../components/user/signup/SignupBanner';
+import SignupForm from '../../components/user/signup/SignupForm';
 
 const RightSection = styled.div`
   flex: 1.1;

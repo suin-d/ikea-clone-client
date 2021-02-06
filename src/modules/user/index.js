@@ -30,6 +30,8 @@ const initialState = {
   passwordSubmitLoading: false,
   passwordSubmitData: null,
   passwordSubmitError: null,
+
+  userInfo: null,
 };
 
 export default function user(state = initialState, action) {
@@ -68,6 +70,7 @@ export default function user(state = initialState, action) {
         logInLoading: false,
         logInData: action.payload,
         logInError: null,
+        userInfo: action.payload,
       };
     case LOG_IN_ERROR:
       return {

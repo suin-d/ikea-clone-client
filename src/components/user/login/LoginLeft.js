@@ -99,9 +99,12 @@ function LoginLeft({ history }) {
       </i>
       <LoginSummary>
         <img src={LOGO} alt="로고" />
-        <Route path="/signin" exact component={LoginArticle} />
-        <Route path="/signin/find" component={FindPasswordArticle} />
-        <Route path="/signin/change/:email" component={ChangePasswordArticle} />
+        <Route path="/user/signin" exact component={LoginArticle} />
+        <Route path="/user/signin/find" component={FindPasswordArticle} />
+        <Route
+          path="/user/signin/change/:email"
+          component={ChangePasswordArticle}
+        />
         <div>
           <span>Cozi - 개인정보처리방침</span>
           <span>© Inter IKEA Systems B.V. 1999-2021</span>
