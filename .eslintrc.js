@@ -34,5 +34,7 @@ module.exports = {
     indent: 0,
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    'no-nested-ternary': 0,
+    'no-confusing-arrow': 0,
   },
 };

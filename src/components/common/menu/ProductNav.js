@@ -57,6 +57,12 @@ const DetailNavBox = styled(ProductNavBox)`
   white-space: nowrap;
   li {
     font-size: 13px;
+    a {
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
   ${(props) =>
     props.active &&
