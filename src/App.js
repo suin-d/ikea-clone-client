@@ -19,7 +19,7 @@ function App() {
         {/* 리스트 페이지 */}
         <Route path="/list/:id" component={ListPage} />
         {/* 디테일 페이지 */}
-        <Route path="/detail" component={DetailPage} />
+        <Route path="/detail/:id" component={DetailPage} />
       </Layout>
       <Alert />
     </>

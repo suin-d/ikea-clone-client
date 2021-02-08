@@ -16,25 +16,23 @@ const CateBox = styled.ul`
   }
 `;
 
-export default function Cate({ pro }) {
+export default function Cate({ bCate, sCate, title, summary }) {
   return (
     <CateBox>
       <li>제품</li>
       <li>
         <MdKeyboardArrowRight />
       </li>
-      <li>{pro.cate1}</li>
+      <li>{bCate.name}</li>
       <li>
         <MdKeyboardArrowRight />
       </li>
-      <li>{pro.cate2}</li>
+      <li>{sCate.name}</li>
       <li>
         <MdKeyboardArrowRight />
       </li>
       <li>
-        <span>{pro.proNameEn}</span>
-        <span>{pro.proNameKo}</span>
-        <span>{pro.proInfo}</span>
+        <span>{`${title} ${summary}`}</span>
       </li>
     </CateBox>
   );
