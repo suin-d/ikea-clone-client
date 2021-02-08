@@ -14,6 +14,7 @@ const LoginSummary = styled.div`
   color: #fff;
   img {
     width: 88px;
+    cursor: pointer;
   }
   article {
     width: 256px;
@@ -92,13 +93,16 @@ function LoginLeft({ history }) {
   const goBack = () => {
     history.goBack();
   };
+  const goHome = () => {
+    history.replace('/');
+  };
   return (
     <LoginLeftSection>
       <i onClick={goBack}>
         <RiArrowLeftLine />
       </i>
       <LoginSummary>
-        <img src={LOGO} alt="로고" />
+        <img src={LOGO} alt="로고" onClick={goHome} />
         <Route path="/user/signin" exact component={LoginArticle} />
         <Route path="/user/signin/find" component={FindPasswordArticle} />
         <Route

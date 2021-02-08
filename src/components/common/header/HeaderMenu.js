@@ -2,9 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import { RiMenuLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import LOGO from '../../../assets/img/logo.svg';
 import IconContainer from './IconContainer';
 import SearchBar from './SearchBar';
+import { NAV_MOVE, NAV_OPEN } from '../../../modules/interface';
 
 const HeaderBar = styled.div`
   display: flex;
@@ -46,11 +48,12 @@ const HeaderContainer = styled.div`
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
 `;
-export default function HeaderMenu({ setNavOpen }) {
+export default function HeaderMenu() {
+  const dispatch = useDispatch();
   return (
     <HeaderContainer>
       <MenuBtnBox>
-        <RiMenuLine onClick={() => setNavOpen(true)} />
+        <RiMenuLine onClick={() => dispatch({ type: NAV_OPEN })} />
       </MenuBtnBox>
 
       <HeaderBar>
@@ -58,8 +61,12 @@ export default function HeaderMenu({ setNavOpen }) {
           <img src={LOGO} alt="" />
         </Link>
         <ul>
-          <li>모든제품</li>
-          <li>디지털 쇼룸</li>
+          <li onClick={() => dispatch({ type: NAV_MOVE, payload: 1 })}>
+            모든제품
+          </li>
+          <li onClick={() => dispatch({ type: NAV_MOVE, payload: 2 })}>
+            디지털 쇼룸
+          </li>
         </ul>
         <SearchBar />
         <IconContainer />

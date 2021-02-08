@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import HeaderMenu from '../header/HeaderMenu';
 import NavDraw from '../menu/NavDraw';
@@ -16,14 +17,14 @@ const LayoutBox = styled.main`
 `;
 
 export default function Layout({ children }) {
-  const [navOpen, setNavOpen] = useState(false);
+  const { open: navOpen } = useSelector((state) => state.interfaces.navigation);
   return (
     <>
-      <HeaderMenu setNavOpen={setNavOpen} />
+      <HeaderMenu />
       <LayoutBox>
         <MainContent>{children}</MainContent>
       </LayoutBox>
-      {navOpen && <NavDraw setNavOpen={setNavOpen} />}
+      {navOpen && <NavDraw />}
     </>
   );
 }

@@ -21,5 +21,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-// 2. 미들웨어 적용

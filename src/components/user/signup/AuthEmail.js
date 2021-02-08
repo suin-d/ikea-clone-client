@@ -69,7 +69,7 @@ function AuthEmail({ email, close, history }) {
   };
   useEffect(() => {
     if (verificationData) {
-      return history.replace('/signin');
+      return history.replace('/user/signin');
     }
     return null;
   }, [history, verificationData]);

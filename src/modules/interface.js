@@ -1,6 +1,9 @@
 import {
+  DELETE_USER_ERROR,
+  DELETE_USER_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_SUCCESS,
+  LOG_OUT_SUCCESS,
   PASSWORD_CHANGE_ERROR,
   PASSWORD_CHANGE_SUCCESS,
   PASSWORD_SUBMIT_ERROR,
@@ -13,6 +16,9 @@ import {
 
 export const ADD_ALERT = 'interface/ADD_ALERT';
 export const ALERT_RESET = 'interface/ALERT_RESET';
+export const NAV_CLOSE = 'interface/NAV_CLOSE';
+export const NAV_OPEN = 'interface/NAV_OPEN';
+export const NAV_MOVE = 'interface/NAV_MOVE';
 
 export const addAlert = (message) => ({
   type: ADD_ALERT,
@@ -21,6 +27,10 @@ export const addAlert = (message) => ({
 
 const initialState = {
   alertMsg: null,
+  navigation: {
+    open: false,
+    navState: 0,
+  },
 };
 export default function interfaces(state = initialState, action) {
   switch (action.type) {
@@ -28,6 +38,26 @@ export default function interfaces(state = initialState, action) {
       return {
         ...state,
         alertMsg: action.payload,
+      };
+    case NAV_CLOSE:
+      return {
+        ...state,
+        navigation: {
+          open: false,
+          visible: true,
+          navState: 0,
+        },
+      };
+    case NAV_OPEN:
+      return { ...state, navigation: { ...state.navigation, open: true } };
+    case NAV_MOVE:
+      return {
+        ...state,
+        navigation: {
+          ...state.navigation,
+          open: true,
+          navState: action.payload,
+        },
       };
     case SIGN_UP_SUCCESS:
       return {
@@ -45,6 +75,11 @@ export default function interfaces(state = initialState, action) {
         alertMsg: `${action.payload.name}님 어서오세요`,
       };
     case LOG_IN_ERROR:
+      return {
+        ...state,
+        alertMsg: action.payload,
+      };
+    case LOG_OUT_SUCCESS:
       return {
         ...state,
         alertMsg: action.payload,
@@ -75,6 +110,16 @@ export default function interfaces(state = initialState, action) {
         alertMsg: action.payload,
       };
     case PASSWORD_SUBMIT_ERROR:
+      return {
+        ...state,
+        alertMsg: action.payload,
+      };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        alertMsg: action.payload,
+      };
+    case DELETE_USER_ERROR:
       return {
         ...state,
         alertMsg: action.payload,

@@ -36,7 +36,7 @@ export const LoginRightSection = styled.section`
 
 export default function LoginRight({ history }) {
   const dispatch = useDispatch();
-  const { logInData } = useSelector((state) => state.user);
+  const { userInfo } = useSelector((state) => state.user);
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
   const onSubmit = (e) => {
@@ -44,11 +44,11 @@ export default function LoginRight({ history }) {
     dispatch(login({ email, password }));
   };
   useEffect(() => {
-    if (logInData) {
+    if (userInfo) {
       return history.replace('/');
     }
     return null;
-  }, [logInData, history]);
+  }, [userInfo, history]);
   return (
     <LoginRightSection>
       <form onSubmit={onSubmit}>

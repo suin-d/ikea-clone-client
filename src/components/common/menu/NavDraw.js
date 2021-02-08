@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { RiAddLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
 import LOGO from '../../../assets/img/logo.svg';
 import MainNav from './MainNav';
 import ProductNav from './ProductNav';
 import ShowRoomNav from './ShowRoomNav';
+import { NAV_CLOSE, NAV_MOVE, NAV_OPEN } from '../../../modules/interface';
 
 const slideOn = keyframes`
 from{
@@ -77,15 +79,19 @@ const NavDrawContainer = styled.div`
   height: 100vh;
 `;
 
-export default function NavDraw({ setNavOpen }) {
-  const [navState, setNavState] = useState(0);
+export default function NavDraw() {
+  const dispatch = useDispatch();
+  const {
+    navigation: { navState },
+  } = useSelector((state) => state.interfaces);
   const [navVisible, setNavVisible] = useState(true);
   const onToggleNav = (number) => {
-    setNavState(number);
+    dispatch({ type: NAV_MOVE, payload: number });
   };
   const navClose = () => {
     setTimeout(() => {
-      setNavOpen(false);
+      dispatch({ type: NAV_OPEN });
+      dispatch({ type: NAV_CLOSE });
     }, 300);
     setNavVisible(false);
   };

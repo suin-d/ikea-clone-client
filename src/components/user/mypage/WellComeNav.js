@@ -3,6 +3,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsArrowRight } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logout } from '../../../modules/user/thunk';
 
 const MyNavItem = styled.li`
   width: 31%;
@@ -113,19 +115,25 @@ const WellComeConatiner = styled.section`
 `;
 
 export default function WellComeNav({ userInfo }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
   const info = `
 회원명:${userInfo.name}
 email:${userInfo.email}
 전화번호:${userInfo.phone}
 주소:${userInfo.address}
   `;
+  const onLogout = () => {
+    dispatch(logout(userInfo.email));
+    history.replace('/');
+  };
   return (
     <WellComeConatiner>
       <WellComeInfo>
         <article>
           <b>{`안녕하세요, ${userInfo.name}님!`}</b>
           <span>로그아웃을 하고 싶으신가요?</span>
-          <small>로그아웃</small>
+          <small onClick={onLogout}>로그아웃</small>
         </article>
         <div>
           <h1>

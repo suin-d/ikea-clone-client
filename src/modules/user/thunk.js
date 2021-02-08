@@ -1,8 +1,14 @@
 import axios from 'axios';
 import {
+  DELETE_USER_ERROR,
+  DELETE_USER_REQUEST,
+  DELETE_USER_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
+  LOG_OUT_ERROR,
+  LOG_OUT_REQUEST,
+  LOG_OUT_SUCCESS,
   PASSWORD_CHANGE_ERROR,
   PASSWORD_CHANGE_REQUEST,
   PASSWORD_CHANGE_SUCCESS,
@@ -113,6 +119,46 @@ export const login = (data) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: LOG_IN_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const logout = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: LOG_OUT_REQUEST,
+    });
+    const response = await axios.get(
+      `http://localhost:8000/api/user/logout/${email}`
+    );
+    dispatch({
+      type: LOG_OUT_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: LOG_OUT_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const deleteUser = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: DELETE_USER_REQUEST,
+    });
+    const response = await axios.delete(
+      `http://localhost:8000/api/user/${email}`
+    );
+    dispatch({
+      type: DELETE_USER_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: DELETE_USER_ERROR,
       payload: e.response.data,
     });
   }

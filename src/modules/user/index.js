@@ -4,6 +4,9 @@ export const SIGN_UP_ERROR = 'user/SIGN_UP_ERROR';
 export const LOG_IN_REQUEST = 'user/LOG_IN_REQUEST';
 export const LOG_IN_SUCCESS = 'user/LOG_IN_SUCCESS';
 export const LOG_IN_ERROR = 'user/LOG_IN_ERROR';
+export const LOG_OUT_REQUEST = 'user/LOG_OUT_REQUEST';
+export const LOG_OUT_SUCCESS = 'user/LOG_OUT_SUCCESS';
+export const LOG_OUT_ERROR = 'user/LOG_OUT_ERROR';
 export const VERIFICATION_REQUEST = 'user/VERIFICATION_REQUEST';
 export const VERIFICATION_SUCCESS = 'user/VERIFICATION_SUCCESS';
 export const VERIFICATION_ERROR = 'user/VERIFICATION_ERROR';
@@ -13,6 +16,9 @@ export const PASSWORD_CHANGE_ERROR = 'user/PASSWORD_CHANGE_ERROR';
 export const PASSWORD_SUBMIT_REQUEST = 'user/PASSWORD_SUBMIT_REQUEST';
 export const PASSWORD_SUBMIT_SUCCESS = 'user/PASSWORD_SUBMIT_SUCCESS';
 export const PASSWORD_SUBMIT_ERROR = 'user/PASSWORD_SUBMIT_ERROR';
+export const DELETE_USER_REQUEST = 'user/DELETE_USER_REQUEST';
+export const DELETE_USER_SUCCESS = 'user/DELETE_USER_SUCCESS';
+export const DELETE_USER_ERROR = 'user/DELETE_USER_ERROR';
 
 const initialState = {
   signUpLoading: false,
@@ -21,6 +27,9 @@ const initialState = {
   logInLoading: false,
   logInData: null,
   logInError: null,
+  logOutLoading: false,
+  logOutData: null,
+  logOutError: null,
   verificationLoading: false,
   verificationData: null,
   verificationError: null,
@@ -30,6 +39,9 @@ const initialState = {
   passwordSubmitLoading: false,
   passwordSubmitData: null,
   passwordSubmitError: null,
+  deleteUserLoading: false,
+  deleteUserData: null,
+  deleteUserError: null,
 
   userInfo: null,
 };
@@ -78,6 +90,28 @@ export default function user(state = initialState, action) {
         logInLoading: false,
         logInData: null,
         logInError: action.payload,
+      };
+    case LOG_OUT_REQUEST:
+      return {
+        ...state,
+        logOutLoading: true,
+        logOutData: null,
+        logOutError: null,
+      };
+    case LOG_OUT_SUCCESS:
+      return {
+        ...state,
+        logOutLoading: false,
+        logOutData: action.payload,
+        logOutError: null,
+        userInfo: null,
+      };
+    case LOG_OUT_ERROR:
+      return {
+        ...state,
+        logOutLoading: false,
+        logOutData: null,
+        logOutError: action.payload,
       };
     case VERIFICATION_REQUEST:
       return {
@@ -141,6 +175,28 @@ export default function user(state = initialState, action) {
         passwordSubmitLoading: false,
         passwordSubmitData: null,
         passwordSubmitError: action.payload,
+      };
+    case DELETE_USER_REQUEST:
+      return {
+        ...state,
+        deleteUserLoading: true,
+        deleteUserData: null,
+        deleteUserError: null,
+      };
+    case DELETE_USER_SUCCESS:
+      return {
+        ...state,
+        deleteUserLoading: false,
+        deleteUserData: action.payload,
+        deleteUserError: null,
+        userInfo: null,
+      };
+    case DELETE_USER_ERROR:
+      return {
+        ...state,
+        deleteUserLoading: false,
+        deleteUserData: null,
+        deleteUserError: action.payload,
       };
     default:
       return state;
