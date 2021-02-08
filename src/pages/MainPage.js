@@ -54,15 +54,6 @@ export default function MainPage() {
       <News newsItems={newsItems1} />
       <CustomerService />
       <News newsItems={newsItems2} />
-      {/* <ButtonRound>버튼</ButtonRound>
-      <ButtonRound white>흰색버튼</ButtonRound>
-      <ButtonRound gray>회색버튼</ButtonRound>
-      <ButtonRound black>검은색버튼</ButtonRound>
-      <InputSimple label="경고모드" type="text" warn />
-      <InputSimple label="일반모드" type="password" />
-      <ButtonCart />
-      <ButtonFix />
-      <ButtonNext /> */}
     </div>
   );
 }
