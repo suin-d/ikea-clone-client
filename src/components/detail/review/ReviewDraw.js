@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { RiAddLine } from 'react-icons/ri';
 import styled, { css, keyframes } from 'styled-components';
-import ButtonRound from '../common/buttons/ButtonRound';
-import ReviewList from './ReviewList';
+import ButtonRound from '../../common/buttons/ButtonRound';
+import ReviewItems from './ReviewItems';
 import ReviewScore from './ReviewScore';
 import WriteReviewDraw from './WriteReviewDraw';
 
@@ -169,7 +169,7 @@ function DrawContainer() {
       </DrawHeaderContainer>
       <DrawContentContainer>
         {writeReview && <WriteReviewDraw />}
-        {!writeReview && <ReviewList />}
+        {!writeReview && <ReviewItems />}
       </DrawContentContainer>
     </DrawBox>
   );

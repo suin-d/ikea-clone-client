@@ -1,122 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { GrDeliver } from 'react-icons/gr';
-import { BiBuildings } from 'react-icons/bi';
 import { IoIosArrowForward } from 'react-icons/io';
 import Cate from '../components/common/Cate';
-import ButtonBig from '../components/common/buttons/ButtonBig';
-import ReviewScore from '../components/proReview/ReviewScore';
-import ReviewDraw from '../components/proReview/ReviewDraw';
+import ReviewScore from '../components/detail/review/ReviewScore';
+import ReviewDraw from '../components/detail/review/ReviewDraw';
+import DetailInfo from '../components/detail/DetailInfo';
 
-const DetailInfoBox = styled.div`
-  flex: 3;
-  position: relative;
-  article {
-    position: sticky;
-    display: flex;
-    flex-direction: column;
-    top: 90px;
-    margin-right: 35px;
-    .sale-text {
-      color: #ed022a;
-      font-weight: 600;
-      margin-bottom: 12px;
-      padding: 0;
-    }
-    p + div {
-      display: flex;
-      gap: 5px;
-      margin-bottom: 45px;
-      section:nth-child(1) {
-        flex: 0.8;
-        h1 {
-          margin-bottom: 13px;
-          font-size: 22px;
-          font-weight: 700;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 5px;
-        }
-        p {
-          margin-bottom: 17px;
-          font-size: 14px;
-          color: #484848;
-        }
-        h4 {
-          margin-top: 11px;
-        }
-      }
-      section:nth-child(2) {
-        flex: 0.2;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        h1 {
-          font-size: 21px;
-          margin-bottom: 13px;
-          font-weight: 700;
-        }
-        p {
-          text-decoration: line-through;
-          font-size: 14px;
-          color: #484848;
-        }
-      }
-    }
-    div + div {
-      display: flex;
-      gap: 18px;
-      margin-bottom: 15px;
-      button:nth-child(1) {
-        height: 57px;
-      }
-    }
-    & > p {
-      padding: 23px 0;
-      word-break: keep-all;
-      color: #484848;
-      display: flex;
-      align-items: center;
-      svg {
-        font-size: 21px;
-        margin-right: 13px;
-      }
-      i {
-        margin-left: 6px;
-        display: inline-block;
-        width: 7px;
-        height: 7px;
-        border-radius: 50%;
-        background-color: #0a8a00;
-      }
-    }
-    & > p + p {
-      border-top: 1px solid #dfdfdf;
-      display: flex;
-      align-items: flex-start;
-      i {
-        background-color: #e00751;
-      }
-      div {
-        span {
-          display: block;
-        }
-        span + span {
-          margin-top: 11px;
-        }
-      }
-    }
-  }
-  p {
-    font-size: 14px;
-  }
-`;
 const ReviewBox = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 30px 0;
   border-top: 1px solid #dfdfdf;
+  cursor: pointer;
   div {
     p {
       font-size: 14px;
@@ -221,54 +117,6 @@ function DetailAbout({ setReviewOpen }) {
     </DetailAboutBox>
   );
 }
-function DetailInfo({ setReviewOpen }) {
-  return (
-    <DetailInfoBox>
-      <article>
-        <p className="sale-text">더 낮은 새로운 가격</p>
-        <div>
-          <section>
-            <h1>
-              <span>{product.proNameEn}</span>
-              <span>{product.proNameKo}</span>
-            </h1>
-            <p>{product.proInfo}</p>
-            <ReviewScore
-              reviewCnt={product.reviewCnt}
-              setReviewOpen={setReviewOpen}
-            />
-          </section>
-          <section>
-            <h1>{product.proPrice}</h1>
-            <p>{product.proOriPrice}</p>
-          </section>
-        </div>
-        <div>
-          <ButtonBig>구매하기</ButtonBig>
-          <button>❤</button>
-        </div>
-        <p>
-          <GrDeliver />
-          배송 여부는 결제 단계에서 확인하실 수 있습니다.
-          <i />
-        </p>
-        <p>
-          <BiBuildings />
-          <div>
-            <span>
-              <a href="/detail">고양</a>
-              에서는 임시 품절되었습니다.
-              <i />
-            </span>
-            <span>
-              <a href="/detail">다른 매장 재고 확인</a>
-            </span>
-          </div>
-        </p>
-      </article>
-    </DetailInfoBox>
-  );
-}
 
 export default function DetailPage() {
   const [reviewOpen, setReviewOpen] = useState(false);
@@ -281,7 +129,7 @@ export default function DetailPage() {
           <DetailPic />
           <DetailAbout setReviewOpen={setReviewOpen} />
         </DetailMainBox>
-        <DetailInfo setReviewOpen={setReviewOpen} />
+        <DetailInfo setReviewOpen={setReviewOpen} product={product} />
       </DetailTopContainer>
       {reviewOpen && (
         <ReviewDraw reviewOpen={reviewOpen} setReviewOpen={setReviewOpen} />

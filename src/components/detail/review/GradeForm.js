@@ -24,7 +24,7 @@ const InputGrade = styled.div`
   }
 `;
 
-export default function GiveGrades({
+export default function GradeForm({
   grade,
   setGrade,
   userGrade,
