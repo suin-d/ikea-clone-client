@@ -77,6 +77,7 @@ const ListWrapper = styled.div`
 function List({ title, data }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [listState, setListState] = useState(0);
+
   return (
     <>
       <ListWrapper active={listState === 1}>
@@ -96,15 +97,16 @@ function List({ title, data }) {
             </li>
           </ul>
           <div>
-            <span>{`${data.length}개`}</span>
+            <span>{`${data && data.length}개`}</span>
             <b onClick={() => setListState(0)}>제품</b>
             <b onClick={() => setListState(1)}>디지털 쇼룸</b>
           </div>
         </div>
         <ListContainer>
-          {data.map((item) => (
-            <ListItem listState={listState} data={item} key={item.id} />
-          ))}
+          {data &&
+            data.map((item) => (
+              <ListItem listState={listState} data={item} key={item.id} />
+            ))}
         </ListContainer>
       </ListWrapper>
       {filterOpen && <ListFilter setFilterOpen={setFilterOpen} />}

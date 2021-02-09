@@ -49,7 +49,6 @@ export const NavContentBox = styled.div`
   }
 `;
 export default function MainNav({ onToggleNav, navState }) {
-  console.log(navState);
   return (
     <NavContentBox>
       <i />

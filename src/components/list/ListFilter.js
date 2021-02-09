@@ -131,13 +131,10 @@ export default function ListFilter({ setFilterOpen }) {
   const [isChecked, setIsChecked] = useState(0);
 
   const onChangeRadio = (e) => {
-    console.log(e.target);
     const currentNumber = parseInt(e.target.value, 10);
     const selected = Filters.find((v) => v.id === currentNumber);
-
     setIsChecked(selected.id);
   };
-  console.log(isChecked);
 
   const filterClose = () => {
     setTimeout(() => {

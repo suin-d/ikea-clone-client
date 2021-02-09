@@ -72,11 +72,6 @@ export default function WriteReviewDraw() {
   const [userGrade, setUserGrade] = useState(0);
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(recom);
-    console.log(title);
-    console.log(content);
-    console.log(selectImg);
-    console.log(userGrade);
   };
 
   return (

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { RiHeartLine } from 'react-icons/ri';
+import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import ButtonCart from '../common/buttons/ButtonCart';
 
@@ -88,20 +89,34 @@ const ListItemBox = styled.div`
 `;
 
 function ImageBox({ data, listState, hover }) {
-  const imgIndex = data.images[1] ? 1 : 0;
+  const imgIndex = data.ProdImages[1] ? 1 : 0;
   return (
     <div>
       {listState === 0 ? (
-        data.images[1] ? (
+        data.ProdImages[1] ? (
           <img
-            src={hover ? data.images[1].src : data.images[0].src}
+            srcSet={
+              hover ? data.ProdImages[1].srcSet : data.ProdImages[0].srcSet
+            }
+            sizes={hover ? data.ProdImages[1].sizes : data.ProdImages[0].sizes}
+            src={hover ? data.ProdImages[1].src : data.ProdImages[0].src}
             alt={data.summary}
           />
         ) : (
-          <img src={data.images[0].src} alt={data.summary} />
+          <img
+            srcSet={data.ProdImages[0].srcSet}
+            sizes={data.ProdImages[0].sizes}
+            src={data.ProdImages[0].src}
+            alt={data.summary}
+          />
         )
       ) : (
-        <img src={data.images[imgIndex].src} alt={data.summary} />
+        <img
+          srcSet={data.ProdImages[imgIndex].srcSet}
+          sizes={data.ProdImages[imgIndex].sizes}
+          src={data.ProdImages[imgIndex].src}
+          alt={data.summary}
+        />
       )}
     </div>
   );
@@ -109,11 +124,16 @@ function ImageBox({ data, listState, hover }) {
 
 export default function ListItem({ data, listState }) {
   const [hover, setHover] = useState(false);
+  const history = useHistory();
+
   const onEnter = () => {
     setHover(true);
   };
   const onLeave = () => {
     setHover(false);
+  };
+  const goDetail = () => {
+    history.push(`/detail/${data.id}`);
   };
 
   const iconStyle = {
@@ -121,7 +141,12 @@ export default function ListItem({ data, listState }) {
   };
   return (
     <ListItemContainer>
-      <ListItemBox hover={hover} onMouseEnter={onEnter} onMouseLeave={onLeave}>
+      <ListItemBox
+        hover={hover}
+        onMouseEnter={onEnter}
+        onMouseLeave={onLeave}
+        onClick={goDetail}
+      >
         <i style={iconStyle}>
           <RiHeartLine />
         </i>
@@ -131,7 +156,7 @@ export default function ListItem({ data, listState }) {
           <span>{data.summary}</span>
           <div>
             <span>￦</span>
-            <strong>{data.price.toLocaleString()}</strong>
+            <strong>{data.prCost.toLocaleString()}</strong>
           </div>
           <ButtonCart />
         </article>

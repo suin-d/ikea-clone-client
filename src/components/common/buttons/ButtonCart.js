@@ -23,9 +23,9 @@ export const CircleButton = styled.button`
   }
 `;
 
-export default function ButtonCart() {
+export default function ButtonCart({ ...rest }) {
   return (
-    <CircleButton>
+    <CircleButton {...rest}>
       <svg
         focusable="false"
         viewBox="0 0 24 24"

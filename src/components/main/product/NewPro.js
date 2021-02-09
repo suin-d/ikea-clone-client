@@ -71,7 +71,6 @@ const proItem = [
 
 function NewProItem({ data }) {
   const [infoActive, setInfoActive] = useState(false);
-  console.log(infoActive);
   const onEnter = () => {
     setInfoActive(true);
   };

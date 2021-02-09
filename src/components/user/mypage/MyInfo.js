@@ -24,7 +24,6 @@ const ListMenuBox = styled.ul`
     `}
 `;
 function ListMenu({ current, set }) {
-  console.log(current);
   return (
     <ListMenuBox active={current}>
       <li onClick={() => set(1)}>계정</li>
