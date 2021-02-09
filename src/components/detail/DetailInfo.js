@@ -126,7 +126,6 @@ export default function DetailInfo({ setReviewOpen, product }) {
           <ProName>
             <h1>
               <span>{product.title}</span>
-              {/* <span>{product.proNameKo}</span> */}
             </h1>
             <p>{`${product.summary} ${product.size}`}</p>
             <ReviewScore

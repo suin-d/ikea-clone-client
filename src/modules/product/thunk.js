@@ -6,18 +6,15 @@ import {
   GET_LIST_REQUEST,
   GET_LIST_SUCCESS,
   GET_LIST_ERROR,
-<<<<<<< HEAD
   ADD_WISH_REQUEST,
   ADD_WISH_SUCCESS,
   ADD_WISH_ERROR,
   REMOVE_WISH_REQUEST,
   REMOVE_WISH_SUCCESS,
   REMOVE_WISH_ERROR,
-=======
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
   GET_PRODUCT_ERROR,
->>>>>>> aa45eceeae586a694627b0c36beab78ea35e93da
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {

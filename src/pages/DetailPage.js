@@ -75,26 +75,6 @@ const DetailTopContainer = styled.div`
   margin-top: 64px;
 `;
 
-// const product = {
-//   fullId: 'boholmen-inset-sink-1-bowl-stainless-steel-s99177679',
-//   shortId: 's99177679',
-//   img: [
-//     'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0770896_PE755642_S5.JPG?f=m',
-//     'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0944427_PE797252_S5.JPG?f=xs',
-//     'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0788147_PE763489_S5.JPG?f=l',
-//     'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0788148_PE763488_S5.JPG?f=m',
-//     'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0970313_PE811023_S5.JPG?f=s',
-//   ],
-//   proNameEn: 'ANGERSBY',
-//   proNameKo: '앙에르스뷔',
-//   proInfo: '2인용소파',
-//   proPrice: '₩149,000',
-//   proOriPrice: '₩169,000',
-//   cate1: '가구',
-//   cate2: '소파',
-//   reviewCnt: 14,
-// };
-
 function DetailAbout({ setReviewOpen, product }) {
   return (
     <DetailAboutBox>
