@@ -6,6 +6,9 @@ import {
   GET_LIST_REQUEST,
   GET_LIST_SUCCESS,
   GET_LIST_ERROR,
+  GET_PRODUCT_REQUEST,
+  GET_PRODUCT_SUCCESS,
+  GET_PRODUCT_ERROR,
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {
@@ -32,4 +35,14 @@ export const getList = (cateId) => async (dispatch) => {
   }
 };
 
-export default getList;
+export const getProduct = (productId) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_PRODUCT_REQUEST });
+    const response = await axios.get(
+      `http://localhost:8000/api/product/${productId}`
+    );
+    dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: GET_PRODUCT_ERROR, payload: e.response.data });
+  }
+};

@@ -3,6 +3,7 @@ import { BiBuildings } from 'react-icons/bi';
 import { GrDeliver } from 'react-icons/gr';
 import styled, { css } from 'styled-components';
 import ButtonBig from '../common/buttons/ButtonBig';
+import ButtonWish from '../common/buttons/ButtonWish';
 import ReviewScore from './review/ReviewScore';
 
 const CheckMsg = styled.p`
@@ -50,6 +51,7 @@ const ButtonWrapper = styled.div`
   margin-bottom: 15px;
   button:nth-child(1) {
     height: 57px;
+    flex: 1;
   }
 `;
 const ProPrice = styled.section`
@@ -77,6 +79,7 @@ const ProName = styled.section`
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+    word-break: keep-all;
   }
   p {
     margin-bottom: 17px;
@@ -116,29 +119,29 @@ export default function DetailInfo({ setReviewOpen, product }) {
   return (
     <DetailInfoWrapper>
       <DetailInfoContainer>
-        {product.proOriPrice && (
+        {product.prCost !== product.slCost && (
           <p className="sale-text">더 낮은 새로운 가격</p>
         )}
         <ProInfo>
           <ProName>
             <h1>
-              <span>{product.proNameEn}</span>
-              <span>{product.proNameKo}</span>
+              <span>{product.title}</span>
+              {/* <span>{product.proNameKo}</span> */}
             </h1>
-            <p>{product.proInfo}</p>
+            <p>{`${product.summary} ${product.size}`}</p>
             <ReviewScore
               reviewCnt={product.reviewCnt}
               setReviewOpen={setReviewOpen}
             />
           </ProName>
           <ProPrice>
-            <h1>{product.proPrice}</h1>
-            {product.proOriPrice && <p>{product.proOriPrice}</p>}
+            <h1>{`₩${product.slCost}`}</h1>
+            {product.prCost !== product.slCost && <p>{`₩${product.prCost}`}</p>}
           </ProPrice>
         </ProInfo>
         <ButtonWrapper>
           <ButtonBig>구매하기</ButtonBig>
-          <button>❤</button>
+          <ButtonWish />
         </ButtonWrapper>
         <CheckMsg>
           <GrDeliver />

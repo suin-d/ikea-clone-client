@@ -36,5 +36,6 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 0,
     'no-nested-ternary': 0,
     'no-confusing-arrow': 0,
+    'object-curly-newline': 0,
   },
 };
