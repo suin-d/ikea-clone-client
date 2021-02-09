@@ -1,3 +1,4 @@
+import { ADD_WISH_SUCCESS, REMOVE_WISH_SUCCESS } from './product';
 import {
   DELETE_USER_ERROR,
   DELETE_USER_SUCCESS,
@@ -123,6 +124,16 @@ export default function interfaces(state = initialState, action) {
       return {
         ...state,
         alertMsg: action.payload,
+      };
+    case ADD_WISH_SUCCESS:
+      return {
+        ...state,
+        alertMsg: '위시리스트에 추가되었습니다.',
+      };
+    case REMOVE_WISH_SUCCESS:
+      return {
+        ...state,
+        alertMsg: '위시리스트에 삭제되었습니다.',
       };
     case ALERT_RESET:
       return {

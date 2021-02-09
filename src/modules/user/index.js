@@ -1,3 +1,5 @@
+import { ADD_WISH_SUCCESS, REMOVE_WISH_SUCCESS } from '../product';
+
 export const SIGN_UP_REQUEST = 'user/SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'user/SIGN_UP_SUCCESS';
 export const SIGN_UP_ERROR = 'user/SIGN_UP_ERROR';
@@ -197,6 +199,26 @@ export default function user(state = initialState, action) {
         deleteUserLoading: false,
         deleteUserData: null,
         deleteUserError: action.payload,
+      };
+    case ADD_WISH_SUCCESS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          wishItem: state.userInfo.wishItem.concat({
+            id: action.payload.productId,
+          }),
+        },
+      };
+    case REMOVE_WISH_SUCCESS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          wishItem: state.userInfo.wishItem.filter(
+            (v) => v.id !== action.payload.productId
+          ),
+        },
       };
     default:
       return state;

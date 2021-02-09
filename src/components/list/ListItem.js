@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { RiHeartLine } from 'react-icons/ri';
+import { RiHeartFill, RiHeartLine } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
+import { addWish, removeWish } from '../../modules/product/thunk';
 import ButtonCart from '../common/buttons/ButtonCart';
 
 const ListItemContainer = styled.li`
@@ -122,10 +124,17 @@ function ImageBox({ data, listState, hover }) {
   );
 }
 
-export default function ListItem({ data, listState }) {
+export default function ListItem({ data, listState, userInfo }) {
   const [hover, setHover] = useState(false);
+  const dispatch = useDispatch();
   const history = useHistory();
-
+  const isWished = () => {
+    const result = userInfo.wishItem.filter((v) => v.id === data.id);
+    if (result.length === 0) {
+      return false;
+    }
+    return true;
+  };
   const onEnter = () => {
     setHover(true);
   };
@@ -135,9 +144,20 @@ export default function ListItem({ data, listState }) {
   const goDetail = () => {
     history.push(`/detail/${data.id}`);
   };
-
+  const goLogin = (e) => {
+    e.stopPropagation();
+    history.push('/user/signin');
+  };
   const iconStyle = {
     opacity: hover ? 1 : 0,
+  };
+  const onAddWish = (e) => {
+    e.stopPropagation();
+    dispatch(addWish({ userEmail: userInfo.email, productId: data.id }));
+  };
+  const onRemoveWish = (e) => {
+    e.stopPropagation();
+    dispatch(removeWish({ userEmail: userInfo.email, productId: data.id }));
   };
   return (
     <ListItemContainer>
@@ -147,9 +167,19 @@ export default function ListItem({ data, listState }) {
         onMouseLeave={onLeave}
         onClick={goDetail}
       >
-        <i style={iconStyle}>
-          <RiHeartLine />
-        </i>
+        {!userInfo ? (
+          <i style={iconStyle} onClick={goLogin}>
+            <RiHeartLine />
+          </i>
+        ) : isWished() ? (
+          <i onClick={onRemoveWish}>
+            <RiHeartFill />
+          </i>
+        ) : (
+          <i style={iconStyle} onClick={onAddWish}>
+            <RiHeartLine />
+          </i>
+        )}
         <ImageBox data={data} listState={listState} hover={hover} />
         <article>
           <h2>{data.title}</h2>

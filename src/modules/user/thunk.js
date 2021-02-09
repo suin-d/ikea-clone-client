@@ -28,7 +28,7 @@ export const signUp = (data) => async (dispatch) => {
     dispatch({
       type: SIGN_UP_REQUEST,
     });
-    const response = await axios.post('http://localhost:8000/api/user', data);
+    const response = await axios.post('/api/user', data);
     dispatch({
       type: SIGN_UP_SUCCESS,
       payload: response.data,
@@ -46,10 +46,7 @@ export const verification = (data) => async (dispatch) => {
     dispatch({
       type: VERIFICATION_REQUEST,
     });
-    const response = await axios.post(
-      'http://localhost:8000/api/user/verif',
-      data
-    );
+    const response = await axios.post('/api/user/verif', data);
     dispatch({
       type: VERIFICATION_SUCCESS,
       payload: response.data,
@@ -67,9 +64,7 @@ export const passwordChange = (data) => async (dispatch) => {
     dispatch({
       type: PASSWORD_CHANGE_REQUEST,
     });
-    const response = await axios.get(
-      `http://localhost:8000/api/user/find/${data}`
-    );
+    const response = await axios.get(`/api/user/find/${data}`);
     dispatch({
       type: PASSWORD_CHANGE_SUCCESS,
       payload: response.data,
@@ -87,10 +82,7 @@ export const passwordSubmit = (data) => async (dispatch) => {
     dispatch({
       type: PASSWORD_SUBMIT_REQUEST,
     });
-    const response = await axios.patch(
-      'http://localhost:8000/api/user/find/',
-      data
-    );
+    const response = await axios.patch('/api/user/find/', data);
     dispatch({
       type: PASSWORD_SUBMIT_SUCCESS,
       payload: response.data,
@@ -108,10 +100,7 @@ export const login = (data) => async (dispatch) => {
     dispatch({
       type: LOG_IN_REQUEST,
     });
-    const response = await axios.post(
-      'http://localhost:8000/api/user/login',
-      data
-    );
+    const response = await axios.post('/api/user/login', data);
     dispatch({
       type: LOG_IN_SUCCESS,
       payload: response.data,
@@ -129,9 +118,7 @@ export const logout = (email) => async (dispatch) => {
     dispatch({
       type: LOG_OUT_REQUEST,
     });
-    const response = await axios.get(
-      `http://localhost:8000/api/user/logout/${email}`
-    );
+    const response = await axios.get(`/api/user/logout/${email}`);
     dispatch({
       type: LOG_OUT_SUCCESS,
       payload: response.data,
@@ -149,9 +136,7 @@ export const deleteUser = (email) => async (dispatch) => {
     dispatch({
       type: DELETE_USER_REQUEST,
     });
-    const response = await axios.delete(
-      `http://localhost:8000/api/user/${email}`
-    );
+    const response = await axios.delete(`/api/user/${email}`);
     dispatch({
       type: DELETE_USER_SUCCESS,
       payload: response.data,

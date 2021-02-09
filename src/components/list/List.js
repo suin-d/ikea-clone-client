@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 import ButtonRound from '../common/buttons/ButtonRound';
 import ListFilter from './ListFilter';
@@ -78,6 +79,7 @@ function List({ title, data }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [listState, setListState] = useState(0);
 
+  const { userInfo } = useSelector((state) => state.user);
   return (
     <>
       <ListWrapper active={listState === 1}>
@@ -105,7 +107,12 @@ function List({ title, data }) {
         <ListContainer>
           {data &&
             data.map((item) => (
-              <ListItem listState={listState} data={item} key={item.id} />
+              <ListItem
+                listState={listState}
+                data={item}
+                key={item.id}
+                userInfo={userInfo}
+              />
             ))}
         </ListContainer>
       </ListWrapper>
