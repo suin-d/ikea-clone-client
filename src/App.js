@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import './assets/css/reset.css';
 import Layout from './components/common/layout/Layout';
 import Alert from './components/common/message/Alert';
@@ -20,6 +20,7 @@ function App() {
         <Route path="/list/:id" component={ListPage} />
         {/* 디테일 페이지 */}
         <Route path="/detail/:id" component={DetailPage} />
+        <Link to="/user/payment">asdasd</Link>
       </Layout>
       <Alert />
     </>

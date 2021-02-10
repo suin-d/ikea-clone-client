@@ -3,7 +3,7 @@ import DaumPostcode from 'react-daum-postcode';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import ModalLayout from '../../common/modal/ModalLayout';
 
-export default function AddressSearch({ setAddress }) {
+export default function AddressSearch({ setAddress, setEdit = 'false' }) {
   const [active, setActive] = useState(false);
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -21,6 +21,9 @@ export default function AddressSearch({ setAddress }) {
     }
     setAddress(fullAddress);
     setActive(false);
+    if (setEdit) {
+      setEdit(false);
+    }
   };
   return (
     <>
