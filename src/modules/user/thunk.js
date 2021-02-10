@@ -18,6 +18,9 @@ import {
   SIGN_UP_ERROR,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
+  UPDATE_USER_ERROR,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
   VERIFICATION_ERROR,
   VERIFICATION_REQUEST,
   VERIFICATION_SUCCESS,
@@ -144,6 +147,24 @@ export const deleteUser = (email) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: DELETE_USER_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const updateUser = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_USER_REQUEST,
+    });
+    const response = await axios.patch('/api/user', { data });
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: UPDATE_USER_ERROR,
       payload: e.response.data,
     });
   }

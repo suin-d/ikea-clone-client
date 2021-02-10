@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import useInput from '../../../hooks/useInput';
+import { updateUser } from '../../../modules/user/thunk';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
 import AddressSearch from '../signup/AddressSearch';
@@ -7,10 +9,17 @@ import { Gap } from '../signup/SignupForm';
 
 export default function AddressInfo({ userInfo }) {
   const [editMode, setEditMode] = useState(false);
-  const [addressValue, setAddress] = useState('');
-  const [detailAddValue, onChangeDetailAdd] = useInput('');
+  const [addressValue, setAddress] = useState(
+    `${userInfo.address.split(')')[0]})`
+  );
+  const [detailAddValue, onChangeDetailAdd] = useInput(
+    userInfo.address.split(')')[1]
+  );
+  const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateUser({ address: `${addressValue}${detailAddValue}` }));
+    setEditMode(false);
   };
   return (
     <li>

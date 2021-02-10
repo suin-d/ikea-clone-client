@@ -21,7 +21,9 @@ export const PASSWORD_SUBMIT_ERROR = 'user/PASSWORD_SUBMIT_ERROR';
 export const DELETE_USER_REQUEST = 'user/DELETE_USER_REQUEST';
 export const DELETE_USER_SUCCESS = 'user/DELETE_USER_SUCCESS';
 export const DELETE_USER_ERROR = 'user/DELETE_USER_ERROR';
-
+export const UPDATE_USER_REQUEST = 'user/UPDATE_USER_REQUEST';
+export const UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS';
+export const UPDATE_USER_ERROR = 'user/UPDATE_USER_ERROR';
 const initialState = {
   signUpLoading: false,
   signUpData: null,
@@ -44,6 +46,9 @@ const initialState = {
   deleteUserLoading: false,
   deleteUserData: null,
   deleteUserError: null,
+  updateUserLoading: false,
+  updateUserData: null,
+  updateUserError: null,
 
   userInfo: null,
 };
@@ -199,6 +204,28 @@ export default function user(state = initialState, action) {
         deleteUserLoading: false,
         deleteUserData: null,
         deleteUserError: action.payload,
+      };
+    case UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        updateUserLoading: true,
+        updateUserData: null,
+        updateUserError: null,
+      };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        updateUserLoading: false,
+        updateUserData: action.payload,
+        updateUserError: null,
+        userInfo: { ...state.userInfo, ...action.payload },
+      };
+    case UPDATE_USER_ERROR:
+      return {
+        ...state,
+        updateUserLoading: false,
+        updateUserData: null,
+        updateUserError: action.payload,
       };
     case ADD_WISH_SUCCESS:
       return {

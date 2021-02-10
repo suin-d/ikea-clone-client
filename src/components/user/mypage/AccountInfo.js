@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useInput from '../../../hooks/useInput';
+import { updateUser } from '../../../modules/user/thunk';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
 import SelectSimple from '../../common/inputs/SelectSimple';
@@ -28,6 +30,7 @@ function PhoneInfo({ email, phone }) {
   const [editMode, setEditMode] = useState(false);
   const [phoneValue, setPhone] = useState(phone);
   const [phoneError, setPhoneError] = useState(false);
+  const dispatch = useDispatch();
   const onChangePhone = (e) => {
     const phoneRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
     setPhone(e.target.value);
@@ -39,6 +42,7 @@ function PhoneInfo({ email, phone }) {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(updateUser({ phone: phoneValue }));
     setEditMode(false);
   };
   return (
@@ -77,6 +81,7 @@ function PersonalInfo({ gender, name, birth }) {
   const [genderValue, onChangeGender] = useInput(gender);
   const [nameValue, onChangeName] = useInput(name);
   const [birthValue, onChangeBirth] = useInput(birth);
+  const dispatch = useDispatch();
   const computedGender = () => {
     switch (gender) {
       case 0:
@@ -91,6 +96,13 @@ function PersonalInfo({ gender, name, birth }) {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      updateUser({
+        name: nameValue,
+        birth: birthValue,
+        gender: parseInt(genderValue, 10),
+      })
+    );
     setEditMode(false);
   };
   return (
