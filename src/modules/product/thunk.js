@@ -17,6 +17,9 @@ import {
   GET_PRODUCT_ERROR,
   ADD_CART_REQUEST,
   ADD_CART_SUCCESS,
+  LOAD_MORE_LIST_REQUEST,
+  LOAD_MORE_LIST_SUCCESS,
+  LOAD_MORE_LIST_ERROR,
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {
@@ -37,6 +40,19 @@ export const getList = (cateId) => async (dispatch) => {
   } catch (e) {
     console.error(e);
     dispatch({ type: GET_LIST_ERROR, payload: e.response.data });
+  }
+};
+
+export const loadMoreList = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: LOAD_MORE_LIST_REQUEST });
+    const response = await axios.get(
+      `/api/product/list/${data.cateId}?offset=${data.offset}&filter=${data.filter}`
+    );
+    dispatch({ type: LOAD_MORE_LIST_SUCCESS, payload: response.data });
+  } catch (e) {
+    console.error(e);
+    dispatch({ type: LOAD_MORE_LIST_ERROR, payload: e.response.data });
   }
 };
 
