@@ -13,6 +13,12 @@ export const REMOVE_WISH_ERROR = 'product/REMOVE_WISH_ERROR';
 export const GET_PRODUCT_REQUEST = 'product/GET_PRODUCT_REQUEST';
 export const GET_PRODUCT_SUCCESS = 'product/GET_PRODUCT_SUCCESS';
 export const GET_PRODUCT_ERROR = 'product/GET_PRODUCT_ERROR';
+export const ADD_CART_REQUEST = 'product/ADD_CART_REQUEST';
+export const ADD_CART_SUCCESS = 'product/ADD_CART_SUCCESS';
+export const ADD_CART_ERROR = 'product/ADD_CART_ERROR';
+export const REMOVE_CART_REQUEST = 'product/REMOVE_CART_REQUEST';
+export const REMOVE_CART_SUCCESS = 'product/REMOVE_CART_SUCCESS';
+export const REMOVE_CART_ERROR = 'product/REMOVE_CART_ERROR';
 
 const initialState = {
   searchLoading: false,
@@ -27,6 +33,9 @@ const initialState = {
   getProductLoading: false,
   getProductData: null,
   getProductError: null,
+  cartLoading: false,
+  cartData: null,
+  cartError: null,
 };
 
 export default function product(state = initialState, action) {
@@ -96,6 +105,27 @@ export default function product(state = initialState, action) {
         wishLoading: false,
         wishData: null,
         wishError: action.payload,
+      };
+    case ADD_CART_REQUEST:
+      return {
+        ...state,
+        cartLoading: true,
+        cartData: null,
+        cartError: null,
+      };
+    case ADD_CART_SUCCESS:
+      return {
+        ...state,
+        cartLoading: false,
+        cartData: action.payload,
+        cartError: null,
+      };
+    case ADD_CART_ERROR:
+      return {
+        ...state,
+        cartLoading: false,
+        cartData: null,
+        cartError: action.payload,
       };
     case GET_PRODUCT_REQUEST:
       return {

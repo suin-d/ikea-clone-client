@@ -3,7 +3,7 @@ import { RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { addWish, removeWish } from '../../modules/product/thunk';
+import { AddCart, addWish, removeWish } from '../../modules/product/thunk';
 import ButtonCart from '../common/buttons/ButtonCart';
 
 const ListItemContainer = styled.li`
@@ -159,6 +159,16 @@ export default function ListItem({ data, listState, userInfo }) {
     e.stopPropagation();
     dispatch(removeWish({ userEmail: userInfo.email, productId: data.id }));
   };
+
+  const onAddCart = (e) => {
+    e.stopPropagation();
+    if (!userInfo) {
+      goLogin(e);
+    } else {
+      dispatch(AddCart({ userEmail: userInfo.email, productId: data.id }));
+    }
+  };
+
   return (
     <ListItemContainer>
       <ListItemBox
@@ -188,7 +198,8 @@ export default function ListItem({ data, listState, userInfo }) {
             <span>￦</span>
             <strong>{data.prCost.toLocaleString()}</strong>
           </div>
-          <ButtonCart />
+
+          <ButtonCart onClick={onAddCart} />
         </article>
       </ListItemBox>
     </ListItemContainer>

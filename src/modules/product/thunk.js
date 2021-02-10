@@ -15,6 +15,8 @@ import {
   GET_PRODUCT_REQUEST,
   GET_PRODUCT_SUCCESS,
   GET_PRODUCT_ERROR,
+  ADD_CART_REQUEST,
+  ADD_CART_SUCCESS,
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {
@@ -57,6 +59,16 @@ export const removeWish = (data) => async (dispatch) => {
     dispatch({ type: REMOVE_WISH_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: REMOVE_WISH_ERROR, payload: e.response.data });
+  }
+};
+
+export const AddCart = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_CART_REQUEST });
+    const response = await axios.post('/api/userproduct/cart', data);
+    dispatch({ type: ADD_CART_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: ADD_WISH_ERROR, payload: e.response.data });
   }
 };
 
