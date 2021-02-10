@@ -21,6 +21,9 @@ export const PASSWORD_SUBMIT_ERROR = 'user/PASSWORD_SUBMIT_ERROR';
 export const DELETE_USER_REQUEST = 'user/DELETE_USER_REQUEST';
 export const DELETE_USER_SUCCESS = 'user/DELETE_USER_SUCCESS';
 export const DELETE_USER_ERROR = 'user/DELETE_USER_ERROR';
+export const GET_WISH_REQUEST = 'user/GET_WISH_REQUEST';
+export const GET_WISH_SUCCESS = 'user/GET_WISH_SUCCESS';
+export const GET_WISH_ERROR = 'user/GET_WISH_ERROR';
 
 const initialState = {
   signUpLoading: false,
@@ -44,6 +47,9 @@ const initialState = {
   deleteUserLoading: false,
   deleteUserData: null,
   deleteUserError: null,
+  getWishLoading: false,
+  getWishData: null,
+  getWishError: null,
 
   userInfo: null,
 };
@@ -219,6 +225,28 @@ export default function user(state = initialState, action) {
             (v) => v.id !== action.payload.productId
           ),
         },
+      };
+    case GET_WISH_REQUEST:
+      return {
+        ...state,
+        getWishLoading: true,
+        getWishData: null,
+        getWishError: null,
+      };
+    case GET_WISH_SUCCESS:
+      return {
+        ...state,
+        getWishLoading: false,
+        getWishData: action.payload,
+        getWishError: null,
+        userInfo: null,
+      };
+    case GET_WISH_ERROR:
+      return {
+        ...state,
+        getWishLoading: false,
+        getWishData: null,
+        getWishError: action.payload,
       };
     default:
       return state;
