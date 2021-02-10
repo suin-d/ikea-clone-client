@@ -13,7 +13,7 @@ const LoginPageLayout = styled.div`
   bottom: 0;
   right: 0;
   display: flex;
-  z-index: 999;
+  z-index: 9999;
 `;
 
 export default function LoginPage() {

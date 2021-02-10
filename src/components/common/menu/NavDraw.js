@@ -68,7 +68,7 @@ export const NavDrawBox = styled.nav`
     `}
 `;
 export const NavDrawContainer = styled.div`
-  z-index: 9999;
+  z-index: 1003;
   position: fixed;
   top: 0;
   left: 0;

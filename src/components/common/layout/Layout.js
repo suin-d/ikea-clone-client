@@ -10,7 +10,7 @@ const MainContent = styled.div`
 `;
 const LayoutBox = styled.main`
   max-width: 1800px;
-  margin: 30px 40px 50px 20px;
+  margin: 150px 40px 50px 20px;
   display: grid;
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;

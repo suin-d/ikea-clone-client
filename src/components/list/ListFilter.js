@@ -75,7 +75,7 @@ const FilterTop = styled(NavTop)`
   position: fixed;
   background: #fff;
   top: 0;
-  z-index: 100;
+  z-index: 1005;
   i {
     display: flex;
     align-items: center;

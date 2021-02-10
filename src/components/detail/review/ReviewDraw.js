@@ -146,7 +146,7 @@ const ReviewDrawContainer = styled.div`
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.15);
-  z-index: 9999;
+  z-index: 1005;
 `;
 
 function DrawContainer() {

@@ -32,8 +32,8 @@ const ListWrapper = styled.div`
     justify-content: space-between;
     height: 90px;
     position: sticky;
+    z-index: 99;
     top: 0;
-    z-index: 9999;
     background: #fff;
     & > ul {
       display: flex;

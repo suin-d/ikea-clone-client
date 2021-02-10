@@ -39,8 +39,11 @@ const FixButton = styled(CircleButton)`
   }
 `;
 export default function ButtonFix() {
+  const scrollTop = () => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  };
   return (
-    <FixButton>
+    <FixButton onClick={scrollTop}>
       <svg
         focusable="false"
         className="svg-icon  hnf-svg-icon"

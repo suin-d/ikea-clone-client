@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { AiOutlineSearch, AiOutlineCamera } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
@@ -55,7 +55,7 @@ const SearchBox = styled.form`
   max-width: 700px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  z-index: 1;
+  z-index: 1001;
   transition: all 0.3s ease;
   input {
     width: 100%;
@@ -123,6 +123,7 @@ const DarkBack = styled.div`
   right: 0;
   cursor: pointer;
   background: rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 `;
 function ResultItem({ data, close }) {
   const history = useHistory();
@@ -142,7 +143,8 @@ function ResultItem({ data, close }) {
     </ResultBox>
   );
 }
-export default function SearchBar() {
+export default function SearchBar({ headerOpen }) {
+  // 카메라 버튼 없애고 X버튼으로 만든다음에 어두운 배경지우고 searchActive가 true일 경우에는 X버튼 보이게끔
   const { searchData } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const [searchActive, setSearchActive] = useState(false);
@@ -156,6 +158,11 @@ export default function SearchBar() {
     setSearchActive(false);
     setKeyword('');
   };
+  useEffect(() => {
+    if (!headerOpen) {
+      setSearchActive(false);
+    }
+  }, [headerOpen]);
   return (
     <>
       <SearchContainer>

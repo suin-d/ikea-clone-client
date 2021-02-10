@@ -3,6 +3,7 @@ import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
 import { getList } from '../modules/product/thunk';
 import List from '../components/list/List';
+import ButtonFix from '../components/common/buttons/ButtonFix';
 
 export default function ListPage({ location, match }) {
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });
@@ -24,6 +25,7 @@ export default function ListPage({ location, match }) {
     <>
       {/* 네비들어갈 자리 */}
       <List title={query.sc} data={getListData} />
+      <ButtonFix />
     </>
   );
 }
