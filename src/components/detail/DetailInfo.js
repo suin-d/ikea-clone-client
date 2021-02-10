@@ -140,7 +140,7 @@ export default function DetailInfo({ setReviewOpen, product }) {
         </ProInfo>
         <ButtonWrapper>
           <ButtonBig>구매하기</ButtonBig>
-          <ButtonWish />
+          <ButtonWish data={product} />
         </ButtonWrapper>
         <CheckMsg>
           <GrDeliver />

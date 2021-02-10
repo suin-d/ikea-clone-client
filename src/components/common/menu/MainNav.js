@@ -48,7 +48,7 @@ export const NavContentBox = styled.div`
     }
   }
 `;
-export default function MainNav({ onToggleNav, navState }) {
+export default function MainNav({ onToggleNav }) {
   return (
     <NavContentBox>
       <i />
