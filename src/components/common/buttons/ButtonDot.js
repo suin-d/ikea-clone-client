@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-const DotButtonBox = styled.div`
+export const DotButtonBox = styled.div`
   width: 40px;
   height: 40px;
   display: flex;

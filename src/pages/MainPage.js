@@ -11,6 +11,7 @@ import News from '../components/main/news/News';
 import Solution from '../components/main/solution/Solution';
 import { newsItems1, newsItems2 } from '../mocks/newsData';
 import ButtonFix from '../components/common/buttons/ButtonFix';
+import HFLayout from '../components/main/homefurnishing/HFLayout';
 
 export default function MainPage() {
   return (
@@ -26,6 +27,7 @@ export default function MainPage() {
       <Solution />
       <News newsItems={newsItems1} />
       <CustomerService />
+      <HFLayout />
       <News newsItems={newsItems2} />
       <ButtonFix />
     </div>
