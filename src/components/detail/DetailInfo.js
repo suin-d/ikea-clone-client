@@ -134,13 +134,15 @@ export default function DetailInfo({ setReviewOpen, product }) {
             />
           </ProName>
           <ProPrice>
-            <h1>{`₩${product.slCost}`}</h1>
-            {product.prCost !== product.slCost && <p>{`₩${product.prCost}`}</p>}
+            <h1>{`₩${product.slCost.toLocaleString()}`}</h1>
+            {product.prCost !== product.slCost && (
+              <p>{`₩${product.prCost.toLocaleString()}`}</p>
+            )}
           </ProPrice>
         </ProInfo>
         <ButtonWrapper>
           <ButtonBig>구매하기</ButtonBig>
-          <ButtonWish />
+          <ButtonWish data={product} />
         </ButtonWrapper>
         <CheckMsg>
           <GrDeliver />

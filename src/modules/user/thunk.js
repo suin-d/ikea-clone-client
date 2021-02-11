@@ -3,6 +3,9 @@ import {
   DELETE_USER_ERROR,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
+  GET_WISH_ERROR,
+  GET_WISH_REQUEST,
+  GET_WISH_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -144,6 +147,23 @@ export const deleteUser = (email) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: DELETE_USER_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const getWishList = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_WISH_REQUEST });
+    const response = await axios.get(`api/userproduct/wish/${email}`);
+    dispatch({
+      type: GET_WISH_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    console.error(e);
+    dispatch({
+      type: GET_WISH_ERROR,
       payload: e.response.data,
     });
   }
