@@ -51,7 +51,6 @@ const ProductNavBox = styled.div`
 `;
 const DetailNavBox = styled(ProductNavBox)`
   width: 0;
-  overflow: hidden;
   border-left: 1px solid #eee;
   transition: all 0.3s ease-in-out;
   white-space: nowrap;

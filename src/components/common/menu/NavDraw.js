@@ -26,6 +26,8 @@ to{
 `;
 export const NavBottom = styled.div`
   display: flex;
+  overflow-y: scroll;
+  max-height: 100%;
 `;
 export const NavTop = styled.div`
   width: 420px;
