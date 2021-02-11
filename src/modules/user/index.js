@@ -28,7 +28,12 @@ export const DELETE_USER_ERROR = 'user/DELETE_USER_ERROR';
 export const GET_WISH_REQUEST = 'user/GET_WISH_REQUEST';
 export const GET_WISH_SUCCESS = 'user/GET_WISH_SUCCESS';
 export const GET_WISH_ERROR = 'user/GET_WISH_ERROR';
-
+export const LOAD_CART_REQUEST = 'user/LOAD_CART_REQUEST';
+export const LOAD_CART_SUCCESS = 'user/LOAD_CART_SUCCESS';
+export const LOAD_CART_ERROR = 'user/LOAD_CART_ERROR';
+export const REMOVE_CART_REQUEST = 'user/REMOVE_CART_REQUEST';
+export const REMOVE_CART_SUCCESS = 'user/REMOVE_CART_SUCCESS';
+export const REMOVE_CART_ERROR = 'user/REMOVE_CART_ERROR';
 const initialState = {
   signUpLoading: false,
   signUpData: null,
@@ -54,7 +59,12 @@ const initialState = {
   getWishLoading: false,
   getWishData: null,
   getWishError: null,
-
+  loadCartLoading: false,
+  loadCartData: null,
+  loadCartError: null,
+  removeCartLoading: false,
+  removeCartData: null,
+  removeCartError: null,
   userInfo: null,
 };
 
@@ -266,6 +276,57 @@ export default function user(state = initialState, action) {
             id: action.payload.productId,
           }),
         },
+      };
+    case LOAD_CART_REQUEST:
+      return {
+        ...state,
+        loadCartLoading: true,
+        loadCartData: null,
+        loadCartError: null,
+      };
+    case LOAD_CART_SUCCESS:
+      return {
+        ...state,
+        loadCartLoading: false,
+        loadCartData: action.payload,
+        loadCartError: null,
+      };
+    case LOAD_CART_ERROR:
+      return {
+        ...state,
+        loadCartLoading: false,
+        loadCartData: null,
+        loadCartError: action.payload,
+      };
+    case REMOVE_CART_REQUEST:
+      return {
+        ...state,
+        removeCartLoading: true,
+        removeCartData: null,
+        removeCartError: null,
+      };
+    case REMOVE_CART_SUCCESS:
+      return {
+        ...state,
+        removeCartLoading: null,
+        removeCartData: true,
+        removeCartError: null,
+        userInfo: {
+          ...state.userInfo,
+          cartItem: state.userInfo.cartItem.filter(
+            (v) => v.id !== action.payload.productId
+          ),
+        },
+        loadCartData:
+          state.loadCartData &&
+          state.loadCartData.filter((v) => v.id !== action.payload.productId),
+      };
+    case REMOVE_CART_ERROR:
+      return {
+        ...state,
+        removeCartLoading: false,
+        removeCartData: null,
+        removeCartError: action.payload,
       };
     default:
       return state;

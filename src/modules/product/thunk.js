@@ -80,7 +80,7 @@ export const removeWish = (data) => async (dispatch) => {
   }
 };
 
-export const AddCart = (data) => async (dispatch) => {
+export const addCart = (data) => async (dispatch) => {
   try {
     dispatch({ type: ADD_CART_REQUEST });
     const response = await axios.post('/api/userproduct/cart', data);

@@ -36,7 +36,7 @@ export default function SignupBanner() {
       <p>
         <span>이미 가입하셨나요?</span>
         &nbsp;
-        <Link to="/signin">로그인 하기</Link>
+        <Link to="/user/signin">로그인 하기</Link>
       </p>
       <img src={BANNER} alt="banner" />
     </LeftSection>

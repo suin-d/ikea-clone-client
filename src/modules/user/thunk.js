@@ -6,6 +6,9 @@ import {
   GET_WISH_ERROR,
   GET_WISH_REQUEST,
   GET_WISH_SUCCESS,
+  LOAD_CART_ERROR,
+  LOAD_CART_REQUEST,
+  LOAD_CART_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -18,6 +21,9 @@ import {
   PASSWORD_SUBMIT_ERROR,
   PASSWORD_SUBMIT_REQUEST,
   PASSWORD_SUBMIT_SUCCESS,
+  REMOVE_CART_ERROR,
+  REMOVE_CART_REQUEST,
+  REMOVE_CART_SUCCESS,
   SIGN_UP_ERROR,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
@@ -166,5 +172,34 @@ export const getWishList = (email) => async (dispatch) => {
       type: GET_WISH_ERROR,
       payload: e.response.data,
     });
+  }
+};
+export const getCart = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: LOAD_CART_REQUEST });
+    const response = await axios.get(`/api/userproduct/cart/${email}`);
+    dispatch({
+      type: LOAD_CART_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    console.error(e);
+    dispatch({
+      type: LOAD_CART_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const removeCart = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: REMOVE_CART_REQUEST });
+    const response = await axios.delete(
+      `/api/userproduct/cart?email=${data.email}&productid=${data.productId}`
+    );
+    dispatch({ type: REMOVE_CART_SUCCESS, payload: response.data });
+  } catch (e) {
+    console.log(e);
+    dispatch({ type: REMOVE_CART_ERROR, payload: e.response.data });
   }
 };
