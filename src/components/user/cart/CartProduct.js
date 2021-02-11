@@ -100,10 +100,7 @@ export default function CartProduct({ data, userInfo }) {
             <div>{data.size && data.size}</div>
           </div>
           <div>
-            <strong>
-              <span>￦</span>
-              {data.slCost.toLocaleString()}
-            </strong>
+            <strong>{`￦${data.slCost.toLocaleString()}`}</strong>
           </div>
         </article>
         <div>
