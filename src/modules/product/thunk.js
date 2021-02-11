@@ -32,10 +32,12 @@ export const search = (keyword) => async (dispatch) => {
   }
 };
 
-export const getList = (cateId) => async (dispatch) => {
+export const getList = (data) => async (dispatch) => {
   try {
     dispatch({ type: GET_LIST_REQUEST });
-    const response = await axios.get(`/api/product/list/${cateId}`);
+    const response = await axios.get(
+      `/api/product/list/${data.cateId}?offset=0&filter=${data.filter}`
+    );
     dispatch({ type: GET_LIST_SUCCESS, payload: response.data });
   } catch (e) {
     console.error(e);
