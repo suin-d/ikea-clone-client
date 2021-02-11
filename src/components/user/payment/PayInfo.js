@@ -112,7 +112,7 @@ export default function PayInfo({ data }) {
         <hr />
         <article>
           <h2>총 주문금액</h2>
-          <strong>100000</strong>
+          <strong>{`₩ ${'100000'.toLocaleString()}`}</strong>
         </article>
       </Summary>
     </PayInfoContainer>

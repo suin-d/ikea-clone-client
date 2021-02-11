@@ -3,6 +3,9 @@ import {
   DELETE_USER_ERROR,
   DELETE_USER_REQUEST,
   DELETE_USER_SUCCESS,
+  GET_HISTORY_ERROR,
+  GET_HISTORY_REQUEST,
+  GET_HISTORY_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -165,6 +168,24 @@ export const updateUser = (data) => async (dispatch) => {
   } catch (e) {
     dispatch({
       type: UPDATE_USER_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
+export const getHistory = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_HISTORY_REQUEST,
+    });
+    const response = await axios.get(`/api/userproduct/history/${email}`);
+    dispatch({
+      type: GET_HISTORY_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_HISTORY_ERROR,
       payload: e.response.data,
     });
   }

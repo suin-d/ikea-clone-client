@@ -24,6 +24,9 @@ export const DELETE_USER_ERROR = 'user/DELETE_USER_ERROR';
 export const UPDATE_USER_REQUEST = 'user/UPDATE_USER_REQUEST';
 export const UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'user/UPDATE_USER_ERROR';
+export const GET_HISTORY_REQUEST = 'user/GET_HISTORY_REQUEST';
+export const GET_HISTORY_SUCCESS = 'user/GET_HISTORY_SUCCESS';
+export const GET_HISTORY_ERROR = 'user/GET_HISTORY_ERROR';
 const initialState = {
   signUpLoading: false,
   signUpData: null,
@@ -49,6 +52,9 @@ const initialState = {
   updateUserLoading: false,
   updateUserData: null,
   updateUserError: null,
+  getHistoryLoading: false,
+  getHistoryData: null,
+  getHistoryError: null,
 
   userInfo: null,
 };
@@ -246,6 +252,27 @@ export default function user(state = initialState, action) {
             (v) => v.id !== action.payload.productId
           ),
         },
+      };
+    case GET_HISTORY_REQUEST:
+      return {
+        ...state,
+        getHistoryLoading: true,
+        getHistoryData: null,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_SUCCESS:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: action.payload,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_ERROR:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: null,
+        getHistoryError: action.payload,
       };
     default:
       return state;

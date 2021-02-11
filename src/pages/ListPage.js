@@ -14,8 +14,9 @@ export default function ListPage({ location, match }) {
   const { id } = match.params;
 
   useEffect(() => {
+    document.title = `IKEA | ${query.sc}`;
     dispatch(getList(id));
-  }, [dispatch, id]);
+  }, [dispatch, id, query.sc]);
 
   if (getListLoading) return <div>상품을 로딩중입니다.</div>;
   if (!getListData) return null;

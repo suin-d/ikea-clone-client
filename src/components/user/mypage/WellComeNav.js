@@ -113,7 +113,13 @@ const WellComeConatiner = styled.section`
     margin: 40px 0;
   }
 `;
-
+const makeMessage = (data, name) => {
+  console.log(data);
+  if (data.length === 0) {
+    return `${name}가 비었습니다.`;
+  }
+  return `저장된 리스트 ${data.length}개`;
+};
 export default function WellComeNav({ userInfo }) {
   const history = useHistory();
   const dispatch = useDispatch();
@@ -147,13 +153,21 @@ email:${userInfo.email}
         </div>
       </WellComeInfo>
       <ul>
-        <NavItem title="주문내역" desc="진행중인 주문 없음" link="/모른다고" />
+        <NavItem
+          title="주문내역"
+          desc={makeMessage(userInfo.Histories, '주문내역')}
+          link="/user/history"
+        />
         <NavItem
           title="위시 리스트"
-          desc="저장된 리스트 1개"
-          link="/모른다고"
+          desc={makeMessage(userInfo.wishItem, '위시리스트')}
+          link="/user/wish"
         />
-        <NavItem title="장바구니" desc="장바구니 비었음" link="/모른다고" />
+        <NavItem
+          title="장바구니"
+          desc={makeMessage(userInfo.cartItem, '장바구니')}
+          link="/user/cart"
+        />
       </ul>
     </WellComeConatiner>
   );

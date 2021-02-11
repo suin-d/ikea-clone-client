@@ -88,7 +88,7 @@ function DotItem({ data }) {
       <article onClick={goDetail}>
         <p>{data.Product.title}</p>
         <span>{data.Product.summary}</span>
-        <p>{`₩ ${data.Product.slCost}`}</p>
+        <p>{`₩ ${data.Product.slCost.toLocaleString()}`}</p>
       </article>
     </DotItemBox>
   );

@@ -121,6 +121,7 @@ export default function DetailPage({ match }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    document.title = 'IKEA | 상품정보';
     dispatch(getProduct(match.params.id));
   }, [dispatch, match]);
   if (!product) return <div>데이터가 없습니다</div>;

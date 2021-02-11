@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useInput from '../../../hooks/useInput';
+import { addAlert } from '../../../modules/interface';
 import { updateUser } from '../../../modules/user/thunk';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import InputSimple from '../../common/inputs/InputSimple';
@@ -42,8 +43,9 @@ function PhoneInfo({ email, phone }) {
   };
   const onSubmit = (e) => {
     e.preventDefault();
+    if (phoneError) return dispatch(addAlert('정확한 정보를 입력해주세요.'));
     dispatch(updateUser({ phone: phoneValue }));
-    setEditMode(false);
+    return setEditMode(false);
   };
   return (
     <li>

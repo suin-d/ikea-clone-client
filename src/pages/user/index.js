@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import HistoryPage from './HistoryPage';
 import LoginPage from './LoginPage';
 import MyPage from './Mypage';
 import PaymentPage from './PaymentPage';
@@ -12,6 +13,7 @@ export default function UserRouter() {
       <Route path="/user/signin" component={LoginPage} />
       <Route path="/user/signup" component={SignupPage} />
       <Route path="/user/payment" component={PaymentPage} />
+      <Route path="/user/history" component={HistoryPage} />
     </>
   );
 }

@@ -78,8 +78,8 @@ const ListWrapper = styled.div`
 function List({ title, data }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [listState, setListState] = useState(0);
-
   const { userInfo } = useSelector((state) => state.user);
+
   return (
     <>
       <ListWrapper active={listState === 1}>
