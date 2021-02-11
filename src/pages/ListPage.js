@@ -1,21 +1,40 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
-import { getList } from '../modules/product/thunk';
+import { getList, loadMoreList } from '../modules/product/thunk';
 import List from '../components/list/List';
 import ButtonFix from '../components/common/buttons/ButtonFix';
 
 export default function ListPage({ location, match }) {
+  const currentOffset = useRef(24);
+  const beforeId = useRef(0);
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });
-  const { getListLoading, getListData, getListError } = useSelector(
-    (state) => state.product
-  );
+  const [currentFilter, setCurrentFilter] = useState(0);
+  const {
+    getListLoading,
+    getListData,
+    getListError,
+    hasMoreList,
+  } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const { id } = match.params;
-
+  const onLoadMore = () => {
+    dispatch(
+      loadMoreList({
+        cateId: id,
+        offset: currentOffset.current,
+        filter: currentFilter,
+      })
+    );
+    currentOffset.current += 24;
+  };
   useEffect(() => {
-    dispatch(getList(id));
-  }, [dispatch, id]);
+    if (id !== beforeId.current) {
+      setCurrentFilter(0);
+    }
+    dispatch(getList({ cateId: id, filter: currentFilter }));
+    beforeId.current = id;
+  }, [dispatch, id, currentFilter]);
 
   if (getListLoading) return <div>상품을 로딩중입니다.</div>;
   if (!getListData) return null;
@@ -23,8 +42,14 @@ export default function ListPage({ location, match }) {
 
   return (
     <>
-      {/* 네비들어갈 자리 */}
-      <List title={query.sc} data={getListData} />
+      <List
+        title={query.sc}
+        data={getListData}
+        currentFilter={currentFilter}
+        setCurrentFilter={setCurrentFilter}
+        onLoadMore={onLoadMore}
+        hasMoreList={hasMoreList}
+      />
       <ButtonFix />
     </>
   );

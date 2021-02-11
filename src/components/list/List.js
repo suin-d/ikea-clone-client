@@ -60,6 +60,12 @@ const ListWrapper = styled.div`
       }
     }
   }
+  & > button {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
   ${(props) =>
     props.active &&
     css`
@@ -75,7 +81,14 @@ const ListWrapper = styled.div`
       }
     `}
 `;
-function List({ title, data }) {
+function List({
+  title,
+  data,
+  currentFilter,
+  setCurrentFilter,
+  onLoadMore,
+  hasMoreList,
+}) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [listState, setListState] = useState(0);
 
@@ -115,8 +128,16 @@ function List({ title, data }) {
               />
             ))}
         </ListContainer>
+
+        {hasMoreList && <ButtonRound onClick={onLoadMore}>더보기</ButtonRound>}
       </ListWrapper>
-      {filterOpen && <ListFilter setFilterOpen={setFilterOpen} />}
+      {filterOpen && (
+        <ListFilter
+          setFilterOpen={setFilterOpen}
+          currentFilter={currentFilter}
+          setCurrentFilter={setCurrentFilter}
+        />
+      )}
     </>
   );
 }

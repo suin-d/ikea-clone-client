@@ -1,4 +1,8 @@
-import { ADD_WISH_SUCCESS, REMOVE_WISH_SUCCESS } from './product';
+import {
+  ADD_CART_SUCCESS,
+  ADD_WISH_SUCCESS,
+  REMOVE_WISH_SUCCESS,
+} from './product';
 import {
   DELETE_USER_ERROR,
   DELETE_USER_SUCCESS,
@@ -134,6 +138,11 @@ export default function interfaces(state = initialState, action) {
       return {
         ...state,
         alertMsg: '위시리스트에 삭제되었습니다.',
+      };
+    case ADD_CART_SUCCESS:
+      return {
+        ...state,
+        alertMsg: '장바구니에 추가되었습니다.',
       };
     case ALERT_RESET:
       return {

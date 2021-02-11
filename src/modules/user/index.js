@@ -1,4 +1,8 @@
-import { ADD_WISH_SUCCESS, REMOVE_WISH_SUCCESS } from '../product';
+import {
+  ADD_CART_SUCCESS,
+  ADD_WISH_SUCCESS,
+  REMOVE_WISH_SUCCESS,
+} from '../product';
 
 export const SIGN_UP_REQUEST = 'user/SIGN_UP_REQUEST';
 export const SIGN_UP_SUCCESS = 'user/SIGN_UP_SUCCESS';
@@ -252,6 +256,16 @@ export default function user(state = initialState, action) {
         getWishLoading: false,
         getWishData: null,
         getWishError: action.payload,
+      };
+    case ADD_CART_SUCCESS:
+      return {
+        ...state,
+        userInfo: {
+          ...state.userInfo,
+          cartItem: state.userInfo.cartItem.concat({
+            id: action.payload.productId,
+          }),
+        },
       };
     default:
       return state;

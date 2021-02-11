@@ -13,7 +13,15 @@ export const REMOVE_WISH_ERROR = 'product/REMOVE_WISH_ERROR';
 export const GET_PRODUCT_REQUEST = 'product/GET_PRODUCT_REQUEST';
 export const GET_PRODUCT_SUCCESS = 'product/GET_PRODUCT_SUCCESS';
 export const GET_PRODUCT_ERROR = 'product/GET_PRODUCT_ERROR';
-
+export const ADD_CART_REQUEST = 'product/ADD_CART_REQUEST';
+export const ADD_CART_SUCCESS = 'product/ADD_CART_SUCCESS';
+export const ADD_CART_ERROR = 'product/ADD_CART_ERROR';
+export const REMOVE_CART_REQUEST = 'product/REMOVE_CART_REQUEST';
+export const REMOVE_CART_SUCCESS = 'product/REMOVE_CART_SUCCESS';
+export const REMOVE_CART_ERROR = 'product/REMOVE_CART_ERROR';
+export const LOAD_MORE_LIST_REQUEST = 'product/LOAD_MORE_LIST_REQUEST';
+export const LOAD_MORE_LIST_SUCCESS = 'product/LOAD_MORE_LIST_SUCCESS';
+export const LOAD_MORE_LIST_ERROR = 'product/LOAD_MORE_LIST_ERROR';
 const initialState = {
   searchLoading: false,
   searchData: null,
@@ -27,6 +35,13 @@ const initialState = {
   getProductLoading: false,
   getProductData: null,
   getProductError: null,
+  cartLoading: false,
+  cartData: null,
+  cartError: null,
+  loadMoreListLoading: false,
+  loadMoreListData: null,
+  loadMoreListError: null,
+  hasMoreList: true,
 };
 
 export default function product(state = initialState, action) {
@@ -58,6 +73,7 @@ export default function product(state = initialState, action) {
         getListLoading: true,
         getListData: null,
         getListError: null,
+        hasMoreList: true,
       };
     case GET_LIST_SUCCESS:
       return {
@@ -72,6 +88,29 @@ export default function product(state = initialState, action) {
         getListLoading: false,
         getListData: null,
         getListError: action.payload,
+      };
+    case LOAD_MORE_LIST_REQUEST:
+      return {
+        ...state,
+        loadMoreListLoading: true,
+        loadMoreListData: null,
+        loadMoreListError: null,
+      };
+    case LOAD_MORE_LIST_SUCCESS:
+      return {
+        ...state,
+        loadMoreListLoading: false,
+        loadMoreListData: action.payload,
+        loadMoreListError: null,
+        getListData: state.getListData.concat(action.payload),
+        hasMoreList: !(action.payload.length < 24),
+      };
+    case LOAD_MORE_LIST_ERROR:
+      return {
+        ...state,
+        loadMoreListLoading: false,
+        loadMoreListData: null,
+        loadMoreListError: action.payload,
       };
     case REMOVE_WISH_REQUEST:
     case ADD_WISH_REQUEST:
@@ -96,6 +135,27 @@ export default function product(state = initialState, action) {
         wishLoading: false,
         wishData: null,
         wishError: action.payload,
+      };
+    case ADD_CART_REQUEST:
+      return {
+        ...state,
+        cartLoading: true,
+        cartData: null,
+        cartError: null,
+      };
+    case ADD_CART_SUCCESS:
+      return {
+        ...state,
+        cartLoading: false,
+        cartData: action.payload,
+        cartError: null,
+      };
+    case ADD_CART_ERROR:
+      return {
+        ...state,
+        cartLoading: false,
+        cartData: null,
+        cartError: action.payload,
       };
     case GET_PRODUCT_REQUEST:
       return {

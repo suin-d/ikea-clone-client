@@ -125,15 +125,17 @@ const FilterContainer = styled(NavDrawContainer)`
   display: flex;
 `;
 
-export default function ListFilter({ setFilterOpen }) {
+export default function ListFilter({
+  setFilterOpen,
+  currentFilter,
+  setCurrentFilter,
+}) {
   const [filterVisible, setFilterVisible] = useState(true);
-  // const [radio, setCheckedRadio] = useState(false);
-  const [isChecked, setIsChecked] = useState(0);
 
   const onChangeRadio = (e) => {
     const currentNumber = parseInt(e.target.value, 10);
     const selected = Filters.find((v) => v.id === currentNumber);
-    setIsChecked(selected.id);
+    setCurrentFilter(selected.id);
   };
 
   const filterClose = () => {
@@ -164,7 +166,7 @@ export default function ListFilter({ setFilterOpen }) {
                 type="radio"
                 id={`radio${v.id}`}
                 value={v.id}
-                checked={isChecked === v.id}
+                checked={currentFilter === v.id}
                 onChange={onChangeRadio}
               />
               <label htmlFor={`radio${v.id}`} />
