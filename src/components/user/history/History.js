@@ -42,6 +42,7 @@ const ItemBox = styled.li`
   }
 `;
 function HistoryListItem({ data }) {
+  if (!data.Payment) return null;
   return (
     <ItemBox>
       <div>
@@ -51,7 +52,7 @@ function HistoryListItem({ data }) {
         <h4>{data.Product.title}</h4>
         <p>
           <span>{data.Product.summary}</span>
-          <span>{`주문번호:${data.Payment.id}`}</span>
+          <span>{`주문번호:${data.Payment.paymentToken}`}</span>
         </p>
         <span>{`₩ ${data.Product.slCost.toLocaleString()}`}</span>
       </article>
@@ -95,14 +96,15 @@ export default function History({ close, userInfo }) {
   useEffect(() => {
     dispatch(getHistory(userInfo.email));
   }, [dispatch, userInfo]);
+  console.log(getHistoryData);
   if (!getHistoryData) return null;
   return (
     <ModalLayout title="구매내역" close={close}>
       <HistoryList>
         <ul>
-          {getHistoryData.map((v) => (
-            <HistoryListItem data={v} key={v.id} />
-          ))}
+          {getHistoryData.length !== 0
+            ? getHistoryData.map((v) => <HistoryListItem data={v} key={v.id} />)
+            : '구매내역이 존재하지 않습니다.'}
         </ul>
         <article>
           <p>총 주문금액</p>

@@ -97,7 +97,7 @@ const CartInner = styled.div`
   letter-spacing: 0.7px;
 `;
 
-export default function CartPage() {
+export default function CartPage({ history }) {
   const { loadCartLoading, loadCartData: data, loadCartError } = useSelector(
     (state) => state.user
   );
@@ -106,15 +106,12 @@ export default function CartPage() {
 
   const userInfo = useCheckLogin();
 
-  console.log(userInfo); // O
-
   useEffect(() => {
     if (userInfo) {
       dispatch(getCart(userInfo.email));
     }
   }, [dispatch, userInfo]);
 
-  console.log(data);
   if (loadCartLoading) return <div>장바구니를 로딩중입니다.</div>;
   if (!data) return <div>장바구니에 담긴 상품이 없습니다.</div>;
   if (loadCartError) return <div>에러페이지</div>;
@@ -157,7 +154,9 @@ export default function CartPage() {
           <b>총 주문금액</b>
           <span>₩&nbsp;2,085,800</span>
         </div>
-        <ButtonBig>결제하기</ButtonBig>
+        <ButtonBig onClick={() => history.push('/user/payment')}>
+          결제하기
+        </ButtonBig>
       </CartBottomContainer>
     </CartInner>
   );

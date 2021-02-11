@@ -93,6 +93,7 @@ export const addCart = (data) => async (dispatch) => {
     const response = await axios.post('/api/userproduct/cart', data);
     dispatch({ type: ADD_CART_SUCCESS, payload: response.data });
   } catch (e) {
+    console.error(e);
     dispatch({ type: ADD_CART_ERROR, payload: e.response.data });
   }
 };

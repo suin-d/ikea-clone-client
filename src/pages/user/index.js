@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import WishListPage from '../WishListPage';
+import WishListPage from './WishListPage';
 import CartPage from './CartPage';
 import HistoryPage from './HistoryPage';
 import LoginPage from './LoginPage';

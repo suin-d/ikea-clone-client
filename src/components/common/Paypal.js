@@ -1,17 +1,22 @@
 import React from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import { useDispatch } from 'react-redux';
+import { addAlert } from '../../modules/interface';
+import { successPayment } from '../../modules/user/thunk';
 
-export default function Paypal({ priceTotal = 0 }) {
+export default function Paypal({ priceTotal = 0, userInfo, productInfo }) {
   //   const {
   //     loadCart: { data },
   //   } = useSelector((state) => state.user);
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const onSuccess = (payment) => {
     console.log('The payment was succeeded!', payment);
+    dispatch(successPayment({ payment, userInfo, productInfo }));
   };
 
   const onCancel = (data) => {
     console.log('The payment was cancelled!', data);
+    dispatch(addAlert('결제가 취소되었습니다.'));
   };
 
   const onError = (err) => {

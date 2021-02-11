@@ -48,12 +48,17 @@ function PayItem({ data }) {
   return (
     <li>
       <div>
-        <img src={data.ProdImages[0].src} alt="" />
+        <img
+          srcSet={data.ProdImages[0].srcSet}
+          src={data.ProdImages[0].src}
+          sizes={data.ProdImages[0].sizes}
+          alt={data.ProdImages[0].info}
+        />
       </div>
       <article>
         <h3>{data.title}</h3>
         <p>{data.summary}</p>
-        <p>{data.size}</p>
+        <p>{`₩ ${data.slCost.toLocaleString()}`}</p>
         <p>{data.id}</p>
       </article>
     </li>
@@ -91,7 +96,8 @@ const Summary = styled.article`
     }
   }
 `;
-export default function PayInfo({ data }) {
+
+export default function PayInfo({ data, total }) {
   return (
     <PayInfoContainer>
       <h1>주문정보</h1>
@@ -112,7 +118,7 @@ export default function PayInfo({ data }) {
         <hr />
         <article>
           <h2>총 주문금액</h2>
-          <strong>{`₩ ${'100000'.toLocaleString()}`}</strong>
+          <strong>{`₩ ${total.toLocaleString()}`}</strong>
         </article>
       </Summary>
     </PayInfoContainer>

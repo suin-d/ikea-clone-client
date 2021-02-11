@@ -40,6 +40,9 @@ export const UPDATE_USER_ERROR = 'user/UPDATE_USER_ERROR';
 export const GET_HISTORY_REQUEST = 'user/GET_HISTORY_REQUEST';
 export const GET_HISTORY_SUCCESS = 'user/GET_HISTORY_SUCCESS';
 export const GET_HISTORY_ERROR = 'user/GET_HISTORY_ERROR';
+export const SUCCESS_PAYMENT_REQUEST = 'user/SUCCESS_PAYMENT_REQUEST';
+export const SUCCESS_PAYMENT_SUCCESS = 'user/SUCCESS_PAYMENT_SUCCESS';
+export const SUCCESS_PAYMENT_ERROR = 'user/SUCCESS_PAYMENT_ERROR';
 const initialState = {
   signUpLoading: false,
   signUpData: null,
@@ -77,6 +80,9 @@ const initialState = {
   getHistoryLoading: false,
   getHistoryData: null,
   getHistoryError: null,
+  successPaymentLoading: false,
+  successPaymentData: null,
+  successPaymentError: null,
 
   userInfo: null,
 };
@@ -318,6 +324,7 @@ export default function user(state = initialState, action) {
         loadCartLoading: true,
         loadCartData: null,
         loadCartError: null,
+        successPaymentData: null,
       };
     case LOAD_CART_SUCCESS:
       return {
@@ -383,6 +390,33 @@ export default function user(state = initialState, action) {
         getHistoryLoading: false,
         getHistoryData: null,
         getHistoryError: action.payload,
+      };
+    case SUCCESS_PAYMENT_REQUEST:
+      return {
+        ...state,
+        successPaymentLoading: true,
+        successPaymentData: null,
+        successPaymentError: null,
+      };
+    case SUCCESS_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        successPaymentLoading: false,
+        successPaymentData: action.payload,
+        successPaymentError: null,
+        loadCartData: [],
+        userInfo: {
+          ...state.userInfo,
+          cartItem: null,
+          Histories: state.userInfo.Histories.concat({ id: action.payload.id }),
+        },
+      };
+    case SUCCESS_PAYMENT_ERROR:
+      return {
+        ...state,
+        successPaymentLoading: false,
+        successPaymentData: null,
+        successPaymentError: action.payload,
       };
     default:
       return state;

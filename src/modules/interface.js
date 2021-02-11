@@ -1,4 +1,5 @@
 import {
+  ADD_CART_ERROR,
   ADD_CART_SUCCESS,
   ADD_WISH_SUCCESS,
   REMOVE_WISH_SUCCESS,
@@ -134,6 +135,8 @@ export default function interfaces(state = initialState, action) {
         ...state,
         alertMsg: '위시리스트에 추가되었습니다.',
       };
+    case ADD_CART_ERROR:
+      return { ...state, alertMsg: action.payload };
     case REMOVE_WISH_SUCCESS:
       return {
         ...state,

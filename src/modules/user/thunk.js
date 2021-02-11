@@ -36,6 +36,9 @@ import {
   VERIFICATION_ERROR,
   VERIFICATION_REQUEST,
   VERIFICATION_SUCCESS,
+  SUCCESS_PAYMENT_REQUEST,
+  SUCCESS_PAYMENT_SUCCESS,
+  SUCCESS_PAYMENT_ERROR,
 } from '.';
 
 export const signUp = (data) => async (dispatch) => {
@@ -242,5 +245,16 @@ export const removeCart = (data) => async (dispatch) => {
   } catch (e) {
     console.log(e);
     dispatch({ type: REMOVE_CART_ERROR, payload: e.response.data });
+  }
+};
+
+export const successPayment = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: SUCCESS_PAYMENT_REQUEST });
+    const response = await axios.post('/api/userproduct/payment/paypal', data);
+    dispatch({ type: SUCCESS_PAYMENT_SUCCESS, payload: response.data });
+  } catch (e) {
+    console.log(e);
+    dispatch({ type: SUCCESS_PAYMENT_ERROR, payload: e.response.data });
   }
 };
