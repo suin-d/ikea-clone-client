@@ -41,7 +41,15 @@ const WishReceiptContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
-export default function WishReceipt() {
+export default function WishReceipt({ wishItems }) {
+  let totalCost = 0;
+  (() => {
+    if (wishItems) {
+      wishItems.forEach((v) => {
+        totalCost += v.slCost;
+      });
+    }
+  })();
   return (
     <WishReceiptContainer>
       <ReceiptBox top>
@@ -49,17 +57,17 @@ export default function WishReceipt() {
         <ul>
           <li>
             <p>부가세 제외</p>
-            <span>₩ 799,001</span>
+            <span>{`₩ ${(totalCost * 0.9).toLocaleString()}`}</span>
           </li>
           <li>
             <p>부가세</p>
-            <span>₩ 79,899</span>
+            <span>{`₩ ${(totalCost / 10).toLocaleString()}`}</span>
           </li>
         </ul>
       </ReceiptBox>
       <ReceiptBox>
         <h2>가격</h2>
-        <h3>₩ 878,900</h3>
+        <h3>{`₩ ${totalCost.toLocaleString()}`}</h3>
       </ReceiptBox>
     </WishReceiptContainer>
   );

@@ -161,6 +161,7 @@ export const getWishList = (email) => async (dispatch) => {
       payload: response.data,
     });
   } catch (e) {
+    console.error(e);
     dispatch({
       type: GET_WISH_ERROR,
       payload: e.response.data,

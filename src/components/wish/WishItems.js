@@ -1,5 +1,8 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
+import { removeWish, addCart } from '../../modules/product/thunk';
 import ButtonRound from '../common/buttons/ButtonRound';
 
 const ButtonContainer = styled.div`
@@ -32,6 +35,10 @@ const ItemInfo = styled.div`
   h2 {
     font-weight: 700;
     margin-bottom: 15px;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   span {
     color: #484848;
@@ -72,57 +79,72 @@ const WishItemContainer = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: all ease-in-out 0.5s;
 `;
 const WishListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-function WishItem({ item }) {
+function WishItem({ userInfo, item }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
   const onDeleteItem = () => {
-    // item.id 삭제하기
+    dispatch(removeWish({ userEmail: userInfo.email, productId: item.id }));
+  };
+  const onAddCart = () => {
+    dispatch(addCart({ userEmail: userInfo.email, productId: item.id }));
+  };
+  const onMoveDetail = () => {
+    history.push(`/detail/${item.id}`);
   };
   return (
-    <WishItemContainer onClick={onDeleteItem}>
+    <WishItemContainer>
       <ContentContainer>
         <ContentLeft>
           <ImgWrapper>
             <img
-              srcSet={item.ProdImages.srcSet}
-              sizes={item.ProdImages.sizes}
-              src={item.ProdImages.src}
-              alt={item.ProdImages.info}
+              srcSet={item.ProdImages[0].srcSet}
+              sizes={item.ProdImages[0].sizes}
+              src={item.ProdImages[0].src}
+              alt={item.ProdImages[0].info}
             />
           </ImgWrapper>
           <ItemInfo>
             {item.slCost !== item.prCost && (
               <p className="p-sale-red">더 낮은 새로운 가격</p>
             )}
-            <h2>{item.title}</h2>
+            <h2 onClick={onMoveDetail}>{item.title}</h2>
             {item.summary && <span>{item.summary}</span>}
             {item.size && <span>{item.size}</span>}
             <span>{item.id}</span>
             {item.slCost !== item.prCost && (
-              <p className="p-prCost">{`정가 ₩ ${item.prCost}`}</p>
+              <p className="p-prCost">{`정가 ₩ ${item.prCost.toLocaleString()}`}</p>
             )}
           </ItemInfo>
         </ContentLeft>
-        <h3>{`₩ ${item.slCost}`}</h3>
+        <h3>{`₩ ${item.slCost.toLocaleString()}`}</h3>
       </ContentContainer>
       <ButtonContainer>
-        <ButtonRound white>삭제하기</ButtonRound>
-        <ButtonRound white>장바구니로 옮기기</ButtonRound>
+        <ButtonRound white onClick={onDeleteItem}>
+          삭제하기
+        </ButtonRound>
+        <ButtonRound white onClick={onAddCart}>
+          장바구니로 옮기기
+        </ButtonRound>
       </ButtonContainer>
     </WishItemContainer>
   );
 }
-export default function WishItems({ wishItems }) {
+export default function WishItems({ userInfo, wishItems }) {
   return (
     <WishListContainer>
-      {wishItems.map((item) => (
-        <WishItem key={item.id} item={item} />
-      ))}
+      {wishItems ? (
+        wishItems.map((item) => (
+          <WishItem key={item.id} userInfo={userInfo} item={item} />
+        ))
+      ) : (
+        <div>위시리스트에 상품이 없습니다!</div>
+      )}
     </WishListContainer>
   );
 }

@@ -225,6 +225,11 @@ export default function user(state = initialState, action) {
             (v) => v.id !== action.payload.productId
           ),
         },
+        getWishData:
+          state.getWishData.wishItem &&
+          state.getWishData.wishItem.filter(
+            (v) => v.id !== action.payload.productId
+          ),
       };
     case GET_WISH_REQUEST:
       return {
@@ -239,7 +244,7 @@ export default function user(state = initialState, action) {
         getWishLoading: false,
         getWishData: action.payload,
         getWishError: null,
-        userInfo: null,
+        // userInfo: null,
       };
     case GET_WISH_ERROR:
       return {

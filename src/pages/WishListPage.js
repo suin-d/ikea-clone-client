@@ -8,6 +8,7 @@ import WishItems from '../components/wish/WishItems';
 import WishReceipt from '../components/wish/WishReceipt';
 import useCheckLogin from '../hooks/useCheckLogin';
 import { getWishList } from '../modules/user/thunk';
+import { addCart } from '../../modules/product/thunk';
 
 const CartButtonBox = styled.div`
   width: 100%;
@@ -77,70 +78,23 @@ const WishListContainer = styled.div`
   max-width: 800px;
   margin: 0 auto;
 `;
-const wishMock = [
-  {
-    id: '804.571.18',
-    title: 'ANGERSBY 앙에르스뷔',
-    summary: '2인용소파, 크니사 라이트그레이',
-    size: '180x200 cm',
-    prCost: '169,000',
-    slCost: '149,000',
-    ProdImages: {
-      src:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s',
-      srcSet:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=g 1600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=sg 1400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxl 1100w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxl 900w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xl 750w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=l 700w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=m 600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s 500w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xs 400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxs 300w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxs 160w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=u 80w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xu 40w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxu 39w\n',
-      sizes:
-        '(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px',
-      info: 'FRÄCK 프레크 거울, 스테인리스',
-    },
-  },
-  {
-    id: '602.992.19',
-    title: 'FRAKTA 프락타',
-    summary: '2인용소파, 크니사 라이트그레이',
-    size: '180x200 cm',
-    prCost: '169,000',
-    slCost: '149,000',
-    ProdImages: {
-      src:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s',
-      srcSet:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=g 1600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=sg 1400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxl 1100w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxl 900w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xl 750w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=l 700w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=m 600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s 500w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xs 400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxs 300w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxs 160w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=u 80w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xu 40w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxu 39w\n',
-      sizes:
-        '(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px',
-      info: 'FRÄCK 프레크 거울, 스테인리스',
-    },
-  },
-  {
-    id: '903.213.89',
-    title: 'ÅRSTID 오르스티드',
-    summary: '2인용소파, 크니사 라이트그레이',
-    size: '180x200 cm',
-    prCost: '169,000',
-    slCost: '149,000',
-    ProdImages: {
-      src:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s',
-      srcSet:
-        'https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=g 1600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=sg 1400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxl 1100w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxl 900w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xl 750w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=l 700w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=m 600w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=s 500w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xs 400w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxs 300w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxxs 160w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=u 80w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xu 40w,\n  https://www.ikea.com/kr/ko/images/products/fraeck-mirror-stainless-steel__0637648_PE698438_S5.JPG?f=xxu 39w\n',
-      sizes:
-        '(max-width: 900px) 100vw, (max-width: 1200px) 160px, (max-width: 1400px) 300px, (max-width: 1700px) 400px, 500px',
-      info: 'FRÄCK 프레크 거울, 스테인리스',
-    },
-  },
-];
 export default function WishListPage() {
-  const { getWishData } = useSelector((state) => state.user);
-  console.log(getWishData);
-  const dispatch = useDispatch();
-  const [navState, setNavState] = useState(1);
   const userInfo = useCheckLogin();
+  const dispatch = useDispatch();
+  const { getWishData } = useSelector((state) => state.user);
+  const [navState, setNavState] = useState(1);
   const onNav = (state) => {
     setNavState(state);
   };
+  const onAddCartAll = () => {
+    getWishData.forEach((data) =>
+      dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
+    );
+  };
   useEffect(() => {
-    dispatch(getWishList(userInfo.email));
+    if (userInfo !== null) {
+      dispatch(getWishList(userInfo.email));
+    }
   }, [dispatch, userInfo]);
   return (
     <WishListContainer>
@@ -166,14 +120,14 @@ export default function WishListPage() {
         <li onClick={() => onNav(1)}>온라인으로 구매하기</li>
         <li onClick={() => onNav(2)}>매장에서 구매하기</li>
       </WishNav>
-      {/* {navState === 1 && <WishItems wishItems={getWishData} />} */}
-      {navState === 1 && <WishItems wishItems={wishMock} />}
+      {navState === 1 && (
+        <WishItems userInfo={userInfo} wishItems={getWishData} />
+      )}
       {navState === 2 && <GoStore />}
-      {/* <WishReceipt wishItems={getWishData} /> */}
-      <WishReceipt wishItems={wishMock} />
+      <WishReceipt wishItems={getWishData} />
       <CartButtonBox>
         <p>이 제품을 온라인으로 구매하시겠어요?</p>
-        <ButtonBig>
+        <ButtonBig onClick={onAddCartAll}>
           <svg
             stroke="currentColor"
             fill="currentColor"
