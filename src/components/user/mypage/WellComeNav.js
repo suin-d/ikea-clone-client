@@ -165,7 +165,7 @@ email:${userInfo.email}
         />
         <NavItem
           title="장바구니"
-          desc={makeMessage(userInfo.cartItem, '장바구니')}
+          desc={makeMessage(userInfo.Carts, '장바구니')}
           link="/user/cart"
         />
       </ul>

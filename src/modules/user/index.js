@@ -313,7 +313,7 @@ export default function user(state = initialState, action) {
         ...state,
         userInfo: {
           ...state.userInfo,
-          cartItem: state.userInfo.cartItem.concat({
+          Carts: state.userInfo.Carts.concat({
             id: action.payload.productId,
           }),
         },
@@ -355,7 +355,7 @@ export default function user(state = initialState, action) {
         removeCartError: null,
         userInfo: {
           ...state.userInfo,
-          cartItem: state.userInfo.cartItem.filter(
+          Carts: state.userInfo.Carts.filter(
             (v) => v.id !== action.payload.productId
           ),
         },
@@ -407,7 +407,7 @@ export default function user(state = initialState, action) {
         loadCartData: [],
         userInfo: {
           ...state.userInfo,
-          cartItem: null,
+          Carts: null,
           Histories: state.userInfo.Histories.concat({ id: action.payload.id }),
         },
       };
