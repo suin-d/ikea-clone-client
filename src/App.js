@@ -7,7 +7,6 @@ import ListPage from './pages/ListPage';
 import MainPage from './pages/MainPage';
 import UserRouter from './pages/user';
 import DetailPage from './pages/DetailPage';
-import WishListPage from './pages/WishListPage';
 
 function App() {
   return (
@@ -21,8 +20,6 @@ function App() {
         <Route path="/list/:id" component={ListPage} />
         {/* 디테일 페이지 */}
         <Route path="/detail/:id" component={DetailPage} />
-        {/* 위시리스트 페이지 */}
-        <Route path="/user/wish" component={WishListPage} />
       </Layout>
       <Alert />
     </>

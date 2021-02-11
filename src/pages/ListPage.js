@@ -29,12 +29,13 @@ export default function ListPage({ location, match }) {
     currentOffset.current += 24;
   };
   useEffect(() => {
+    document.title = `IKEA | ${query.sc}`;
     if (id !== beforeId.current) {
       setCurrentFilter(0);
     }
     dispatch(getList({ cateId: id, filter: currentFilter }));
     beforeId.current = id;
-  }, [dispatch, id, currentFilter]);
+  }, [dispatch, id, currentFilter, query.sc]);
 
   if (getListLoading) return <div>상품을 로딩중입니다.</div>;
   if (!getListData) return null;

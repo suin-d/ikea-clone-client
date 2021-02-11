@@ -34,6 +34,12 @@ export const LOAD_CART_ERROR = 'user/LOAD_CART_ERROR';
 export const REMOVE_CART_REQUEST = 'user/REMOVE_CART_REQUEST';
 export const REMOVE_CART_SUCCESS = 'user/REMOVE_CART_SUCCESS';
 export const REMOVE_CART_ERROR = 'user/REMOVE_CART_ERROR';
+export const UPDATE_USER_REQUEST = 'user/UPDATE_USER_REQUEST';
+export const UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS';
+export const UPDATE_USER_ERROR = 'user/UPDATE_USER_ERROR';
+export const GET_HISTORY_REQUEST = 'user/GET_HISTORY_REQUEST';
+export const GET_HISTORY_SUCCESS = 'user/GET_HISTORY_SUCCESS';
+export const GET_HISTORY_ERROR = 'user/GET_HISTORY_ERROR';
 const initialState = {
   signUpLoading: false,
   signUpData: null,
@@ -65,6 +71,13 @@ const initialState = {
   removeCartLoading: false,
   removeCartData: null,
   removeCartError: null,
+  updateUserLoading: false,
+  updateUserData: null,
+  updateUserError: null,
+  getHistoryLoading: false,
+  getHistoryData: null,
+  getHistoryError: null,
+
   userInfo: null,
 };
 
@@ -220,6 +233,28 @@ export default function user(state = initialState, action) {
         deleteUserData: null,
         deleteUserError: action.payload,
       };
+    case UPDATE_USER_REQUEST:
+      return {
+        ...state,
+        updateUserLoading: true,
+        updateUserData: null,
+        updateUserError: null,
+      };
+    case UPDATE_USER_SUCCESS:
+      return {
+        ...state,
+        updateUserLoading: false,
+        updateUserData: action.payload,
+        updateUserError: null,
+        userInfo: { ...state.userInfo, ...action.payload },
+      };
+    case UPDATE_USER_ERROR:
+      return {
+        ...state,
+        updateUserLoading: false,
+        updateUserData: null,
+        updateUserError: action.payload,
+      };
     case ADD_WISH_SUCCESS:
       return {
         ...state,
@@ -327,6 +362,27 @@ export default function user(state = initialState, action) {
         removeCartLoading: false,
         removeCartData: null,
         removeCartError: action.payload,
+      };
+    case GET_HISTORY_REQUEST:
+      return {
+        ...state,
+        getHistoryLoading: true,
+        getHistoryData: null,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_SUCCESS:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: action.payload,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_ERROR:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: null,
+        getHistoryError: action.payload,
       };
     default:
       return state;

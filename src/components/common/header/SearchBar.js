@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
-import { AiOutlineSearch, AiOutlineCamera } from 'react-icons/ai';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { ImCancelCircle } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { search } from '../../../modules/product/thunk';
@@ -85,6 +86,9 @@ const SearchBox = styled.form`
     position: absolute;
     right: 1.8rem;
     font-size: 20px;
+    svg {
+      cursor: pointer;
+    }
   }
   & > ul {
     position: absolute;
@@ -115,16 +119,16 @@ const SearchBox = styled.form`
       }
     `}
 `;
-const DarkBack = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  cursor: pointer;
-  background: rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-`;
+// const DarkBack = styled.div`
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   cursor: pointer;
+//   background: rgba(0, 0, 0, 0.1);
+//   z-index: 1000;
+// `;
 function ResultItem({ data, close }) {
   const history = useHistory();
   const goDetail = () => {
@@ -178,7 +182,9 @@ export default function SearchBar({ headerOpen }) {
             onChange={onChangeKeyword}
           />
           <span>
-            <AiOutlineCamera />
+            {searchActive && (
+              <ImCancelCircle onClick={() => setSearchActive(false)} />
+            )}
           </span>
           <ul>
             {searchData &&
@@ -188,7 +194,6 @@ export default function SearchBar({ headerOpen }) {
           </ul>
         </SearchBox>
       </SearchContainer>
-      {searchActive && <DarkBack onClick={() => setSearchActive(false)} />}
     </>
   );
 }

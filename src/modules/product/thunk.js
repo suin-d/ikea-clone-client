@@ -17,9 +17,16 @@ import {
   GET_PRODUCT_ERROR,
   ADD_CART_REQUEST,
   ADD_CART_SUCCESS,
+  ADD_CART_ERROR,
   LOAD_MORE_LIST_REQUEST,
   LOAD_MORE_LIST_SUCCESS,
   LOAD_MORE_LIST_ERROR,
+  GET_HF_REQUEST,
+  GET_HF_SUCCESS,
+  GET_HF_ERROR,
+  LOAD_MORE_HF_REQUEST,
+  LOAD_MORE_HF_SUCCESS,
+  LOAD_MORE_HF_ERROR,
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {
@@ -86,7 +93,7 @@ export const addCart = (data) => async (dispatch) => {
     const response = await axios.post('/api/userproduct/cart', data);
     dispatch({ type: ADD_CART_SUCCESS, payload: response.data });
   } catch (e) {
-    dispatch({ type: ADD_WISH_ERROR, payload: e.response.data });
+    dispatch({ type: ADD_CART_ERROR, payload: e.response.data });
   }
 };
 
@@ -99,5 +106,28 @@ export const getProduct = (productId) => async (dispatch) => {
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: GET_PRODUCT_ERROR, payload: e.response.data });
+  }
+};
+
+export const getHf = (cateId) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_HF_REQUEST });
+    const response = await axios.get(
+      `http://localhost:8000/api/product/homefurnishing/${cateId}`
+    );
+    dispatch({ type: GET_HF_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: GET_HF_ERROR, payload: e.response.data });
+  }
+};
+export const loadMoreHf = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: LOAD_MORE_HF_REQUEST });
+    const response = await axios.get(
+      `http://localhost:8000/api/product/homefurnishing/${data.cateId}?offset=${data.offset}`
+    );
+    dispatch({ type: LOAD_MORE_HF_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: LOAD_MORE_HF_ERROR, payload: e.response.data });
   }
 };

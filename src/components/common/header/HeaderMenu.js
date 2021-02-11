@@ -54,6 +54,7 @@ const HeaderBar = styled.div`
     props.open ||
     css`
       animation: ${slideUp} 0.3s normal forwards;
+      display: none;
     `}
 `;
 const MenuBtnBox = styled.div`

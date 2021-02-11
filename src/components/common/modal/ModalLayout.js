@@ -1,7 +1,23 @@
 import React from 'react';
 import { RiCloseFill } from 'react-icons/ri';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const slideUp = keyframes`
+from{
+  transform:translateY(600px)
+}
+to{
+  transform:translateY(0)
+}
+`;
+const fadeIn = keyframes`
+from{
+  opacity:0
+}
+to{
+  opacity:1
+}
+`;
 const CloseBtn = styled.i`
   position: absolute;
   top: 50px;
@@ -20,12 +36,14 @@ const ModalContainer = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.6);
-  z-index: 20;
+  z-index: 10000;
+  animation: ${fadeIn} 0.3s ease-in-out;
 `;
 const ModalBox = styled.div`
   max-width: 700px;
   padding: 30px 30px;
   background: #fff;
+  animation: ${slideUp} 0.2s ease-in-out;
   & > h1 {
     font-size: 25px;
     font-weight: bold;

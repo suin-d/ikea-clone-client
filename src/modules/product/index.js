@@ -19,6 +19,13 @@ export const ADD_CART_ERROR = 'product/ADD_CART_ERROR';
 export const LOAD_MORE_LIST_REQUEST = 'product/LOAD_MORE_LIST_REQUEST';
 export const LOAD_MORE_LIST_SUCCESS = 'product/LOAD_MORE_LIST_SUCCESS';
 export const LOAD_MORE_LIST_ERROR = 'product/LOAD_MORE_LIST_ERROR';
+export const GET_HF_REQUEST = 'product/GET_HF_REQUEST';
+export const GET_HF_SUCCESS = 'product/GET_HF_SUCCESS';
+export const GET_HF_ERROR = 'product/GET_HF_ERROR';
+export const LOAD_MORE_HF_REQUEST = 'product/LOAD_MORE_HF_REQUEST';
+export const LOAD_MORE_HF_SUCCESS = 'product/LOAD_MORE_HF_SUCCESS';
+export const LOAD_MORE_HF_ERROR = 'product/LOAD_MORE_HF_ERROR';
+
 const initialState = {
   searchLoading: false,
   searchData: null,
@@ -38,7 +45,11 @@ const initialState = {
   loadMoreListLoading: false,
   loadMoreListData: null,
   loadMoreListError: null,
-  hasMoreList: true,
+  getHfLoading: false,
+  getHfData: null,
+  getHfError: null,
+
+  hasMore: true,
 };
 
 export default function product(state = initialState, action) {
@@ -70,7 +81,7 @@ export default function product(state = initialState, action) {
         getListLoading: true,
         getListData: null,
         getListError: null,
-        hasMoreList: true,
+        hasMore: true,
       };
     case GET_LIST_SUCCESS:
       return {
@@ -174,6 +185,49 @@ export default function product(state = initialState, action) {
         getProductLoading: false,
         getProductData: null,
         getPRoductError: action.payload,
+      };
+    case GET_HF_REQUEST:
+      return {
+        ...state,
+        getHfLoading: true,
+        getHfData: null,
+        getHfError: null,
+      };
+    case GET_HF_SUCCESS:
+      return {
+        ...state,
+        getHfLoading: false,
+        getHfData: action.payload,
+        getHfError: null,
+        hasMore: action.payload.length === 12,
+      };
+    case GET_HF_ERROR:
+      return {
+        ...state,
+        getHfLoading: false,
+        getHfData: null,
+        getHfError: action.payload,
+      };
+    case LOAD_MORE_HF_REQUEST:
+      return {
+        ...state,
+        getHfLoading: true,
+        getHfError: null,
+      };
+    case LOAD_MORE_HF_SUCCESS:
+      return {
+        ...state,
+        getHfLoading: false,
+        getHfData: state.getHfData.concat(action.payload),
+        getHfError: null,
+        hasMore: action.payload.length === 12,
+      };
+    case LOAD_MORE_HF_ERROR:
+      return {
+        ...state,
+        getHfLoading: false,
+        getHfData: null,
+        getHfError: action.payload,
       };
     default:
       return state;

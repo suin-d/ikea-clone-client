@@ -8,7 +8,7 @@ import WishItems from '../components/wish/WishItems';
 import WishReceipt from '../components/wish/WishReceipt';
 import useCheckLogin from '../hooks/useCheckLogin';
 import { getWishList } from '../modules/user/thunk';
-import { addCart } from '../../modules/product/thunk';
+import { addCart } from '../modules/product/thunk';
 
 const CartButtonBox = styled.div`
   width: 100%;
@@ -87,8 +87,10 @@ export default function WishListPage() {
     setNavState(state);
   };
   const onAddCartAll = () => {
-    getWishData.forEach((data) =>
-      dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
+    getWishData.forEach(
+      (data) =>
+        dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
+      // eslint-disable-next-line function-paren-newline
     );
   };
   useEffect(() => {
@@ -96,6 +98,7 @@ export default function WishListPage() {
       dispatch(getWishList(userInfo.email));
     }
   }, [dispatch, userInfo]);
+  if (!getWishData) return null;
   return (
     <WishListContainer>
       <WishListTitle>

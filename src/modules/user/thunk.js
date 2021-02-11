@@ -9,6 +9,9 @@ import {
   LOAD_CART_ERROR,
   LOAD_CART_REQUEST,
   LOAD_CART_SUCCESS,
+  GET_HISTORY_ERROR,
+  GET_HISTORY_REQUEST,
+  GET_HISTORY_SUCCESS,
   LOG_IN_ERROR,
   LOG_IN_REQUEST,
   LOG_IN_SUCCESS,
@@ -27,6 +30,9 @@ import {
   SIGN_UP_ERROR,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
+  UPDATE_USER_ERROR,
+  UPDATE_USER_REQUEST,
+  UPDATE_USER_SUCCESS,
   VERIFICATION_ERROR,
   VERIFICATION_REQUEST,
   VERIFICATION_SUCCESS,
@@ -174,6 +180,24 @@ export const getWishList = (email) => async (dispatch) => {
     });
   }
 };
+export const updateUser = (data) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_USER_REQUEST,
+    });
+    const response = await axios.patch('/api/user', { data });
+    dispatch({
+      type: UPDATE_USER_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: UPDATE_USER_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
+
 export const getCart = (email) => async (dispatch) => {
   try {
     dispatch({ type: LOAD_CART_REQUEST });
@@ -191,6 +215,23 @@ export const getCart = (email) => async (dispatch) => {
   }
 };
 
+export const getHistory = (email) => async (dispatch) => {
+  try {
+    dispatch({
+      type: GET_HISTORY_REQUEST,
+    });
+    const response = await axios.get(`/api/userproduct/history/${email}`);
+    dispatch({
+      type: GET_HISTORY_SUCCESS,
+      payload: response.data,
+    });
+  } catch (e) {
+    dispatch({
+      type: GET_HISTORY_ERROR,
+      payload: e.response.data,
+    });
+  }
+};
 export const removeCart = (data) => async (dispatch) => {
   try {
     dispatch({ type: REMOVE_CART_REQUEST });

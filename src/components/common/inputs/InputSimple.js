@@ -90,12 +90,14 @@ function InputSimple({
   value,
   onChange,
   placeholder,
+  readOnly = false,
   type = 'text',
   ...rest
 }) {
   return (
     <StyledInputSet {...rest}>
       <input
+        readOnly={readOnly}
         type={type}
         value={value}
         onChange={onChange}
