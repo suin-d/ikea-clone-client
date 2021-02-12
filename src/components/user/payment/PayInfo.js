@@ -49,17 +49,17 @@ function PayItem({ data }) {
     <li>
       <div>
         <img
-          srcSet={data.ProdImages[0].srcSet}
-          src={data.ProdImages[0].src}
-          sizes={data.ProdImages[0].sizes}
-          alt={data.ProdImages[0].info}
+          srcSet={data.Product.ProdImages[0].srcSet}
+          src={data.Product.ProdImages[0].src}
+          sizes={data.Product.ProdImages[0].sizes}
+          alt={data.Product.ProdImages[0].info}
         />
       </div>
       <article>
-        <h3>{data.title}</h3>
-        <p>{data.summary}</p>
-        <p>{`₩ ${data.slCost.toLocaleString()}`}</p>
-        <p>{data.id}</p>
+        <h3>{data.Product.title}</h3>
+        <p>{data.Product.summary}</p>
+        <p>{`₩ ${data.Product.slCost.toLocaleString()}`}</p>
+        <p>{data.Product.id}</p>
       </article>
     </li>
   );

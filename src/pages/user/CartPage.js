@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { RiUser3Line } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -96,7 +96,11 @@ const CartInner = styled.div`
   padding-right: 60px;
   letter-spacing: 0.7px;
 `;
-
+const getTotal = (data) =>
+  data.reduce(
+    (acc, v) => parseInt(v.quantity, 10) * parseInt(v.Product.slCost, 10) + acc,
+    0
+  );
 export default function CartPage({ history }) {
   const { loadCartLoading, loadCartData: data, loadCartError } = useSelector(
     (state) => state.user
@@ -105,7 +109,7 @@ export default function CartPage({ history }) {
   const dispatch = useDispatch();
 
   const userInfo = useCheckLogin();
-
+  const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
     if (userInfo) {
       dispatch(getCart(userInfo.email));
@@ -152,7 +156,7 @@ export default function CartPage({ history }) {
         <hr />
         <div>
           <b>총 주문금액</b>
-          <span>₩&nbsp;2,085,800</span>
+          <span>{`₩${totalPrice.toLocaleString()}`}</span>
         </div>
         <ButtonBig onClick={() => history.push('/user/payment')}>
           결제하기

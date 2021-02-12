@@ -11,7 +11,13 @@ export default function Paypal({ priceTotal = 0, userInfo, productInfo }) {
   const dispatch = useDispatch();
   const onSuccess = (payment) => {
     console.log('The payment was succeeded!', payment);
-    dispatch(successPayment({ payment, userInfo, productInfo }));
+    const data = productInfo.map((v) => ({
+      id: v.Product.id,
+      title: v.Product.title,
+      slCost: v.Product.slCost,
+      quantity: v.quantity,
+    }));
+    dispatch(successPayment({ payment, userInfo, productInfo: data }));
   };
 
   const onCancel = (data) => {

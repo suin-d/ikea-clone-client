@@ -68,16 +68,18 @@ const CartItem = styled.li`
 `;
 
 export default function CartProduct({ data, userInfo }) {
-  const imgIndex = data.ProdImages[0] ? data.ProdImages[0] : null;
+  const imgIndex = data.Product ? data.Product.ProdImages[0] : null;
   const dispatch = useDispatch();
 
   const onRemoveCart = () => {
-    dispatch(removeCart({ email: userInfo.email, productId: data.id }));
+    dispatch(removeCart({ email: userInfo.email, productId: data.Product.id }));
   };
 
   const onAddWishRemoveCart = () => {
-    dispatch(addWish({ userEmail: userInfo.email, productId: data.id }));
-    dispatch(removeCart({ email: userInfo.email, productId: data.id }));
+    dispatch(
+      addWish({ userEmail: userInfo.email, productId: data.Product.id })
+    );
+    dispatch(removeCart({ email: userInfo.email, productId: data.Product.id }));
   };
 
   return (
@@ -95,12 +97,14 @@ export default function CartProduct({ data, userInfo }) {
       <div>
         <article>
           <div>
-            <h2>{data.title}</h2>
-            <span>{data.summary}</span>
-            <div>{data.size && data.size}</div>
+            <h2>{data.Product.title}</h2>
+            <span>{data.Product.summary}</span>
+            <div>{data.Product.size}</div>
+            <div>{`수량: ${data.quantity}개`}</div>
+            <div>{`총액: ${data.Product.slCost * data.quantity}원`}</div>
           </div>
           <div>
-            <strong>{`￦${data.slCost.toLocaleString()}`}</strong>
+            <strong>{`￦${data.Product.slCost.toLocaleString()}`}</strong>
           </div>
         </article>
         <div>

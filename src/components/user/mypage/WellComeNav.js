@@ -155,7 +155,7 @@ email:${userInfo.email}
       <ul>
         <NavItem
           title="주문내역"
-          desc={makeMessage(userInfo.Histories, '주문내역')}
+          desc={makeMessage(userInfo.Payments, '주문내역')}
           link="/user/history"
         />
         <NavItem

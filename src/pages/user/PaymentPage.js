@@ -14,7 +14,11 @@ const ContentContainer = styled.div`
   padding-right: 60px;
 `;
 
-const getTotal = (data) => data.reduce((acc, v) => acc + v.slCost, 0);
+const getTotal = (data) =>
+  data.reduce(
+    (acc, v) => parseInt(v.quantity, 10) * parseInt(v.Product.slCost, 10) + acc,
+    0
+  );
 export default function PaymentPage({ history }) {
   const userInfo = useCheckLogin();
   const { loadCartData: data, successPaymentData: paySuccess } = useSelector(
@@ -25,7 +29,7 @@ export default function PaymentPage({ history }) {
   const [phone, onChangePhone] = useInput(userInfo.phone);
   const [address, setAddress] = useState(`${userInfo.address.split(')')[0]})`);
   const [detailAddress, onChangeDetailAddress] = useInput(
-    `${userInfo.address.split(')')[1]})`
+    userInfo.address.split(')')[1]
   );
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
   const userPayInfo = {
