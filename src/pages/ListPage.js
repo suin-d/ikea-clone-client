@@ -6,6 +6,8 @@ import List from '../components/list/List';
 import ButtonFix from '../components/common/buttons/ButtonFix';
 
 export default function ListPage({ location, match }) {
+  // TODO:
+  // 더보기 버튼 없어짐
   const currentOffset = useRef(24);
   const beforeId = useRef(0);
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });

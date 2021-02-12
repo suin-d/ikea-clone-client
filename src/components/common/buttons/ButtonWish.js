@@ -29,6 +29,7 @@ const WishButton = styled(CircleButton)`
 `;
 
 export default function ButtonWish({ data }) {
+  // TODO: 요거 안에 있는 기능등 DetailInfo.js로 꺼내기
   const history = useHistory();
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.user);

@@ -1,8 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import dayjs from 'dayjs';
 import ModalLayout from '../../common/modal/ModalLayout';
 import { getHistory } from '../../../modules/user/thunk';
+import 'dayjs/locale/ko';
+
+dayjs.locale('ko');
 
 const ItemBox = styled.li`
   max-width: 450px;
@@ -10,8 +14,8 @@ const ItemBox = styled.li`
   display: flex;
   border-bottom: 1px solid #eee;
   & > div {
-    width: 150px;
-    height: 150px;
+    width: 130px;
+    height: 130px;
     margin-right: 20px;
     img {
       max-width: 100%;
@@ -26,23 +30,19 @@ const ItemBox = styled.li`
     align-items: flex-end;
     h4 {
       font-weight: bold;
-      font-size: 16px;
+      font-size: 14px;
     }
     p {
-      flex: 1;
-      text-align: end;
-      span {
-        display: block;
-      }
+      display: block;
     }
     & > span {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 `;
 function HistoryListItem({ data }) {
-  if (!data.Payment) return null;
+  if (!data) return null;
   return (
     <ItemBox>
       <div>
@@ -52,14 +52,83 @@ function HistoryListItem({ data }) {
         <h4>{data.Product.title}</h4>
         <p>
           <span>{data.Product.summary}</span>
-          <span>{`주문번호:${data.Payment.paymentToken}`}</span>
+          <span>
+            수량:
+            <strong>{`${data.quantity}개`}</strong>
+          </span>
         </p>
-        <span>{`₩ ${data.Product.slCost.toLocaleString()}`}</span>
+        <span>
+          {`금액: ₩ ${(data.Product.slCost * data.quantity).toLocaleString()}`}
+        </span>
       </article>
     </ItemBox>
   );
 }
-
+const ListPakageConatiner = styled.li`
+  max-width: 540px;
+  margin: 0 auto;
+  border-bottom: 2px solid #aaa;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  & > article {
+    padding: 10px 30px;
+    background-color: #eee;
+    border-top: 2px solid #aaa;
+    border-bottom: 2px solid #aaa;
+    margin-bottom: 10px;
+  }
+  h3 {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  p {
+    display: flex;
+    justify-content: space-between;
+  }
+  p {
+    flex: 1;
+    text-align: end;
+    span {
+      font-size: 13px;
+      display: block;
+    }
+    b {
+      font-size: 18px;
+    }
+    strong {
+      font-weight: bold;
+    }
+  }
+  ul {
+    background-color: #fefefe;
+  }
+`;
+function HistoryPakage({ data }) {
+  if (!data) return null;
+  return (
+    <ListPakageConatiner>
+      <article>
+        <h3>{`주문번호:${data.paymentToken}`}</h3>
+        <p>
+          <span>
+            {dayjs(data.createdAt)
+              .locale('ko')
+              .format('YYYY년 MMMM D일 HH시 mm분')}
+          </span>
+          <b>
+            <small>총액: ₩</small>
+            <strong>{parseInt(data.totalPrice, 10).toLocaleString()}</strong>
+          </b>
+        </p>
+      </article>
+      <ul>
+        {data.Histories.map((v) => (
+          <HistoryListItem data={v} key={v.id} />
+        ))}
+      </ul>
+    </ListPakageConatiner>
+  );
+}
 const HistoryList = styled.div`
   width: 600px;
   & > article {
@@ -85,25 +154,23 @@ const HistoryList = styled.div`
     }
   }
 `;
-const getTotal = (data) => data.reduce((acc, c) => c.Product.slCost + acc, 0);
+const getTotal = (data) =>
+  data.reduce((acc, v) => parseInt(v.totalPrice, 10) + acc, 0);
 
 export default function History({ close, userInfo }) {
-  const { getHistoryData } = useSelector((state) => state.user);
+  const { getHistoryData: data } = useSelector((state) => state.user);
   const dispatch = useDispatch();
-  const totalPrice = useMemo(() => getHistoryData && getTotal(getHistoryData), [
-    getHistoryData,
-  ]);
+  const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
     dispatch(getHistory(userInfo.email));
   }, [dispatch, userInfo]);
-  console.log(getHistoryData);
-  if (!getHistoryData) return null;
+  if (!data) return null;
   return (
     <ModalLayout title="구매내역" close={close}>
       <HistoryList>
         <ul>
-          {getHistoryData.length !== 0
-            ? getHistoryData.map((v) => <HistoryListItem data={v} key={v.id} />)
+          {data.length !== 0
+            ? data.map((v) => <HistoryPakage data={v} key={v.id} />)
             : '구매내역이 존재하지 않습니다.'}
         </ul>
         <article>

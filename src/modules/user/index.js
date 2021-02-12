@@ -281,10 +281,12 @@ export default function user(state = initialState, action) {
           ),
         },
         getWishData:
-          state.getWishData.wishItem &&
-          state.getWishData.wishItem.filter(
-            (v) => v.id !== action.payload.productId
-          ),
+          state.getWishData &&
+          state.getWishData.filter((v) => v.id !== action.payload.productId),
+        // TODO:요기 요기 에러있었음
+        // getWishData:
+        //   state.getWishData.wishItem &&
+        //   state.getWishData.wishItem.filter((v) => v.id !== action.payload.productId),
       };
     case GET_WISH_REQUEST:
       return {
@@ -407,8 +409,8 @@ export default function user(state = initialState, action) {
         loadCartData: [],
         userInfo: {
           ...state.userInfo,
-          Carts: null,
-          Histories: state.userInfo.Histories.concat({ id: action.payload.id }),
+          Carts: [],
+          Payments: state.userInfo.Payments.concat({ id: action.payload.id }),
         },
       };
     case SUCCESS_PAYMENT_ERROR:

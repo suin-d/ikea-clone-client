@@ -116,6 +116,10 @@ const DetailInfoWrapper = styled.div`
   }
 `;
 export default function DetailInfo({ setReviewOpen, product }) {
+  // TODO:
+  // 구매하기 버튼에 장바구니 추가함수 연결하기
+  // 다른 매장 재고에 a태그 들어가있음 a태그 기본기능=(새로고침)
+  // DetailPage안에서 p 태그에 validateDOMNesting(...): <div> cannot appear as a descendant of <p>.에러뜨는중
   return (
     <DetailInfoWrapper>
       <DetailInfoContainer>

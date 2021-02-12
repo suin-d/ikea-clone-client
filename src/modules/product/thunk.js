@@ -83,6 +83,7 @@ export const removeWish = (data) => async (dispatch) => {
     );
     dispatch({ type: REMOVE_WISH_SUCCESS, payload: response.data });
   } catch (e) {
+    console.error(e);
     dispatch({ type: REMOVE_WISH_ERROR, payload: e.response.data });
   }
 };

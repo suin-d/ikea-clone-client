@@ -85,7 +85,6 @@ function DetailAbout({ setReviewOpen, product }) {
       <ReviewBox onClick={() => setReviewOpen(true)}>
         <div>
           <p>상품평</p>
-          {/* 상품평 개수!!!!!!!!!!!!!!!!!????????????? */}
           <ReviewScore
             reviewCnt={product.reviewCnt}
             setReviewOpen={setReviewOpen}
@@ -101,7 +100,7 @@ function DetailPic({ product }) {
   return (
     <DetailPicContainer>
       {product.ProdImages.map((item) => (
-        <div>
+        <div key={item.id}>
           <img
             key={item.id}
             srcSet={item.srcSet}
