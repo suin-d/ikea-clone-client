@@ -12,12 +12,9 @@ export default function ListPage({ location, match }) {
   const beforeId = useRef(0);
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [currentFilter, setCurrentFilter] = useState(0);
-  const {
-    getListLoading,
-    getListData,
-    getListError,
-    hasMoreList,
-  } = useSelector((state) => state.product);
+  const { getListLoading, getListData, getListError, hasMore } = useSelector(
+    (state) => state.product
+  );
   const dispatch = useDispatch();
   const { id } = match.params;
   const onLoadMore = () => {
@@ -51,7 +48,7 @@ export default function ListPage({ location, match }) {
         currentFilter={currentFilter}
         setCurrentFilter={setCurrentFilter}
         onLoadMore={onLoadMore}
-        hasMoreList={hasMoreList}
+        hasMoreList={hasMore}
       />
       <ButtonFix />
     </>
