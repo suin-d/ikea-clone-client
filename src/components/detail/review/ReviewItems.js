@@ -17,13 +17,17 @@ const CommentRecom = styled.div`
 `;
 const ItemImage = styled.div`
   margin-top: 35px;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  /* height: 300px; */
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   img {
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    padding: 10px;
+    max-width: 150px;
+    max-height: 150px;
   }
 `;
 
@@ -54,57 +58,24 @@ const ItemBox = styled.div`
 const ReviewListContainer = styled.div`
   width: 100%;
 `;
-const reviews = [
-  {
-    id: 0,
-    userId: 'user01',
-    commentTitle: '너무너무 좋아요',
-    commentContent: '으아아ㅏ아ㅏ 좋아요 진짜에요! 믿고 사세요',
-    userGrade: 4.5,
-    createdAt: '2021-01-11',
-    commentRecom: true,
-    cmimgSrc:
-      'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0944427_PE797252_S5.JPG?f=s',
-  },
-  {
-    id: 1,
-    userId: 'user02',
-    commentTitle: '너무요',
-    commentContent: '으아아ㅏ아ㅏ 좋아요 진짜에요! 믿고 사세요',
-    userGrade: 4.5,
-    createdAt: '2021-01-12',
-    commentRecom: true,
-    cmimgSrc:
-      'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0944427_PE797252_S5.JPG?f=s',
-  },
-  {
-    id: 2,
-    userId: 'user03',
-    commentTitle: '좋아요',
-    commentContent: '으아아ㅏ아ㅏ 좋아요 진짜에요! 믿고 사세요',
-    userGrade: 4.5,
-    createdAt: '2021-01-13',
-    commentRecom: true,
-    cmimgSrc:
-      'https://www.ikea.com/kr/ko/images/products/angersby-2-seat-sofa-knisa-light-grey__0944427_PE797252_S5.JPG?f=s',
-  },
-];
 
 function ReviewItem({ item }) {
   return (
     <ItemBox>
       <ItemTop>
-        <ReviewScore />
-        <span>{`${item.userId} - ${item.createdAt}`}</span>
+        <ReviewScore grade={item.grade} />
+        <span>{`${item.User.name} - ${item.createdAt}`}</span>
       </ItemTop>
       <ItemContent>
-        <h3>{item.commentTitle}</h3>
-        <p>{item.commentContent}</p>
+        <h3>{item.title}</h3>
+        <p>{item.content}</p>
       </ItemContent>
       <ItemImage>
-        <img src={item.cmimgSrc} alt="상품사진" />
+        {item.ReviewImages.map((v) => (
+          <img src={`http://localhost:8000/u/r/${v.src}`} alt="상품사진" />
+        ))}
       </ItemImage>
-      {item.commentRecom && (
+      {item.recommend && (
         <CommentRecom>
           <BiCheck />
           <span>추천</span>
@@ -114,12 +85,11 @@ function ReviewItem({ item }) {
   );
 }
 
-export default function ReviewItems() {
+export default function ReviewItems({ reviewList }) {
   return (
     <ReviewListContainer>
-      {reviews.map((item) => (
-        <ReviewItem key={item.id} item={item} />
-      ))}
+      {reviewList &&
+        reviewList.map((item) => <ReviewItem key={item.id} item={item} />)}
     </ReviewListContainer>
   );
 }

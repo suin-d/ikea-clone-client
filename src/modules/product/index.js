@@ -25,6 +25,15 @@ export const GET_HF_ERROR = 'product/GET_HF_ERROR';
 export const LOAD_MORE_HF_REQUEST = 'product/LOAD_MORE_HF_REQUEST';
 export const LOAD_MORE_HF_SUCCESS = 'product/LOAD_MORE_HF_SUCCESS';
 export const LOAD_MORE_HF_ERROR = 'product/LOAD_MORE_HF_ERROR';
+export const UPLOAD_IMAGES_REQUEST = 'product/UPLOAD_IMAGES_REQUEST';
+export const UPLOAD_IMAGES_SUCCESS = 'product/UPLOAD_IMAGES_SUCCESS';
+export const UPLOAD_IMAGES_ERROR = 'product/UPLOAD_IMAGES_ERROR';
+export const ADD_REVIEW_REQUEST = 'product/ADD_REVIEW_REQUEST';
+export const ADD_REVIEW_SUCCESS = 'product/ADD_REVIEW_SUCCESS';
+export const ADD_REVIEW_ERROR = 'product/ADD_REVIEW_ERROR';
+export const GET_REVIEWS_REQUEST = 'product/GET_REVIEWS_REQUEST';
+export const GET_REVIEWS_SUCCESS = 'product/GET_REVIEWS_SUCCESS';
+export const GET_REVIEWS_ERROR = 'product/GET_REVIEWS_ERROR';
 
 const initialState = {
   searchLoading: false,
@@ -48,6 +57,15 @@ const initialState = {
   getHfLoading: false,
   getHfData: null,
   getHfError: null,
+  uploadImagesLoading: false,
+  uploadImagesData: null,
+  uploadImagesError: null,
+  addReviewLoading: false,
+  addReviewData: null,
+  addReviewError: null,
+  getReviewsLoading: false,
+  getReviewsData: null,
+  getReviewsError: null,
 
   hasMore: true,
 };
@@ -228,6 +246,69 @@ export default function product(state = initialState, action) {
         getHfLoading: false,
         getHfData: null,
         getHfError: action.payload,
+      };
+    case UPLOAD_IMAGES_REQUEST:
+      return {
+        ...state,
+        uploadImagesLoading: true,
+        uploadImagesData: null,
+        uploadImagesError: null,
+      };
+    case UPLOAD_IMAGES_SUCCESS:
+      return {
+        ...state,
+        uploadImagesLoading: false,
+        uploadImagesData: action.payload,
+        uploadImagesError: null,
+      };
+    case UPLOAD_IMAGES_ERROR:
+      return {
+        ...state,
+        uploadImagesLoading: false,
+        uploadImagesData: null,
+        uploadImagesError: action.payload,
+      };
+    case ADD_REVIEW_REQUEST:
+      return {
+        ...state,
+        addReviewLoading: true,
+        addReviewData: null,
+        addReviewError: null,
+      };
+    case ADD_REVIEW_SUCCESS:
+      return {
+        ...state,
+        addReviewLoading: false,
+        addReviewData: action.payload,
+        addReviewError: null,
+      };
+    case ADD_REVIEW_ERROR:
+      return {
+        ...state,
+        addReviewLoading: false,
+        addReviewData: null,
+        addReviewError: action.payload,
+      };
+    case GET_REVIEWS_REQUEST:
+      return {
+        ...state,
+        getReviewsLoading: true,
+        getReviewsData: null,
+        getReviewsError: null,
+      };
+    case GET_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        getReviewsLoading: false,
+        getReviewsData: action.payload,
+        getReviewsError: null,
+      };
+    case GET_REVIEWS_ERROR:
+      return {
+        ...state,
+        getReviewsLoading: false,
+        getReviewsData: null,
+        getReviewsError: action.payload,
       };
     default:
       return state;

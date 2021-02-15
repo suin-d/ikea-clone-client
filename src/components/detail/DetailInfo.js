@@ -105,7 +105,7 @@ const DetailInfoWrapper = styled.div`
     font-size: 14px;
   }
 `;
-export default function DetailInfo({ setReviewOpen, product }) {
+export default function DetailInfo({ setReviewOpen, product, grade }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const { userInfo } = useSelector((state) => state.user);
@@ -131,6 +131,7 @@ export default function DetailInfo({ setReviewOpen, product }) {
             <ReviewScore
               reviewCnt={product.reviewCnt}
               setReviewOpen={setReviewOpen}
+              grade={grade}
             />
           </ProName>
           <ProPrice>

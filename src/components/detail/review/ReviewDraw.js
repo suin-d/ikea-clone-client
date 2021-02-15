@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RiAddLine } from 'react-icons/ri';
+import { useDispatch, useSelector } from 'react-redux';
 import styled, { css, keyframes } from 'styled-components';
+import { getReviews } from '../../../modules/product/thunk';
 import ButtonRound from '../../common/buttons/ButtonRound';
 import ReviewItems from './ReviewItems';
 import ReviewScore from './ReviewScore';
@@ -150,15 +152,26 @@ const ReviewDrawContainer = styled.div`
 `;
 
 function DrawContainer() {
+  const {
+    getProductData: { id, grade },
+    getReviewsData: reviewList,
+  } = useSelector((state) => state.product);
+  const dispatch = useDispatch();
   const [writeReview, setWriteReview] = useState(false);
+
+  useEffect(() => {
+    dispatch(getReviews(id));
+  }, [dispatch, id]);
+
+  if (!reviewList) return null;
   return (
     <DrawBox>
       <DrawHeaderContainer writeReview={writeReview}>
         <h1>상품평</h1>
         <div>
           <section className="first-section">
-            <h2>4.5</h2>
-            <ReviewScore reviewCnt={14} />
+            <h2>{grade}</h2>
+            <ReviewScore reviewCnt={reviewList.length} grade={grade} />
           </section>
           <section className="second-section">
             <ButtonRound onClick={() => setWriteReview(!writeReview)}>
@@ -169,7 +182,7 @@ function DrawContainer() {
       </DrawHeaderContainer>
       <DrawContentContainer>
         {writeReview && <WriteReviewDraw />}
-        {!writeReview && <ReviewItems />}
+        {!writeReview && <ReviewItems reviewList={reviewList} />}
       </DrawContentContainer>
     </DrawBox>
   );
@@ -184,6 +197,7 @@ export default function ReviewDraw({ reviewOpen, setReviewOpen }) {
     }, 300);
     setDrawVisible(false);
   };
+
   return (
     <ReviewDrawContainer>
       <ReviewDrawBox visible={drawVisible}>
