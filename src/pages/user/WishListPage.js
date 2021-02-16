@@ -92,8 +92,10 @@ export default function WishListPage() {
     );
   };
   useEffect(() => {
-    dispatch(getWishList(userInfo.email));
-  }, [dispatch, userInfo.email]);
+    if (userInfo) {
+      dispatch(getWishList(userInfo.email));
+    }
+  }, [dispatch]);
   if (!getWishData) return null;
   return (
     <WishListContainer>

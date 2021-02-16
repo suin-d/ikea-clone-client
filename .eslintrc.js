@@ -39,5 +39,6 @@ module.exports = {
     'object-curly-newline': 0,
     'react/no-array-index-key': 0,
     'function-paren-newline': 0,
+    'react-hooks/exhaustive-deps': 0,
   },
 };
