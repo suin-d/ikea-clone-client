@@ -289,10 +289,6 @@ export default function user(state = initialState, action) {
         getWishData:
           state.getWishData &&
           state.getWishData.filter((v) => v.id !== action.payload.productId),
-        // TODO:요기 요기 에러있었음
-        // getWishData:
-        //   state.getWishData.wishItem &&
-        //   state.getWishData.wishItem.filter((v) => v.id !== action.payload.productId),
       };
     case GET_WISH_REQUEST:
       return {

@@ -103,10 +103,6 @@ const getTotal = (data) =>
     0
   );
 export default function CartPage({ history }) {
-  // TODO:
-  // 주문금액 총합은 만들어두었고
-  // 수량이랑 수량곱한 총액은 아래에 예시로 만들어두었어요
-  // 로그인하라고 뜨는건 다른걸로 대체할걸 찾아보아야 할 것 같아요
   const { loadCartLoading, loadCartData: data, loadCartError } = useSelector(
     (state) => state.user
   );

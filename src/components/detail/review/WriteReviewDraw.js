@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import useInput from '../../../hooks/useInput';
 import GradeForm from './GradeForm';
 import ImgBox from './ImgBox';
+import { addReview } from '../../../modules/product/thunk';
 
 const InputContent = styled.textarea`
   width: 100%;
@@ -25,7 +27,7 @@ const InputTitle = styled.input`
   font-size: 14px;
   color: #484848;
 `;
-const InputRecom = styled.div`
+const InputRecom = styled.label`
   display: flex;
   align-items: center;
   span {
@@ -62,20 +64,36 @@ const initialGrade = [
   { id: 3, state: 0 },
   { id: 4, state: 0 },
 ];
-export default function WriteReviewDraw() {
+export default function WriteReviewDraw({ setReviewOpen }) {
+  const { getProductData: product, uploadImagesData: imageData } = useSelector(
+    (state) => state.product
+  );
+  const { userInfo } = useSelector((state) => state.user);
+  const dispatch = useDispatch();
+
   const [recom, setRecom] = useState(false);
   const [title, onChangeTitle] = useInput('');
   const [content, onChangeContent] = useInput('');
-  const [imgBase64, setImgBase64] = useState(''); // 파일 base64
-  const [selectImg, setSelectImg] = useState(null);
   const [grade, setGrade] = useState(initialGrade);
   const [userGrade, setUserGrade] = useState(0);
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(
+      addReview({
+        title,
+        content,
+        grade: userGrade,
+        recommend: recom,
+        userId: userInfo.id,
+        productId: product.id,
+        images: imageData,
+      })
+    );
+    setReviewOpen(false);
   };
 
   return (
-    <CommentForm onSubmit={onSubmit}>
+    <CommentForm onSubmit={onSubmit} encType="multipart/form-data">
       <InputRecom active={recom} onClick={() => setRecom(!recom)}>
         <input
           type="checkbox"
@@ -83,6 +101,7 @@ export default function WriteReviewDraw() {
           id="recomCk"
           hidden
           checked={recom}
+          onChange={() => setRecom(!recom)}
         />
         <span id="recomCkSpan" />
         <label>이 제품을 추천합니다</label>
@@ -105,12 +124,7 @@ export default function WriteReviewDraw() {
         onChange={onChangeContent}
         required
       />
-      <ImgBox
-        imgBase64={imgBase64}
-        setImgBase64={setImgBase64}
-        selectImg={selectImg}
-        setSelectImg={setSelectImg}
-      />
+      <ImgBox imageData={imageData} />
       <ButtonBig type="submit">작성하기</ButtonBig>
     </CommentForm>
   );

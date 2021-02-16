@@ -27,6 +27,15 @@ import {
   LOAD_MORE_HF_REQUEST,
   LOAD_MORE_HF_SUCCESS,
   LOAD_MORE_HF_ERROR,
+  UPLOAD_IMAGES_REQUEST,
+  UPLOAD_IMAGES_SUCCESS,
+  UPLOAD_IMAGES_ERROR,
+  ADD_REVIEW_REQUEST,
+  ADD_REVIEW_SUCCESS,
+  ADD_REVIEW_ERROR,
+  GET_REVIEWS_REQUEST,
+  GET_REVIEWS_SUCCESS,
+  GET_REVIEWS_ERROR,
 } from '.';
 
 export const search = (keyword) => async (dispatch) => {
@@ -102,9 +111,7 @@ export const addCart = (data) => async (dispatch) => {
 export const getProduct = (productId) => async (dispatch) => {
   try {
     dispatch({ type: GET_PRODUCT_REQUEST });
-    const response = await axios.get(
-      `http://localhost:8000/api/product/${productId}`
-    );
+    const response = await axios.get(`/api/product/${productId}`);
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: GET_PRODUCT_ERROR, payload: e.response.data });
@@ -114,9 +121,7 @@ export const getProduct = (productId) => async (dispatch) => {
 export const getHf = (cateId) => async (dispatch) => {
   try {
     dispatch({ type: GET_HF_REQUEST });
-    const response = await axios.get(
-      `http://localhost:8000/api/product/homefurnishing/${cateId}`
-    );
+    const response = await axios.get(`/api/product/homefurnishing/${cateId}`);
     dispatch({ type: GET_HF_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: GET_HF_ERROR, payload: e.response.data });
@@ -126,10 +131,37 @@ export const loadMoreHf = (data) => async (dispatch) => {
   try {
     dispatch({ type: LOAD_MORE_HF_REQUEST });
     const response = await axios.get(
-      `http://localhost:8000/api/product/homefurnishing/${data.cateId}?offset=${data.offset}`
+      `/api/product/homefurnishing/${data.cateId}?offset=${data.offset}`
     );
     dispatch({ type: LOAD_MORE_HF_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: LOAD_MORE_HF_ERROR, payload: e.response.data });
+  }
+};
+export const uploadImages = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: UPLOAD_IMAGES_REQUEST });
+    const response = await axios.post('/api/product/images', data);
+    dispatch({ type: UPLOAD_IMAGES_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: UPLOAD_IMAGES_ERROR, payload: e.response.data });
+  }
+};
+export const addReview = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: ADD_REVIEW_REQUEST });
+    const response = await axios.post('/api/product/review', data);
+    dispatch({ type: ADD_REVIEW_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: ADD_REVIEW_ERROR, payload: e.response.data });
+  }
+};
+export const getReviews = (productId) => async (dispatch) => {
+  try {
+    dispatch({ type: GET_REVIEWS_REQUEST });
+    const response = await axios.get(`/api/product/review/${productId}`);
+    dispatch({ type: GET_REVIEWS_SUCCESS, payload: response.data });
+  } catch (e) {
+    dispatch({ type: GET_REVIEWS_ERROR, payload: e.response.data });
   }
 };

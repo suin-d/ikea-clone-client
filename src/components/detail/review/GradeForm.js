@@ -24,12 +24,7 @@ const InputGrade = styled.div`
   }
 `;
 
-export default function GradeForm({
-  grade,
-  setGrade,
-  userGrade,
-  setUserGrade,
-}) {
+export default function GradeForm({ grade, setGrade, setUserGrade }) {
   const onClickStar = (index, state) => {
     let g = [];
     let ug = 0;
@@ -78,7 +73,6 @@ export default function GradeForm({
             )}
           </li>
         ))}
-        <input type="number" value={userGrade} name="userGrade" hidden />
       </ul>
     </InputGrade>
   );

@@ -88,6 +88,7 @@ function DetailAbout({ setReviewOpen, product }) {
           <ReviewScore
             reviewCnt={product.reviewCnt}
             setReviewOpen={setReviewOpen}
+            grade={product.grade}
           />
         </div>
         <IoIosArrowForward />
@@ -138,7 +139,11 @@ export default function DetailPage({ match }) {
           <p>{product.detailInfo}</p>
           <DetailAbout setReviewOpen={setReviewOpen} product={product} />
         </DetailMainBox>
-        <DetailInfo setReviewOpen={setReviewOpen} product={product} />
+        <DetailInfo
+          setReviewOpen={setReviewOpen}
+          product={product}
+          grade={product.grade}
+        />
       </DetailTopContainer>
       {reviewOpen && (
         <ReviewDraw reviewOpen={reviewOpen} setReviewOpen={setReviewOpen} />

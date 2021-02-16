@@ -1,12 +1,16 @@
 import React from 'react';
 import { BiBuildings } from 'react-icons/bi';
 import { GrDeliver } from 'react-icons/gr';
-import styled, { css } from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
+import { addCart } from '../../modules/product/thunk';
 import ButtonBig from '../common/buttons/ButtonBig';
 import ButtonWish from '../common/buttons/ButtonWish';
 import ReviewScore from './review/ReviewScore';
 
-const CheckMsg = styled.p`
+const CheckMsg = styled.div`
+  width: 100%;
   padding: 23px 0;
   word-break: keep-all;
   color: #484848;
@@ -16,6 +20,9 @@ const CheckMsg = styled.p`
     font-size: 21px;
     margin-right: 13px;
   }
+  p {
+    flex: 1;
+  }
   i {
     margin-left: 6px;
     display: inline-block;
@@ -24,26 +31,9 @@ const CheckMsg = styled.p`
     border-radius: 50%;
     background-color: #0a8a00;
   }
-  ${(props) =>
-    props.state === 'stock' &&
-    css`
-      & {
-        border-top: 1px solid #dfdfdf;
-        display: flex;
-        align-items: flex-start;
-        i {
-          background-color: #e00751;
-        }
-        div {
-          span {
-            display: block;
-          }
-          span + span {
-            margin-top: 11px;
-          }
-        }
-      }
-    `};
+  & + & {
+    border-top: 1px solid #dfdfdf;
+  }
 `;
 const ButtonWrapper = styled.div`
   display: flex;
@@ -115,11 +105,17 @@ const DetailInfoWrapper = styled.div`
     font-size: 14px;
   }
 `;
-export default function DetailInfo({ setReviewOpen, product }) {
-  // TODO:
-  // 구매하기 버튼에 장바구니 추가함수 연결하기
-  // 다른 매장 재고에 a태그 들어가있음 a태그 기본기능=(새로고침)
-  // DetailPage안에서 p 태그에 validateDOMNesting(...): <div> cannot appear as a descendant of <p>.에러뜨는중
+export default function DetailInfo({ setReviewOpen, product, grade }) {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { userInfo } = useSelector((state) => state.user);
+  const onAddCart = () => {
+    if (userInfo) {
+      dispatch(addCart({ userEmail: userInfo.email, productId: product.id }));
+    } else {
+      history.push('/user/signin');
+    }
+  };
   return (
     <DetailInfoWrapper>
       <DetailInfoContainer>
@@ -135,6 +131,7 @@ export default function DetailInfo({ setReviewOpen, product }) {
             <ReviewScore
               reviewCnt={product.reviewCnt}
               setReviewOpen={setReviewOpen}
+              grade={grade}
             />
           </ProName>
           <ProPrice>
@@ -145,26 +142,18 @@ export default function DetailInfo({ setReviewOpen, product }) {
           </ProPrice>
         </ProInfo>
         <ButtonWrapper>
-          <ButtonBig>구매하기</ButtonBig>
+          <ButtonBig onClick={onAddCart}>구매하기</ButtonBig>
           <ButtonWish data={product} />
         </ButtonWrapper>
         <CheckMsg>
           <GrDeliver />
-          배송 여부는 결제 단계에서 확인하실 수 있습니다.
+          <p>배송 여부는 결제 단계에서 확인하실 수 있습니다.</p>
           <i />
         </CheckMsg>
-        <CheckMsg state="stock">
+        <CheckMsg>
           <BiBuildings />
-          <div>
-            <span>
-              <a href="/detail">고양</a>
-              에서는 임시 품절되었습니다.
-              <i />
-            </span>
-            <span>
-              <a href="/detail">다른 매장 재고 확인</a>
-            </span>
-          </div>
+          <p>온라인에서만 구매 가능한 상품입니다.</p>
+          <i />
         </CheckMsg>
       </DetailInfoContainer>
     </DetailInfoWrapper>
