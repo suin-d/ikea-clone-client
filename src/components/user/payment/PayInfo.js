@@ -12,6 +12,17 @@ export const ContentSection = styled.section`
     font-size: 25px;
     font-weight: bold;
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 10px 20px;
+    .paypal-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    h1 {
+      font-size: 22px;
+    }
+  }
 `;
 const PayInfoContainer = styled(ContentSection)`
   ul {
@@ -43,6 +54,15 @@ const PayInfoContainer = styled(ContentSection)`
       }
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    article{
+      h3{
+        font-size: 16px;
+      }
+      p{
+        font-size: 14px;
+      }
+    }
 `;
 function PayItem({ data }) {
   return (

@@ -12,6 +12,10 @@ const ContentContainer = styled.div`
   max-width: 600px;
   margin: 0 auto;
   padding-right: 60px;
+  @media ${({ theme }) => theme.mobile} {
+    padding-right: 0px;
+    padding: 0 10px;
+  }
 `;
 
 const getTotal = (data) =>

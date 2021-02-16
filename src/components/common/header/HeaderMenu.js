@@ -98,7 +98,10 @@ const MenuBtnBox = styled.div`
   }
   @media ${({ theme }) => theme.mobile} {
     width: 40px;
-    height: 46px;
+    height: 40px;
+    margin-top: 4px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.8);
     svg {
       position: static;
       cursor: pointer;
