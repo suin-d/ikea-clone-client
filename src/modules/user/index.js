@@ -34,6 +34,9 @@ export const LOAD_CART_ERROR = 'user/LOAD_CART_ERROR';
 export const REMOVE_CART_REQUEST = 'user/REMOVE_CART_REQUEST';
 export const REMOVE_CART_SUCCESS = 'user/REMOVE_CART_SUCCESS';
 export const REMOVE_CART_ERROR = 'user/REMOVE_CART_ERROR';
+export const UPDATE_CART_REQUEST = 'user/UPDATE_CART_REQUEST';
+export const UPDATE_CART_SUCCESS = 'user/UPDATE_CART_SUCCESS';
+export const UPDATE_CART_ERROR = 'user/UPDATE_CART_ERROR';
 export const UPDATE_USER_REQUEST = 'user/UPDATE_USER_REQUEST';
 export const UPDATE_USER_SUCCESS = 'user/UPDATE_USER_SUCCESS';
 export const UPDATE_USER_ERROR = 'user/UPDATE_USER_ERROR';
@@ -74,6 +77,9 @@ const initialState = {
   removeCartLoading: false,
   removeCartData: null,
   removeCartError: null,
+  updateCartLoading: false,
+  updateCartData: null,
+  updateCartError: null,
   updateUserLoading: false,
   updateUserData: null,
   updateUserError: null,
@@ -372,53 +378,33 @@ export default function user(state = initialState, action) {
         removeCartData: null,
         removeCartError: action.payload,
       };
-    case GET_HISTORY_REQUEST:
+    case UPDATE_CART_REQUEST:
       return {
         ...state,
-        getHistoryLoading: true,
-        getHistoryData: null,
-        getHistoryError: null,
+        updateCartLoading: true,
+        updateCartData: null,
+        updateCartError: null,
       };
-    case GET_HISTORY_SUCCESS:
+    case UPDATE_CART_SUCCESS:
       return {
         ...state,
-        getHistoryLoading: false,
-        getHistoryData: action.payload,
-        getHistoryError: null,
+        updateCartLoading: false,
+        updateCartData: action.payload,
+        updateCartError: null,
+        loadCartData: state.loadCartData.map(
+          (v) =>
+            v.id === action.payload.cartId
+              ? { ...v, quantity: action.payload.quantity }
+              : v
+          // eslint-disable-next-line function-paren-newline
+        ),
       };
-    case GET_HISTORY_ERROR:
+    case UPDATE_CART_ERROR:
       return {
         ...state,
-        getHistoryLoading: false,
-        getHistoryData: null,
-        getHistoryError: action.payload,
-      };
-    case SUCCESS_PAYMENT_REQUEST:
-      return {
-        ...state,
-        successPaymentLoading: true,
-        successPaymentData: null,
-        successPaymentError: null,
-      };
-    case SUCCESS_PAYMENT_SUCCESS:
-      return {
-        ...state,
-        successPaymentLoading: false,
-        successPaymentData: action.payload,
-        successPaymentError: null,
-        loadCartData: [],
-        userInfo: {
-          ...state.userInfo,
-          Carts: [],
-          Payments: state.userInfo.Payments.concat({ id: action.payload.id }),
-        },
-      };
-    case SUCCESS_PAYMENT_ERROR:
-      return {
-        ...state,
-        successPaymentLoading: false,
-        successPaymentData: null,
-        successPaymentError: action.payload,
+        updateCartLoading: false,
+        updateCartData: null,
+        updateCartError: action.payload,
       };
     default:
       return state;

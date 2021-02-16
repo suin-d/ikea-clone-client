@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { removeCart } from '../../../modules/user/thunk';
+import { removeCart, changeCart } from '../../../modules/user/thunk';
 import { addWish } from '../../../modules/product/thunk';
+import SelectNumber from '../../common/inputs/SelectNumber';
 
 const CartItem = styled.li`
   display: flex;
@@ -49,6 +50,7 @@ const CartItem = styled.li`
       }
     }
     & > div {
+      margin-top: 20px;
       button {
         background: none;
         border: none;
@@ -70,6 +72,18 @@ const CartItem = styled.li`
 export default function CartProduct({ data, userInfo }) {
   const imgIndex = data.Product ? data.Product.ProdImages[0] : null;
   const dispatch = useDispatch();
+  const [quantity, setQuantity] = useState(data.quantity);
+
+  const onChangeQuantity = (e) => {
+    setQuantity(e.target.value);
+    const data1 = {
+      cartId: data.id,
+      quantity: parseInt(e.target.value, 10),
+    };
+    console.log(e.target.value);
+    console.log(data1);
+    dispatch(changeCart(data1));
+  };
 
   const onRemoveCart = () => {
     dispatch(removeCart({ email: userInfo.email, productId: data.Product.id }));
@@ -108,6 +122,7 @@ export default function CartProduct({ data, userInfo }) {
           </div>
         </article>
         <div>
+          <SelectNumber onChange={onChangeQuantity} value={quantity} />
           <button onClick={onRemoveCart}>삭제</button>
           <button onClick={onAddWishRemoveCart}>위시리스트 저장</button>
         </div>

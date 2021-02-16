@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { RiUser3Line } from 'react-icons/ri';
+import { RiHeartLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
@@ -96,6 +96,7 @@ const CartInner = styled.div`
   padding-right: 60px;
   letter-spacing: 0.7px;
 `;
+
 const getTotal = (data) =>
   data.reduce(
     (acc, v) => parseInt(v.quantity, 10) * parseInt(v.Product.slCost, 10) + acc,
@@ -113,6 +114,7 @@ export default function CartPage({ history }) {
   const dispatch = useDispatch();
 
   const userInfo = useCheckLogin();
+
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
     if (userInfo) {
@@ -137,14 +139,14 @@ export default function CartPage({ history }) {
       </CartTopContainer>
       <CartLoginPromoContainer>
         <div>
-          <h2>로그인</h2>
+          <h2>상품 더 둘러보기</h2>
           <div>
-            <Link to="/user/signin">로그인 또는 회원가입</Link>
-            으로 로그인하시면 더 편리하게 이용하실 수 있어요
+            <Link to="/user/wish">위시리스트</Link>
+            <span>에 저장한 상품을 한번 더 둘러보세요</span>
           </div>
         </div>
         <i>
-          <RiUser3Line />
+          <RiHeartLine />
         </i>
       </CartLoginPromoContainer>
 

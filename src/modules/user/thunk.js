@@ -27,6 +27,9 @@ import {
   REMOVE_CART_ERROR,
   REMOVE_CART_REQUEST,
   REMOVE_CART_SUCCESS,
+  UPDATE_CART_REQUEST,
+  UPDATE_CART_SUCCESS,
+  UPDATE_CART_ERROR,
   SIGN_UP_ERROR,
   SIGN_UP_REQUEST,
   SIGN_UP_SUCCESS,
@@ -217,7 +220,6 @@ export const getCart = (email) => async (dispatch) => {
     });
   }
 };
-
 export const getHistory = (email) => async (dispatch) => {
   try {
     dispatch({
@@ -248,6 +250,17 @@ export const removeCart = (data) => async (dispatch) => {
   }
 };
 
+export const changeCart = (data) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_CART_REQUEST });
+    const response = await axios.patch('api/userproduct/cart', data);
+    console.log(response);
+    dispatch({ type: UPDATE_CART_SUCCESS, payload: response.data });
+  } catch (e) {
+    console.error(e);
+    dispatch({ type: UPDATE_CART_ERROR, payload: e.response.data });
+  }
+};
 export const successPayment = (data) => async (dispatch) => {
   try {
     dispatch({ type: SUCCESS_PAYMENT_REQUEST });
