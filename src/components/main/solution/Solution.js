@@ -13,14 +13,10 @@ const TitleBox = styled.div`
     font-size: 25px;
     font-weight: 700;
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 20px;
+  }
 `;
-
-const SolutionBox = styled.ul`
-  display: flex;
-  gap: 20px;
-  justify-content: space-between;
-`;
-
 const FirstBox = styled.li`
   background: #00a553;
   position: relative;
@@ -56,6 +52,36 @@ const FirstBox = styled.li`
   }
 `;
 
+const SolutionBox = styled.ul`
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  @media ${({ theme }) => theme.mobile} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    flex-wrap: wrap;
+    & > li {
+      width: 100%;
+      &:hover {
+        button:not(${FirstBox}>button) {
+          opacity: 0;
+        }
+      }
+      button:not(${FirstBox}>button) {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        border-radius: 0;
+        border: none;
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+`;
 const solutionItems = [
   {
     id: 1,

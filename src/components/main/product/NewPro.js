@@ -13,11 +13,24 @@ const TitleBox = styled.div`
     font-size: 25px;
     font-weight: 700;
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 20px;
+    align-items: center;
+    h1 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
 `;
 
 const ItemsWrapper = styled.ul`
   display: flex;
   gap: 20px;
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 10px;
+    align-items: center;
+    gap: 10px;
+  }
 `;
 
 const ItemBox = styled.li`

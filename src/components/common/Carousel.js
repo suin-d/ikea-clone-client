@@ -11,6 +11,9 @@ const Container = styled.div`
     font-weight: bold;
     padding: 1.6em 0;
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 0 0 20px;
+  }
 `;
 
 const initialSettings = {

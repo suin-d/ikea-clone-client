@@ -37,6 +37,11 @@ const FixButton = styled(CircleButton)`
     left: 22px;
     transform: translate(-50%, -50%);
   }
+  @media ${({ theme }) => theme.mobile} {
+    bottom: 60px;
+    right: 40px;
+    left: auto;
+  }
 `;
 export default function ButtonFix() {
   const scrollTop = () => {

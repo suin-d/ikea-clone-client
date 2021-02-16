@@ -14,6 +14,11 @@ const LayoutBox = styled.main`
   display: grid;
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
+  @media ${({ theme }) => theme.mobile} {
+    display: block;
+    max-width: 100%;
+    margin: 150px 0px 0px 0px;
+  }
 `;
 
 export default function Layout({ children }) {

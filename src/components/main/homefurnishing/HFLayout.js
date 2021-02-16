@@ -29,6 +29,17 @@ const HFLayoutContainer = styled.section`
     left: 50%;
     transform: translateX(-50%);
   }
+  @media ${({ theme }) => theme.mobile} {
+    h2 {
+      text-align: center;
+    }
+    & > button {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 `;
 
 export default function HFLayout() {

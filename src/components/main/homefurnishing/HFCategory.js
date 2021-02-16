@@ -9,6 +9,17 @@ const HFCateContainer = styled.ul`
   button + button {
     margin-left: 15px;
   }
+  button {
+    white-space: nowrap;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    height: 60px;
+    overflow-x: scroll;
+    padding-left: 10px;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
 `;
 
 const cateData = [

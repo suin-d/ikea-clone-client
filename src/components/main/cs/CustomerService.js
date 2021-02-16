@@ -9,6 +9,9 @@ const CsBox = styled.div`
   display: flex;
   gap: 1px;
   margin-top: 65px;
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+  }
 `;
 
 const csItems = [

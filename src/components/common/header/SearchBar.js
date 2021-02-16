@@ -44,6 +44,13 @@ const SearchContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media ${({ theme }) => theme.mobile} {
+    left: 0;
+    right: -40px;
+    position: absolute;
+    bottom: -100%;
+    max-width: 350px;
+  }
 `;
 const SearchBox = styled.form`
   display: flex;
@@ -51,6 +58,7 @@ const SearchBox = styled.form`
   align-items: center;
   justify-content: center;
   margin-left: 20px;
+  width: 100%;
   min-width: 500px;
   max-width: 700px;
   border-top-left-radius: 8px;
@@ -105,6 +113,17 @@ const SearchBox = styled.form`
     border-bottom-right-radius: 8px;
     overflow: hidden;
     transition: all 0.3s;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    bottom: -20px;
+    height: 50px;
+    width: 100%;
+    min-width: auto;
+    max-width: auto;
+    margin-left: 0px;
+    input {
+      margin: 0;
+    }
   }
   ${(props) =>
     props.active &&

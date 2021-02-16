@@ -45,6 +45,33 @@ const HeaderBar = styled.div`
       }
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    flex: 1;
+    padding-top: 0px;
+    display: flex;
+    justify-content: space-between;
+    a {
+      img {
+        height: 100%;
+      }
+    }
+    div:nth-child(4) {
+      height: 46px;
+      padding: 0;
+      a {
+        margin: 0;
+      }
+      a:first-child {
+        display: none;
+      }
+    }
+    & > ul {
+      display: none !important;
+      li {
+        display: none;
+      }
+    }
+  }
   ${(props) =>
     props.open &&
     css`
@@ -69,6 +96,14 @@ const MenuBtnBox = styled.div`
     position: fixed;
     top: 50px;
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 40px;
+    height: 46px;
+    svg {
+      position: static;
+      cursor: pointer;
+    }
+  }
 `;
 const HeaderContainer = styled.div`
   max-width: 1800px;
@@ -81,6 +116,27 @@ const HeaderContainer = styled.div`
   top: 0;
   left: 0;
   right: 0;
+
+  @media ${({ theme }) => theme.mobile} {
+    height: 110px;
+    align-items: flex-start;
+    display: flex;
+    margin: 0;
+    background: #fff;
+    padding: 20px 15px 0px 15px;
+    flex-direction: row-reverse;
+    grid-gap: 0px;
+    transition: all 0.3s ease;
+    max-width: 100vw;
+  }
+  ${(props) =>
+    !props.open &&
+    css`
+      @media ${({ theme }) => theme.mobile} {
+        height: 0;
+        padding: 0px 20px 0px 20px;
+      }
+    `}
 `;
 export default function HeaderMenu() {
   const current = useRef(0);
@@ -106,7 +162,7 @@ export default function HeaderMenu() {
     };
   }, [headerOpen, current]);
   return (
-    <HeaderContainer>
+    <HeaderContainer open={headerOpen}>
       <MenuBtnBox>
         <RiMenuLine onClick={() => dispatch({ type: NAV_OPEN })} />
       </MenuBtnBox>

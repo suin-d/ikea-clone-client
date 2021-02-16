@@ -28,6 +28,16 @@ const BannerBox = styled.div`
       margin-bottom: 30px;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+    position: relative;
+    left: 0;
+    right: 0;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
 `;
 
 export default function Banner() {

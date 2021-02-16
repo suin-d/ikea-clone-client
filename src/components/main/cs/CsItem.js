@@ -26,6 +26,9 @@ const ItemBox = styled.div`
     font-size: 14px;
     color: #484848;
   }
+  @media ${({ theme }) => theme.mobile} {
+    height: 70%;
+  }
 `;
 
 export default function CsItem({ data }) {

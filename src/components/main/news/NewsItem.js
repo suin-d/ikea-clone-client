@@ -10,6 +10,11 @@ const ItemBox = styled.div`
     margin-bottom: 32px;
     cursor: pointer;
   }
+  @media ${({ theme }) => theme.mobile} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export default function NewsItem({ data }) {

@@ -6,6 +6,10 @@ const NewsBox = styled.div`
   display: flex;
   gap: 30px;
   margin-top: 65px;
+  @media ${({ theme }) => theme.mobile} {
+    gap: 10px;
+    padding: 0 20px;
+  }
 `;
 
 export default function News({ newsItems }) {
