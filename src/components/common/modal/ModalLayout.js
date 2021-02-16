@@ -25,6 +25,10 @@ const CloseBtn = styled.i`
   font-size: 40px;
   color: #fff;
   cursor: pointer;
+  @media ${({ theme }) => theme.mobile} {
+    color: black;
+    font-weight: bold;
+  }
 `;
 const ModalContainer = styled.div`
   position: fixed;
@@ -49,6 +53,13 @@ const ModalBox = styled.div`
     font-weight: bold;
     color: #0058a3;
     margin-bottom: 10px;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    width: 90%;
+    height: 90%;
+    max-width: auto;
+    padding: 20px 20px;
+    background: #fff;
   }
 `;
 export default function ModalLayout({ title = '', children, close }) {

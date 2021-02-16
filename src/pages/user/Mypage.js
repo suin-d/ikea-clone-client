@@ -7,6 +7,9 @@ import useCheckLogin from '../../hooks/useCheckLogin';
 const Inner = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 20px;
+  }
 `;
 
 export default function MyPage() {

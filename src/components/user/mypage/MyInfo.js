@@ -22,6 +22,11 @@ const ListMenuBox = styled.ul`
         border-bottom: 3px solid #0058a3;
       }
     `}
+  @media ${({ theme }) => theme.mobile} {
+    li {
+      text-align: center;
+    }
+  }
 `;
 function ListMenu({ current, set }) {
   return (
@@ -59,6 +64,20 @@ const InfoContainer = styled.ul`
         display: block;
         font-size: 14px;
         line-height: 1.7;
+      }
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    li > form {
+      width: 100%;
+      fieldset {
+        width: 100%;
+      }
+      & > div {
+        width: 100%;
+      }
+      & > button {
+        width: 100%;
       }
     }
   }

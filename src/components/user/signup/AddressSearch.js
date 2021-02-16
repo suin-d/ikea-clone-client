@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
 import ButtonBig from '../../common/buttons/ButtonBig';
 import ModalLayout from '../../common/modal/ModalLayout';
 
 export default function AddressSearch({ setAddress, setEdit = false }) {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 770);
   const [active, setActive] = useState(false);
   const handleComplete = (data) => {
     let fullAddress = data.address;
@@ -25,6 +26,19 @@ export default function AddressSearch({ setAddress, setEdit = false }) {
       setEdit(false);
     }
   };
+  useEffect(() => {
+    const onWidth = window.addEventListener('resize', () => {
+      if (window.innerWidth < 770) {
+        setIsMobile(true);
+      } else {
+        setIsMobile(false);
+      }
+    });
+    return () => {
+      window.removeEventListener('resize', onWidth);
+    };
+  }, []);
+  console.log(isMobile);
   return (
     <>
       <ButtonBig onClick={() => setActive(true)} width="300px">
@@ -34,9 +48,9 @@ export default function AddressSearch({ setAddress, setEdit = false }) {
         <ModalLayout close={() => setActive(false)} title="주소검색">
           <DaumPostcode
             onComplete={handleComplete}
-            width={500}
+            width={isMobile ? 260 : 500}
             autoClose
-            height={450}
+            height={isMobile ? 550 : 450}
             animation
           />
         </ModalLayout>

@@ -102,6 +102,16 @@ const WellComeInfo = styled.section`
       }
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+    article {
+      line-height: 1.5;
+    }
+    div {
+      margin-top: 20px;
+      width: 100%;
+    }
+  }
 `;
 const WellComeConatiner = styled.section`
   margin-top: 50px;
@@ -111,6 +121,17 @@ const WellComeConatiner = styled.section`
     display: flex;
     justify-content: space-between;
     margin: 40px 0;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    ul {
+      flex-direction: column;
+      li {
+        width: 100%;
+      }
+      li + li {
+        margin-top: 10px;
+      }
+    }
   }
 `;
 const makeMessage = (data, name) => {
