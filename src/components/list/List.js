@@ -107,9 +107,6 @@ function List({
                 정렬
               </ButtonRound>
             </li>
-            <li>
-              <ButtonRound gray>가격</ButtonRound>
-            </li>
           </ul>
           <div>
             <span>{`${data && data.length}개`}</span>

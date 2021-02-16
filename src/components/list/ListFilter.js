@@ -28,11 +28,13 @@ to{
 }
 `;
 const FilterBottom = styled.div`
-  display: flex-start;
   margin-top: 150px;
   padding: 0 40px;
   width: 420px;
   font-size: 14px;
+  overflow: hidden;
+  opacity: 1;
+  transition: all 0.3s ease;
   div {
     padding: 10px 0;
     display: flex;
@@ -65,6 +67,12 @@ const FilterBottom = styled.div`
       }
     }
   }
+  ${(props) =>
+    props.down &&
+    css`
+      opacity: 0;
+      transition: all 0.3s ease;
+    `}
 `;
 
 const FilterTop = styled(NavTop)`
@@ -91,10 +99,12 @@ const FilterTop = styled(NavTop)`
   div {
     padding: 15px 40px;
     display: flex;
+    align-items: center;
     i {
       right: 0;
       font-size: 20px;
       svg {
+        transition: all 0.2s;
         cursor: pointer;
         transform: rotate(0deg);
       }
@@ -105,6 +115,13 @@ const FilterTop = styled(NavTop)`
       text-decoration: underline;
     }
   }
+  ${(props) =>
+    props.down &&
+    css`
+      div > i > svg {
+        transform: rotate(180deg);
+      }
+    `}
 `;
 const FilterBox = styled.nav`
   padding: 15px 40px;
@@ -131,6 +148,7 @@ export default function ListFilter({
   setCurrentFilter,
 }) {
   const [filterVisible, setFilterVisible] = useState(true);
+  const [filterDown, setFilterDown] = useState(false);
 
   const onChangeRadio = (e) => {
     const currentNumber = parseInt(e.target.value, 10);
@@ -147,18 +165,18 @@ export default function ListFilter({
   return (
     <FilterContainer>
       <FilterBox visible={filterVisible}>
-        <FilterTop>
+        <FilterTop down={filterDown}>
           <i>
             <RiAddLine onClick={filterClose} />
           </i>
           <div>
             <h2>정렬</h2>
             <i>
-              <RiArrowDownSLine />
+              <RiArrowDownSLine onClick={() => setFilterDown(!filterDown)} />
             </i>
           </div>
         </FilterTop>
-        <FilterBottom>
+        <FilterBottom down={filterDown}>
           {Filters.map((v) => (
             <div key={v.id}>
               <span>{v.name}</span>
