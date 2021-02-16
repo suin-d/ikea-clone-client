@@ -281,6 +281,7 @@ export default function product(state = initialState, action) {
         addReviewLoading: false,
         addReviewData: action.payload,
         addReviewError: null,
+        uploadImagesData: null,
       };
     case ADD_REVIEW_ERROR:
       return {

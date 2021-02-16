@@ -95,6 +95,9 @@ const CartInner = styled.div`
   margin: 0 auto;
   padding-right: 60px;
   letter-spacing: 0.7px;
+  @media ${({ theme }) => theme.mobile} {
+    padding-right: 00px;
+  }
 `;
 
 const getTotal = (data) =>

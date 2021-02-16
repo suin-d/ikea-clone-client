@@ -86,7 +86,7 @@ function ReviewItem({ item }) {
           />
         ))}
       </ItemImage>
-      {item.recommend && (
+      {item.recommend !== 0 && (
         <CommentRecom>
           <BiCheck />
           <span>추천</span>

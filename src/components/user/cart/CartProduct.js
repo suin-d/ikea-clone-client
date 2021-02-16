@@ -73,6 +73,16 @@ const CartItem = styled.li`
   & + & {
     border-top: 1px solid #dfdfdf;
   }
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+    align-items: center;
+    figure {
+      margin-right: 0;
+    }
+    & > div:last-child {
+      width: 100%;
+    }
+  }
 `;
 
 export default function CartProduct({ data, userInfo }) {

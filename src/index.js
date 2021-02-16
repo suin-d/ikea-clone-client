@@ -8,8 +8,10 @@ import { PersistGate } from 'redux-persist/integration/react';
 import Thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import axios from 'axios';
+import { ThemeProvider } from 'styled-components';
 import App from './App';
 import rootReducer from './modules';
+import theme from './utils/pallete';
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_HOST;
 axios.defaults.withCredentials = true;
@@ -23,7 +25,9 @@ ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       <BrowserRouter>
-        <App />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
       </BrowserRouter>
     </PersistGate>
   </Provider>,

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 import ButtonRound from '../common/buttons/ButtonRound';
-import Cate from '../common/Cate';
 import ListFilter from './ListFilter';
 import ListItem from './ListItem';
 
