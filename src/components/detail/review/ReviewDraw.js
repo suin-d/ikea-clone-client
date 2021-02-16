@@ -151,11 +151,12 @@ const ReviewDrawContainer = styled.div`
   z-index: 1005;
 `;
 
-function DrawContainer() {
+function DrawContainer({ setReviewOpen }) {
   const {
     getProductData: { id, grade },
     getReviewsData: reviewList,
   } = useSelector((state) => state.product);
+  const { userInfo } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [writeReview, setWriteReview] = useState(false);
 
@@ -174,14 +175,16 @@ function DrawContainer() {
             <ReviewScore reviewCnt={reviewList.length} grade={grade} />
           </section>
           <section className="second-section">
-            <ButtonRound onClick={() => setWriteReview(!writeReview)}>
-              {!writeReview ? '상품평 작성' : <RiAddLine />}
-            </ButtonRound>
+            {userInfo && (
+              <ButtonRound onClick={() => setWriteReview(!writeReview)}>
+                {!writeReview ? '상품평 작성' : <RiAddLine />}
+              </ButtonRound>
+            )}
           </section>
         </div>
       </DrawHeaderContainer>
       <DrawContentContainer>
-        {writeReview && <WriteReviewDraw />}
+        {writeReview && <WriteReviewDraw setReviewOpen={setReviewOpen} />}
         {!writeReview && <ReviewItems reviewList={reviewList} />}
       </DrawContentContainer>
     </DrawBox>
@@ -206,7 +209,7 @@ export default function ReviewDraw({ reviewOpen, setReviewOpen }) {
             <RiAddLine onClick={drawClose} />
           </ButtonRound>
         </DrawCloseBtnWrapper>
-        <DrawContainer />
+        <DrawContainer setReviewOpen={setReviewOpen} />
       </ReviewDrawBox>
     </ReviewDrawContainer>
   );

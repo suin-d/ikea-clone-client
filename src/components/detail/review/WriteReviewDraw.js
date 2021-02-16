@@ -64,7 +64,7 @@ const initialGrade = [
   { id: 3, state: 0 },
   { id: 4, state: 0 },
 ];
-export default function WriteReviewDraw() {
+export default function WriteReviewDraw({ setReviewOpen }) {
   const { getProductData: product, uploadImagesData: imageData } = useSelector(
     (state) => state.product
   );
@@ -78,13 +78,6 @@ export default function WriteReviewDraw() {
   const [userGrade, setUserGrade] = useState(0);
   const onSubmit = (e) => {
     e.preventDefault();
-    // console.log('title', title);
-    // console.log('content', content);
-    // console.log('grade', userGrade);
-    // console.log('recommend', recom);
-    // console.log('userId', userInfo.id);
-    // console.log('productId', product.id);
-    // console.log('images', imageData);
     dispatch(
       addReview({
         title,
@@ -96,6 +89,7 @@ export default function WriteReviewDraw() {
         images: imageData,
       })
     );
+    setReviewOpen(false);
   };
 
   return (

@@ -71,8 +71,13 @@ function ReviewItem({ item }) {
         <p>{item.content}</p>
       </ItemContent>
       <ItemImage>
-        {item.ReviewImages.map((v) => (
-          <img src={`http://localhost:8000/u/r/${v.src}`} alt="상품사진" />
+        {item.ReviewImages.map((v, index) => (
+          <img
+            src={`http://localhost:8000/u/r/${v.src}`}
+            alt="상품사진"
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+          />
         ))}
       </ItemImage>
       {item.recommend && (
