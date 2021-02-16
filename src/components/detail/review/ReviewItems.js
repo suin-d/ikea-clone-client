@@ -1,7 +1,11 @@
 import React from 'react';
 import { BiCheck } from 'react-icons/bi';
 import styled from 'styled-components';
+import dayjs from 'dayjs';
 import ReviewScore from './ReviewScore';
+import 'dayjs/locale/ko';
+
+dayjs.locale('ko');
 
 const CommentRecom = styled.div`
   display: flex;
@@ -18,7 +22,6 @@ const CommentRecom = styled.div`
 const ItemImage = styled.div`
   margin-top: 35px;
   width: 100%;
-  /* height: 300px; */
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -64,19 +67,22 @@ function ReviewItem({ item }) {
     <ItemBox>
       <ItemTop>
         <ReviewScore grade={item.grade} />
-        <span>{`${item.User.name} - ${item.createdAt}`}</span>
+        <span>
+          {`${item.User.name} - ${dayjs(item.createdAt)
+            .locale('ko')
+            .format('YYYY년 MMMM D일 HH시 ')}`}
+        </span>
       </ItemTop>
       <ItemContent>
         <h3>{item.title}</h3>
         <p>{item.content}</p>
       </ItemContent>
       <ItemImage>
-        {item.ReviewImages.map((v, index) => (
+        {item.ReviewImages.map((v, i) => (
           <img
-            src={`http://localhost:8000/u/r/${v.src}`}
+            src={`${process.env.REACT_APP_SERVER_HOST}/u/r/${v.src}`}
             alt="상품사진"
-            // eslint-disable-next-line react/no-array-index-key
-            key={index}
+            key={i}
           />
         ))}
       </ItemImage>

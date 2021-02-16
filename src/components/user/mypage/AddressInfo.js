@@ -38,6 +38,7 @@ export default function AddressInfo({ userInfo }) {
             label="우편번호"
             placeholder="위 버튼을 눌러주세요"
             width="500px"
+            onChange={() => null}
           />
           <Gap h="20px" />
           <InputSimple

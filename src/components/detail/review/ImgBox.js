@@ -37,7 +37,6 @@ export default function ImgBox({ imageData }) {
   const imgInput = useRef();
   const dispatch = useDispatch();
   const onChangeImage = (e) => {
-    console.log('images', e.target.files);
     const imageFormData = new FormData();
     [].forEach.call(e.target.files, (f) => {
       imageFormData.append('image', f);
@@ -60,9 +59,10 @@ export default function ImgBox({ imageData }) {
         ) : (
           imageData.map((v) => (
             <img
-              src={`http://localhost:8000/u/r/${v}`}
+              src={`${process.env.REACT_APP_SERVER_HOST}/u/r/${v}`}
               alt="업로드된 제품 이미지"
               id="selectImg"
+              key={v}
             />
           ))
         )}

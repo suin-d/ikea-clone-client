@@ -87,17 +87,13 @@ export default function WishListPage() {
     setNavState(state);
   };
   const onAddCartAll = () => {
-    getWishData.forEach(
-      (data) =>
-        dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
-      // eslint-disable-next-line function-paren-newline
+    getWishData.forEach((data) =>
+      dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
     );
   };
   useEffect(() => {
-    if (userInfo !== null) {
-      dispatch(getWishList(userInfo.email));
-    }
-  }, [dispatch, userInfo]);
+    dispatch(getWishList(userInfo.email));
+  }, [dispatch, userInfo.email]);
   if (!getWishData) return null;
   return (
     <WishListContainer>

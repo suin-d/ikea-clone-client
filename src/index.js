@@ -11,7 +11,7 @@ import axios from 'axios';
 import App from './App';
 import rootReducer from './modules';
 
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = process.env.REACT_APP_SERVER_HOST;
 axios.defaults.withCredentials = true;
 
 const store = createStore(

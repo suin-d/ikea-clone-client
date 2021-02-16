@@ -103,20 +103,16 @@ const getTotal = (data) =>
     0
   );
 export default function CartPage({ history }) {
+  const userInfo = useCheckLogin();
   const { loadCartLoading, loadCartData: data, loadCartError } = useSelector(
     (state) => state.user
   );
 
   const dispatch = useDispatch();
-
-  const userInfo = useCheckLogin();
-
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
-    if (userInfo) {
-      dispatch(getCart(userInfo.email));
-    }
-  }, [dispatch, userInfo]);
+    dispatch(getCart(userInfo.email));
+  }, [dispatch, userInfo.email]);
 
   if (loadCartLoading) return <div>장바구니를 로딩중입니다.</div>;
   if (!data) return <div>장바구니에 담긴 상품이 없습니다.</div>;
@@ -125,7 +121,9 @@ export default function CartPage({ history }) {
     <CartInner>
       <CartTopContainer>
         <h1>장바구니</h1>
-        <ButtonBig>결제하기</ButtonBig>
+        <ButtonBig onClick={() => history.push('/user/payment')}>
+          결제하기
+        </ButtonBig>
         <ul>
           {data &&
             data.map((item) => (

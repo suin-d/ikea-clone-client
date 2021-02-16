@@ -80,8 +80,6 @@ export default function CartProduct({ data, userInfo }) {
       cartId: data.id,
       quantity: parseInt(e.target.value, 10),
     };
-    console.log(e.target.value);
-    console.log(data1);
     dispatch(changeCart(data1));
   };
 

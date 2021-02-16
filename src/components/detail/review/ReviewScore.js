@@ -15,9 +15,13 @@ const ReviewScoreContainer = styled.h4`
   }
 `;
 
-export default function ReviewScore({ reviewCnt, setReviewOpen, grade }) {
+export default function ReviewScore({
+  reviewCnt,
+  setReviewOpen = false,
+  grade,
+}) {
   return (
-    <ReviewScoreContainer onClick={() => setReviewOpen(true)}>
+    <ReviewScoreContainer onClick={() => setReviewOpen && setReviewOpen(true)}>
       {grade === 0 && (
         <>
           <BsStar />

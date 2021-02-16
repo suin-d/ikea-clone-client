@@ -360,12 +360,14 @@ export default function user(state = initialState, action) {
         userInfo: {
           ...state.userInfo,
           Carts: state.userInfo.Carts.filter(
-            (v) => v.id !== action.payload.productId
+            (v) => v.ProductId !== action.payload.productId
           ),
         },
         loadCartData:
           state.loadCartData &&
-          state.loadCartData.filter((v) => v.id !== action.payload.productId),
+          state.loadCartData.filter(
+            (v) => v.Product.id !== action.payload.productId
+          ),
       };
     case REMOVE_CART_ERROR:
       return {
@@ -401,6 +403,54 @@ export default function user(state = initialState, action) {
         updateCartLoading: false,
         updateCartData: null,
         updateCartError: action.payload,
+      };
+    case GET_HISTORY_REQUEST:
+      return {
+        ...state,
+        getHistoryLoading: true,
+        getHistoryData: null,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_SUCCESS:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: action.payload,
+        getHistoryError: null,
+      };
+    case GET_HISTORY_ERROR:
+      return {
+        ...state,
+        getHistoryLoading: false,
+        getHistoryData: null,
+        getHistoryError: action.payload,
+      };
+    case SUCCESS_PAYMENT_REQUEST:
+      return {
+        ...state,
+        successPaymentLoading: true,
+        successPaymentData: null,
+        successPaymentError: null,
+      };
+    case SUCCESS_PAYMENT_SUCCESS:
+      return {
+        ...state,
+        successPaymentLoading: false,
+        successPaymentData: action.payload,
+        successPaymentError: null,
+        loadCartData: [],
+        userInfo: {
+          ...state.userInfo,
+          Carts: [],
+          Payments: state.userInfo.Payments.concat({ id: action.payload.id }),
+        },
+      };
+    case SUCCESS_PAYMENT_ERROR:
+      return {
+        ...state,
+        successPaymentLoading: false,
+        successPaymentData: null,
+        successPaymentError: action.payload,
       };
     default:
       return state;

@@ -245,7 +245,7 @@ export const removeCart = (data) => async (dispatch) => {
     );
     dispatch({ type: REMOVE_CART_SUCCESS, payload: response.data });
   } catch (e) {
-    console.log(e);
+    console.error(e);
     dispatch({ type: REMOVE_CART_ERROR, payload: e.response.data });
   }
 };
@@ -254,7 +254,6 @@ export const changeCart = (data) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_CART_REQUEST });
     const response = await axios.patch('api/userproduct/cart', data);
-    console.log(response);
     dispatch({ type: UPDATE_CART_SUCCESS, payload: response.data });
   } catch (e) {
     console.error(e);
@@ -267,7 +266,7 @@ export const successPayment = (data) => async (dispatch) => {
     const response = await axios.post('/api/userproduct/payment/paypal', data);
     dispatch({ type: SUCCESS_PAYMENT_SUCCESS, payload: response.data });
   } catch (e) {
-    console.log(e);
+    console.error(e);
     dispatch({ type: SUCCESS_PAYMENT_ERROR, payload: e.response.data });
   }
 };

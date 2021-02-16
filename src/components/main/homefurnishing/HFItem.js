@@ -4,33 +4,6 @@ import styled from 'styled-components';
 import { DotButtonBox } from '../../common/buttons/ButtonDot';
 
 const ItemContainer = styled.li`
-  /* flex: 0 0 auto;
-  min-width: 1px;
-  min-height: 1px;
-  margin: 0;
-  grid-row: span 4;
-  display: block;
-  width: auto;
-  grid-column: span 2;
-  position: relative;
-  div {
-    min-width: 1px;
-    min-height: 1px;
-    height: 100%;
-    width: 100%;
-    padding-bottom: 133.33333%;
-    position: relative;
-    img {
-      object-fit: cover;
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-family: 'object-fit: cover;';
-      color: transparent;
-    }
-  } */
   position: relative;
   &:hover {
     ul {
@@ -103,8 +76,8 @@ export default function HFItem({ data }) {
         alt=""
       />
       <ul>
-        {data.HFProducts.map((v) => (
-          <DotItem data={v} />
+        {data.HFProducts.map((v, i) => (
+          <DotItem data={v} key={i} />
         ))}
       </ul>
     </ItemContainer>

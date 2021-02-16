@@ -39,8 +39,10 @@ export default function SelectSimple({
     <StyledSelectBox {...rest}>
       <label>{title}</label>
       <select value={value} onChange={onChange}>
-        {options.map((v) => (
-          <option value={v.id}>{v.value}</option>
+        {options.map((v, i) => (
+          <option value={v.id} key={i}>
+            {v.value}
+          </option>
         ))}
       </select>
     </StyledSelectBox>

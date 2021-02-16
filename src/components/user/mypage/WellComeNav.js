@@ -114,7 +114,6 @@ const WellComeConatiner = styled.section`
   }
 `;
 const makeMessage = (data, name) => {
-  console.log(data);
   if (data.length === 0) {
     return `${name}가 비었습니다.`;
   }

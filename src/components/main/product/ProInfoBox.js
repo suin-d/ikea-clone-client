@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoIosArrowForward } from 'react-icons/io';
+import { useHistory } from 'react-router-dom';
 import styled, { css, keyframes } from 'styled-components';
 
 const showOn = keyframes`
@@ -23,6 +24,7 @@ const InfoBox = styled.div`
   background: #ffffff;
   box-shadow: 0 0 5px #484848;
   animation: ${showOn} 0.2s ease-in-out forwards;
+  cursor: pointer;
   div {
     flex: 1;
     h1 {
@@ -54,8 +56,13 @@ const ArrowBtnBox = styled.div`
 `;
 
 export default function ProInfoBox({ data, active, onLeave }) {
+  const history = useHistory();
   return (
-    <InfoBox active={active} onMouseLeave={onLeave}>
+    <InfoBox
+      active={active}
+      onMouseLeave={onLeave}
+      onClick={() => history.push(`/detail/${data.shortId}`)}
+    >
       <div>
         <h1>{data.proNameEn}</h1>
         <h1>{data.proNameKo}</h1>

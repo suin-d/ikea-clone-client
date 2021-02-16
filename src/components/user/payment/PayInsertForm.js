@@ -29,7 +29,12 @@ export default function PayInsertForm({
         onChange={onChangePhone}
       />
       <Gap h="25px" />
-      <InputSimple label="주소" value={address} placeholder="010-****-****" />
+      <InputSimple
+        label="주소"
+        value={address}
+        placeholder="010-****-****"
+        onChange={() => null}
+      />
       <Gap h="25px" />
       <InputSimple
         label="상세주소"

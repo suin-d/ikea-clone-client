@@ -5,9 +5,6 @@ import { addAlert } from '../../modules/interface';
 import { successPayment } from '../../modules/user/thunk';
 
 export default function Paypal({ priceTotal = 0, userInfo, productInfo }) {
-  //   const {
-  //     loadCart: { data },
-  //   } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const onSuccess = (payment) => {
     console.log('The payment was succeeded!', payment);

@@ -135,7 +135,7 @@ function WishItem({ userInfo, item }) {
     </WishItemContainer>
   );
 }
-export default function WishItems({ userInfo, wishItems }) {
+function WishItems({ userInfo, wishItems }) {
   return (
     <WishListContainer>
       {wishItems ? (
@@ -148,3 +148,5 @@ export default function WishItems({ userInfo, wishItems }) {
     </WishListContainer>
   );
 }
+
+export default React.memo(WishItems);
