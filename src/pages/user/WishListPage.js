@@ -53,6 +53,11 @@ const WishNav = styled.ul`
         transform: translateY(2px);
       }
     `};
+  @media ${({ theme }) => theme.mobile} {
+    li {
+      font-size: 13px;
+    }
+  }
 `;
 const PrintIcon = styled(CircleButton)`
   background: none;
@@ -92,8 +97,10 @@ export default function WishListPage() {
     );
   };
   useEffect(() => {
-    dispatch(getWishList(userInfo.email));
-  }, [dispatch, userInfo.email]);
+    if (userInfo) {
+      dispatch(getWishList(userInfo.email));
+    }
+  }, [dispatch, userInfo]);
   if (!getWishData) return null;
   return (
     <WishListContainer>

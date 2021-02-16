@@ -14,6 +14,8 @@ const CateBox = styled.ul`
     display: flex;
     gap: 4px;
   }
+  @media ${({ theme }) => theme.mobile} {
+  }
 `;
 
 export default function Cate({ bCate, sCate, title, summary }) {

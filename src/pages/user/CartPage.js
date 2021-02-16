@@ -114,8 +114,10 @@ export default function CartPage({ history }) {
   const dispatch = useDispatch();
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
-    dispatch(getCart(userInfo.email));
-  }, [dispatch, userInfo.email]);
+    if (userInfo) {
+      dispatch(getCart(userInfo.email));
+    }
+  }, [dispatch, userInfo]);
 
   if (loadCartLoading) return <div>장바구니를 로딩중입니다.</div>;
   if (!data) return <div>장바구니에 담긴 상품이 없습니다.</div>;
