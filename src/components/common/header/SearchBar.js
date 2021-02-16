@@ -46,7 +46,6 @@ const SearchContainer = styled.div`
   align-items: center;
 `;
 const SearchBox = styled.form`
-  /* margin-right: 200px; */
   display: flex;
   position: relative;
   align-items: center;
@@ -119,16 +118,7 @@ const SearchBox = styled.form`
       }
     `}
 `;
-// const DarkBack = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   bottom: 0;
-//   right: 0;
-//   cursor: pointer;
-//   background: rgba(0, 0, 0, 0.1);
-//   z-index: 1000;
-// `;
+
 function ResultItem({ data, close }) {
   const history = useHistory();
   const goDetail = () => {
@@ -148,7 +138,6 @@ function ResultItem({ data, close }) {
   );
 }
 export default function SearchBar({ headerOpen }) {
-  // 카메라 버튼 없애고 X버튼으로 만든다음에 어두운 배경지우고 searchActive가 true일 경우에는 X버튼 보이게끔
   const { searchData } = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const [searchActive, setSearchActive] = useState(false);

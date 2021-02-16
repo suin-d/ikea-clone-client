@@ -33,6 +33,7 @@ const ListItemBox = styled.div`
     transition: all 0.25s ease;
     font-size: 20px;
     color: #aaa;
+    padding: 5px;
     cursor: pointer;
     &:hover {
       color: #111;
@@ -49,6 +50,14 @@ const ListItemBox = styled.div`
     margin-top: 20px;
     position: relative;
     cursor: pointer;
+    b {
+      p {
+        color: #ed022a;
+        font-weight: 600;
+        margin-bottom: 12px;
+        padding: 0;
+      }
+    }
     h2 {
       font-weight: bold;
       margin-bottom: 7px;
@@ -56,19 +65,20 @@ const ListItemBox = styled.div`
     span {
       line-height: 1.5;
     }
-    div {
+    & > div {
       margin-top: 12px;
       display: flex;
       align-items: flex-start;
       font-weight: bold;
-      span {
-        font-size: 11px;
-        display: inline-block;
-        padding-top: 3px;
-      }
+      flex-direction: column;
       strong {
         text-indent: 3px;
         font-size: 22px;
+      }
+      div {
+        text-decoration: line-through;
+        font-size: 14px;
+        color: #484848;
       }
     }
     button {
@@ -192,11 +202,14 @@ export default function ListItem({ data, listState, userInfo }) {
         )}
         <ImageBox data={data} listState={listState} hover={hover} />
         <article>
+          <b>{data.prCost !== data.slCost && <p>더 낮은 새로운 가격</p>}</b>
           <h2>{data.title}</h2>
           <span>{data.summary}</span>
           <div>
-            <span>￦</span>
-            <strong>{data.prCost.toLocaleString()}</strong>
+            {data.prCost !== data.slCost && (
+              <div>{`₩${data.prCost.toLocaleString()}`}</div>
+            )}
+            <strong>{`₩${data.slCost.toLocaleString()}`}</strong>
           </div>
 
           <ButtonCart onClick={onAddCart} />

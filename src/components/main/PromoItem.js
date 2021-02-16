@@ -5,16 +5,16 @@ import ButtonNext from '../common/buttons/ButtonNext';
 export const promoMocks = [
   {
     id: 1,
-    srcset: `https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxxl 1400w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxl 950w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xl 800w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=l 750w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=m 600w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=s 500w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xs 400w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxs 300w,
-        https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxxs 240w`,
-    name: 'IKEA 기프트 카드로 준비하는 선물같은 새해',
+    srcset: `https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxxl 1400w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxl 950w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xl 800w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=l 750w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=m 600w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=s 500w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xs 400w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxs 300w,
+    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxxs 240w`,
+    name: '정돈된 집에서 시작되는 여유로운 삶',
     color: 'cheese',
   },
   {
@@ -47,16 +47,16 @@ export const promoMocks = [
   },
   {
     id: 4,
-    srcset: `https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxxl 1400w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxl 950w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xl 800w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=l 750w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=m 600w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=s 500w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xs 400w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxs 300w,
-      https://www.ikea.com/images/-cfed60e186b1778b273fd87066b79bcc.jpg?f=xxxs 240w`,
-    name: '설날 특별 선물 세트를 만나보세요',
+    srcset: `https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxxl 1400w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxl 950w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xl 800w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=l 750w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=m 600w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=s 500w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xs 400w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxs 300w,
+    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxxs 240w`,
+    name: '화초로 여유로운 오아시스 만들기',
     color: 'blue',
   },
 ];
@@ -109,7 +109,7 @@ const ListItemBox = styled.li`
       case 'cheese':
         return css`
           article {
-            background: #ebc699;
+            background: #d5a991;
             color: #111;
           }
         `;
@@ -123,7 +123,7 @@ const ListItemBox = styled.li`
       case 'blue':
         return css`
           article {
-            background: #5d5bbd;
+            background: #99bbc3;
             color: #eee;
           }
         `;

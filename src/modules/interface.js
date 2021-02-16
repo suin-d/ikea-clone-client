@@ -14,6 +14,7 @@ import {
   PASSWORD_CHANGE_SUCCESS,
   PASSWORD_SUBMIT_ERROR,
   PASSWORD_SUBMIT_SUCCESS,
+  REMOVE_CART_SUCCESS,
   SIGN_UP_ERROR,
   SIGN_UP_SUCCESS,
   VERIFICATION_ERROR,
@@ -146,6 +147,11 @@ export default function interfaces(state = initialState, action) {
       return {
         ...state,
         alertMsg: '장바구니에 추가되었습니다.',
+      };
+    case REMOVE_CART_SUCCESS:
+      return {
+        ...state,
+        alertMsg: '장바구니에서 삭제되었습니다.',
       };
     case ALERT_RESET:
       return {

@@ -129,7 +129,7 @@ export default function product(state = initialState, action) {
         loadMoreListData: action.payload,
         loadMoreListError: null,
         getListData: state.getListData.concat(action.payload),
-        hasMoreList: !(action.payload.length < 24),
+        hasMore: action.payload.length === 24,
       };
     case LOAD_MORE_LIST_ERROR:
       return {

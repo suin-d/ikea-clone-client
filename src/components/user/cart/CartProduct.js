@@ -43,9 +43,15 @@ const CartItem = styled.li`
           margin-bottom: 5px;
         }
       }
-      div:nth-of-type(2) {
-        font-weight: bold;
+      & > div:nth-of-type(2) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
         strong {
+          font-weight: bold;
+        }
+        div {
+          margin-top: 5px;
         }
       }
     }
@@ -112,11 +118,16 @@ export default function CartProduct({ data, userInfo }) {
             <h2>{data.Product.title}</h2>
             <span>{data.Product.summary}</span>
             <div>{data.Product.size}</div>
-            <div>{`수량: ${data.quantity}개`}</div>
-            <div>{`총액: ${data.Product.slCost * data.quantity}원`}</div>
+            <div>{`수량: ${data.quantity}`}</div>
+            <div>
+              {`총액: ${(
+                data.Product.slCost * data.quantity
+              ).toLocaleString()}원`}
+            </div>
           </div>
           <div>
             <strong>{`￦${data.Product.slCost.toLocaleString()}`}</strong>
+            <div>/&nbsp;개</div>
           </div>
         </article>
         <div>

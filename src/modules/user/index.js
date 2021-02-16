@@ -303,7 +303,6 @@ export default function user(state = initialState, action) {
         getWishLoading: false,
         getWishData: action.payload,
         getWishError: null,
-        // userInfo: null,
       };
     case GET_WISH_ERROR:
       return {
