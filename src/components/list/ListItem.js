@@ -6,21 +6,10 @@ import styled, { css } from 'styled-components';
 import { addCart, addWish, removeWish } from '../../modules/product/thunk';
 import ButtonCart from '../common/buttons/ButtonCart';
 
-const ListItemContainer = styled.li`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 1px solid #dfdfdf;
-  height: 0;
-  padding-top: 170%;
-  position: relative;
-`;
-
 const ListItemBox = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: 14px;
+  font-size: 0.875rem;
   width: 80%;
   height: 80%;
   position: absolute;
@@ -30,14 +19,11 @@ const ListItemBox = styled.div`
   & > i {
     display: inline-block;
     align-self: flex-end;
-    transition: all 0.25s ease;
-    font-size: 20px;
+    transition: all 0.2s ease-in-out;
+    font-size: 1.25rem;
     color: #aaa;
-    padding: 5px;
+    padding: 0.25em;
     cursor: pointer;
-    &:hover {
-      color: #111;
-    }
   }
   div {
     width: 100%;
@@ -73,25 +59,51 @@ const ListItemBox = styled.div`
       flex-direction: column;
       strong {
         text-indent: 3px;
-        font-size: 22px;
+        font-size: 1.313rem;
+        & > span {
+          line-height: 1.9;
+          font-size: 0.875rem;
+          margin-right: 5px;
+          vertical-align: text-top;
+        }
       }
       div {
         text-decoration: line-through;
-        font-size: 14px;
+        font-size: 0.875rem;
         color: #484848;
+        & > span {
+          line-height: 1.9;
+          font-size: 0.875rem;
+          margin-right: 5px;
+          vertical-align: text-top;
+        }
       }
     }
     button {
       position: absolute;
       right: 0;
-      bottom: -30%;
+      bottom: -1.3rem;
       opacity: 0;
-      transition: all 0.25s ease;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  @media ${({ theme }) => theme.tablet} {
+    i {
+      opacity: 1 !important;
+      font-size: 1.5rem;
+    }
+    article {
+      button {
+        opacity: 1;
+      }
     }
   }
   ${(props) =>
     props.hover &&
     css`
+      i {
+        opacity: 1;
+      }
       article {
         button {
           opacity: 1;
@@ -99,7 +111,16 @@ const ListItemBox = styled.div`
       }
     `}
 `;
-
+const ListItemContainer = styled.li`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid #dfdfdf;
+  height: 0;
+  padding-top: 170%;
+  position: relative;
+`;
 function ImageBox({ data, listState, hover }) {
   const imgIndex = data.ProdImages[1] ? 1 : 0;
   return (
@@ -207,9 +228,15 @@ export default function ListItem({ data, listState, userInfo }) {
           <span>{data.summary}</span>
           <div>
             {data.prCost !== data.slCost && (
-              <div>{`₩${data.prCost.toLocaleString()}`}</div>
+              <div>
+                <span>₩</span>
+                {`${data.prCost.toLocaleString()}`}
+              </div>
             )}
-            <strong>{`₩${data.slCost.toLocaleString()}`}</strong>
+            <strong>
+              <span>₩</span>
+              {`${data.slCost.toLocaleString()}`}
+            </strong>
           </div>
 
           <ButtonCart onClick={onAddCart} />

@@ -63,7 +63,7 @@ const CartItem = styled.li`
         cursor: pointer;
         padding: 3px 0px;
         outline: none;
-        font-size: 12px;
+        font-size: 0.75rem;
       }
       button + button {
         margin-left: 25px;
