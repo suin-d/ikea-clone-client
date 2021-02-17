@@ -56,6 +56,9 @@ const CommentForm = styled.form`
   flex-direction: column;
   justify-content: space-between;
   padding-bottom: 20px;
+  @media ${({ theme }) => theme.mobile} {
+    gap: 20px;
+  }
 `;
 const initialGrade = [
   { id: 0, state: 0 },
@@ -103,7 +106,7 @@ export default function WriteReviewDraw({ setReviewOpen }) {
           checked={recom}
           onChange={() => setRecom(!recom)}
         />
-        <span id="recomCkSpan" />
+        <span id="recomCkSpan" onClick={() => setRecom(!recom)} />
         <label>이 제품을 추천합니다</label>
       </InputRecom>
       <GradeForm

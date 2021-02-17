@@ -121,7 +121,7 @@ export default function ReviewScore({
           <BsStarFill />
         </>
       )}
-      {reviewCnt && <span>{`(${reviewCnt})`}</span>}
+      {reviewCnt >= 0 && <span>{`(${reviewCnt})`}</span>}
     </ReviewScoreContainer>
   );
 }

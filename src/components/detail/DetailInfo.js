@@ -97,6 +97,9 @@ const DetailInfoContainer = styled.article`
     margin-bottom: 12px;
     padding: 0;
   }
+  @media ${({ theme }) => theme.mobile} {
+    margin-right: 0px;
+  }
 `;
 const DetailInfoWrapper = styled.div`
   flex: 3;
@@ -129,7 +132,7 @@ export default function DetailInfo({ setReviewOpen, product, grade }) {
             </h1>
             <p>{`${product.summary} ${product.size}`}</p>
             <ReviewScore
-              reviewCnt={product.reviewCnt}
+              reviewCnt={product.Reviews.length}
               setReviewOpen={setReviewOpen}
               grade={grade}
             />

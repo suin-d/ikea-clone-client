@@ -29,6 +29,9 @@ const DrawContentContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0px;
+  }
 `;
 const DrawHeaderContainer = styled.div`
   padding-right: 50px;
@@ -90,6 +93,9 @@ const DrawHeaderContainer = styled.div`
         `};
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0px;
+  }
 `;
 const DrawBox = styled.div`
   padding-left: 50px;
@@ -97,6 +103,11 @@ const DrawBox = styled.div`
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
+  @media ${({ theme }) => theme.mobile} {
+    margin: 0px;
+    padding: 0 36px;
+    width: 100%;
+  }
 `;
 const DrawCloseBtnWrapper = styled.div`
   top: 0;
@@ -138,6 +149,9 @@ const ReviewDrawBox = styled.div`
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
     `};
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+  }
 `;
 const ReviewDrawContainer = styled.div`
   position: fixed;

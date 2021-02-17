@@ -29,6 +29,9 @@ const CateBox = styled.ul`
   border-bottom: 1px solid #dfdfdf;
   font-size: 12px;
   color: #484848;
+  li {
+    word-break: keep-all;
+  }
 `;
 
 export default function Cate({ bCate, sCate, title, summary }) {
