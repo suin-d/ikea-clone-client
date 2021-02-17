@@ -25,6 +25,14 @@ const LeftSection = styled.div`
   img {
     width: 70%;
   }
+  @media ${({ theme }) => theme.mobile} {
+    img {
+      display: none;
+    }
+    h1 {
+      font-size: 30px;
+    }
+  }
 `;
 export default function SignupBanner() {
   return (

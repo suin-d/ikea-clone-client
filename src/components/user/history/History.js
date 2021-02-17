@@ -102,6 +102,11 @@ const ListPakageConatiner = styled.li`
   ul {
     background-color: #fefefe;
   }
+  @media ${({ theme }) => theme.mobile} {
+    article {
+      width: 100%;
+    }
+  }
 `;
 function HistoryPakage({ data }) {
   if (!data) return null;
@@ -150,7 +155,12 @@ const HistoryList = styled.div`
     max-height: 500px;
     overflow-y: scroll;
     li:last-child {
-      border: none;
+      width: 100%;
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    ul > li {
+      margin: 0;
     }
   }
 `;

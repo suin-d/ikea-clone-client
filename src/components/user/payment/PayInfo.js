@@ -55,14 +55,15 @@ const PayInfoContainer = styled(ContentSection)`
     }
   }
   @media ${({ theme }) => theme.mobile} {
-    article{
-      h3{
+    article {
+      h3 {
         font-size: 16px;
       }
-      p{
+      p {
         font-size: 14px;
       }
     }
+  }
 `;
 function PayItem({ data }) {
   return (

@@ -31,6 +31,22 @@ const HistoryLayout = styled.div`
       line-height: 1.3;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 10px;
+    section {
+      width: 100%;
+      padding: 40px 0 50px 0;
+      border-bottom: 2px solid #dfdfdf;
+    }
+    section:nth-child(2) {
+      flex-direction: column-reverse;
+      article + article {
+        margin-bottom: 20px;
+        border-bottom: 0.5px solid #dfdfdf;
+        padding-bottom: 20px;
+      }
+    }
+  }
 `;
 export default function HistoryPage() {
   const userInfo = useCheckLogin();

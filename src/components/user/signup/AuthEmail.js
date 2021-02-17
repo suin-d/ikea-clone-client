@@ -36,6 +36,10 @@ const AuthEmailContainer = styled.div`
       -webkit-appearance: none;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+    height: 100%;
+  }
 `;
 function AuthEmail({ email, close, history }) {
   const dispatch = useDispatch();

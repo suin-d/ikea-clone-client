@@ -32,6 +32,10 @@ export const LoginRightSection = styled.section`
       }
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+    padding: 35px 25px 30px 25px;
+  }
 `;
 
 export default function LoginRight({ history }) {

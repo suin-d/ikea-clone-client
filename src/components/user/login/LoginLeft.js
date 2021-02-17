@@ -33,6 +33,18 @@ const LoginSummary = styled.div`
     display: block;
     font-size: 11px;
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+    padding: 35px 25px 30px 25px;
+    img {
+      align-self: flex-end;
+    }
+    article {
+      span {
+        display: none;
+      }
+    }
+  }
 `;
 const LoginLeftSection = styled.section`
   flex: 1.6;
@@ -57,6 +69,12 @@ const LoginLeftSection = styled.section`
     transition: all 0.2s ease-in-out;
     &:hover {
       background: rgba(255, 255, 255, 0.1);
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    i {
+      top: 25px;
+      left: 20px;
     }
   }
 `;

@@ -14,6 +14,9 @@ const LoginPageLayout = styled.div`
   right: 0;
   display: flex;
   z-index: 9999;
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export default function LoginPage() {
