@@ -29,6 +29,13 @@ const NavBox = styled.div`
       font-size: 14px;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    ul:nth-child(1) {
+      margin-top: 100px;
+      li {
+      }
+    }
+  }
 `;
 export const NavContentBox = styled.div`
   width: 420px;
@@ -45,6 +52,14 @@ export const NavContentBox = styled.div`
       position: sticky;
       top: 100px;
       cursor: pointer;
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    flex: 1;
+    & > i {
+      svg {
+        top: 97px;
+      }
     }
   }
 `;

@@ -55,6 +55,18 @@ const MessageBox = styled.div`
     css`
       animation: ${slideOff} 0.5s normal forwards;
     `}
+  @media ${({ theme }) => theme.mobile} {
+    width: 300px;
+    height: 60px;
+    flex-direction: row;
+    align-items: center;
+    bottom: 20px;
+    h5 {
+      b {
+        display: none;
+      }
+    }
+  }
 `;
 
 export default function Alert() {

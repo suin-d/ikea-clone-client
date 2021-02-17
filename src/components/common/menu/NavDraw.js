@@ -68,6 +68,17 @@ export const NavDrawBox = styled.nav`
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
     `}
+  @media ${({ theme }) => theme.mobile} {
+    padding-top: 0;
+    width: 100%;
+    div > i {
+      flex: 0.5;
+    }
+    /* div:nth-child(1) {
+      position: fixed;
+      top: 0;
+    } */
+  }
 `;
 export const NavDrawContainer = styled.div`
   z-index: 1003;

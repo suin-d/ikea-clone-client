@@ -16,8 +16,9 @@ const LayoutBox = styled.main`
   grid-gap: 20px;
   @media ${({ theme }) => theme.mobile} {
     display: block;
-    max-width: 100%;
-    margin: 150px 0px 0px 0px;
+    box-sizing: initial;
+    margin: 150px 10px 50px 10px;
+    grid-gap: 0px;
   }
 `;
 

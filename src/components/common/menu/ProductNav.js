@@ -69,6 +69,20 @@ const DetailNavBox = styled(ProductNavBox)`
       padding-left: 30px;
       width: 270px;
     `}
+  @media ${({ theme }) => theme.mobile} {
+    flex: 0;
+    ${(props) =>
+      props.active &&
+      css`
+        position: relative;
+        padding-left: 15px;
+        flex: 1.3;
+        ul {
+          position: sticky;
+          top: 90px;
+        }
+      `}
+  }
 `;
 const navData = [
   {

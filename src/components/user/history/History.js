@@ -40,6 +40,14 @@ const ItemBox = styled.li`
       font-size: 16px;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    padding: 0 15px;
+    & > div {
+      width: 90px;
+      height: 90px;
+      margin-right: 15px;
+    }
+  }
 `;
 function HistoryListItem({ data }) {
   if (!data) return null;
@@ -159,8 +167,18 @@ const HistoryList = styled.div`
     }
   }
   @media ${({ theme }) => theme.mobile} {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    ul {
+      max-height: 360px;
+      flex: 1;
+    }
     ul > li {
       margin: 0;
+      & > article > p {
+        flex-direction: column;
+      }
     }
   }
 `;
