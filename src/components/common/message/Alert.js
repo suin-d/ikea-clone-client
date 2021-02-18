@@ -56,11 +56,12 @@ const MessageBox = styled.div`
       animation: ${slideOff} 0.5s normal forwards;
     `}
   @media ${({ theme }) => theme.mobile} {
-    width: 300px;
+    width: 80%;
     height: 60px;
     flex-direction: row;
     align-items: center;
     bottom: 20px;
+    right: 10%;
     h5 {
       b {
         display: none;

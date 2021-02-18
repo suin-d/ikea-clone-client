@@ -5,17 +5,28 @@ import ButtonRound from '../common/buttons/ButtonRound';
 import ListFilter from './ListFilter';
 import ListItem from './ListItem';
 
+const ListBottom = styled.div`
+  position: relative;
+  button {
+    top: 10%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+  }
+`;
 const ListContainer = styled.ul`
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  @media only screen and (max-width: 900px) {
+  row-gap: 1.2em;
+  @media ${({ theme }) => theme.desktop} {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media ${({ theme }) => theme.tablet} {
     grid-template-columns: repeat(3, 1fr);
   }
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media only screen and (max-width: 400px) {
+  @media ${({ theme }) => theme.mobile} {
     grid-template-columns: repeat(1, 1fr);
+    row-gap: 0;
   }
 `;
 
@@ -37,6 +48,7 @@ const ListWrapper = styled.div`
     background: #fff;
     & > ul {
       display: flex;
+      flex-shrink: 0;
       li {
         margin-right: 10px;
       }
@@ -46,6 +58,7 @@ const ListWrapper = styled.div`
       justify-content: center;
       align-items: center;
       font-size: 0.75rem;
+      flex-shrink: 0;
       span,
       b {
         display: inline-block;
@@ -60,11 +73,17 @@ const ListWrapper = styled.div`
       }
     }
   }
-  & > button {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 0;
+
+  @media ${({ theme }) => theme.mobile} {
+    & > div {
+      flex-wrap: wrap;
+      ul {
+        flex-shrink: 0;
+      }
+      div {
+        flex-shrink: 0;
+      }
+    }
   }
   ${(props) =>
     props.active &&
@@ -125,9 +144,10 @@ function List({
               />
             ))}
         </ListContainer>
-
-        {hasMoreList && <ButtonRound onClick={onLoadMore}>더보기</ButtonRound>}
       </ListWrapper>
+      <ListBottom>
+        {hasMoreList && <ButtonRound onClick={onLoadMore}>더보기</ButtonRound>}
+      </ListBottom>
       {filterOpen && (
         <ListFilter
           setFilterOpen={setFilterOpen}

@@ -17,8 +17,10 @@ const LayoutBox = styled.main`
   @media ${({ theme }) => theme.mobile} {
     display: block;
     box-sizing: initial;
-    margin: 150px 10px 50px 10px;
+    margin: 0;
+    padding: 150px 10px 50px 10px;
     grid-gap: 0px;
+    overflow-x: hidden;
   }
 `;
 

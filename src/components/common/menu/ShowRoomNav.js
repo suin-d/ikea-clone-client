@@ -97,6 +97,13 @@ const ShowRoomLayout = styled.div`
     margin: 40px 0;
     font-weight: bold;
   }
+  @media ${({ theme }) => theme.mobile} {
+    ul {
+      padding-right: 40px;
+      grid-template-columns: repeat(1, 1fr);
+      grid-row-gap: 30px;
+    }
+  }
 `;
 function ShowRoomItem({ data }) {
   return (

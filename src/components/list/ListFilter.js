@@ -115,6 +115,14 @@ const FilterTop = styled(NavTop)`
       text-decoration: underline;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    width: 280px;
+    i {
+      svg {
+        fill: #111;
+      }
+    }
+  }
   ${(props) =>
     props.down &&
     css`
@@ -137,6 +145,9 @@ const FilterBox = styled.nav`
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
     `}
+  @media ${({ theme }) => theme.mobile} {
+    left: 0;
+  }
 `;
 const FilterContainer = styled(NavDrawContainer)`
   display: flex;

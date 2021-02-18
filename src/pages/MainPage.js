@@ -15,7 +15,7 @@ import HFLayout from '../components/main/homefurnishing/HFLayout';
 
 export default function MainPage() {
   return (
-    <div>
+    <>
       <Banner />
       <Carousel
         title="진행 중인 이벤트 및 프로모션"
@@ -30,6 +30,6 @@ export default function MainPage() {
       <HFLayout />
       <News newsItems={newsItems2} />
       <ButtonFix />
-    </div>
+    </>
   );
 }

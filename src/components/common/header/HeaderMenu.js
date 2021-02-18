@@ -138,6 +138,9 @@ const HeaderContainer = styled.div`
       @media ${({ theme }) => theme.mobile} {
         height: 0;
         padding: 0px 20px 0px 20px;
+        & > div:first-child {
+          margin-top: 35px;
+        }
       }
     `}
 `;

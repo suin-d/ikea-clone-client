@@ -12,12 +12,12 @@ const CartBottomContainer = styled.div`
   font-weight: 500;
   & > h3 {
     margin-bottom: 10px;
-    font-size: 15px;
+    font-size: 0.938rem;
   }
   & > div:nth-of-type(1) {
     display: flex;
     justify-content: space-between;
-    font-size: 13px;
+    font-size: 0.813rem;
     font-weight: 300;
     & > span:nth-of-type(1) {
     }
@@ -34,15 +34,27 @@ const CartBottomContainer = styled.div`
     justify-content: space-between;
     margin-top: 10px;
     margin-bottom: 40px;
-    font-size: 15px;
+    font-size: 0.938rem;
     b {
       display: inline-block;
     }
     & > span {
       display: inline-block;
-      font-size: 20px;
+      font-size: 1.25rem;
       font-weight: bold;
       letter-spacing: -0.3px;
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    line-height: 1.4;
+    font-size: 0.75rem;
+    & > div:nth-of-type(1) {
+      & > span:nth-of-type(1) {
+        margin-right: 5px;
+      }
+      & > span:nth-of-type(2) {
+        text-align: right;
+      }
     }
   }
 `;
@@ -56,28 +68,34 @@ const CartLoginPromoContainer = styled.div`
   border: 1px solid #dfdfdf;
 
   & > div {
+    font-size: 0.875rem;
     h2 {
       font-weight: bold;
-      font-size: 15px;
     }
     div {
       font-weight: 300;
-      font-size: 13px;
     }
     h2 + div {
       margin-top: 0.3rem;
     }
   }
   i {
-    margin-right: 0.75rem;
     svg {
-      font-size: 24px;
+      font-size: 1.5rem;
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    text-align: justify;
+    i {
+      svg {
+        display: none;
+      }
     }
   }
 `;
 const CartTopContainer = styled.div`
   h1 {
-    font-size: 32px;
+    font-size: 2rem;
     font-weight: 600;
     letter-spacing: 1.8px;
     margin-bottom: 40px;
@@ -94,9 +112,10 @@ const CartInner = styled.div`
   max-width: 690px;
   margin: 0 auto;
   padding-right: 60px;
-  letter-spacing: 0.7px;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
   @media ${({ theme }) => theme.mobile} {
-    padding-right: 00px;
+    padding-right: 0%;
   }
 `;
 
