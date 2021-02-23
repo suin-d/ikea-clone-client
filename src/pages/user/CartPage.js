@@ -7,6 +7,7 @@ import ButtonBig from '../../components/common/buttons/ButtonBig';
 import CartProduct from '../../components/user/cart/CartProduct';
 import useCheckLogin from '../../hooks/useCheckLogin';
 import { getCart } from '../../modules/user/thunk';
+import Loading from '../../components/common/Loading';
 
 const CartBottomContainer = styled.div`
   font-weight: 500;
@@ -139,7 +140,7 @@ export default function CartPage({ history }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
-  if (loadCartLoading) return <div>장바구니를 로딩중입니다.</div>;
+  if (loadCartLoading) return <Loading />;
   if (!data) return <div>장바구니에 담긴 상품이 없습니다.</div>;
   if (loadCartError) return <div>에러페이지</div>;
   return (

@@ -38,6 +38,15 @@ import {
   GET_REVIEWS_ERROR,
 } from '.';
 
+export const delay = (ms) =>
+  new Promise((resolve, reject) => {
+    try {
+      setTimeout(() => resolve(), ms);
+    } catch (e) {
+      reject(e);
+    }
+  });
+
 export const search = (keyword) => async (dispatch) => {
   try {
     dispatch({ type: SEARCH_REQUEST });
@@ -51,6 +60,7 @@ export const search = (keyword) => async (dispatch) => {
 export const getList = (data) => async (dispatch) => {
   try {
     dispatch({ type: GET_LIST_REQUEST });
+    await delay(1000);
     const response = await axios.get(
       `/api/product/list/${data.cateId}?offset=0&filter=${data.filter}`
     );
@@ -111,6 +121,7 @@ export const addCart = (data) => async (dispatch) => {
 export const getProduct = (productId) => async (dispatch) => {
   try {
     dispatch({ type: GET_PRODUCT_REQUEST });
+    await delay(1000);
     const response = await axios.get(`/api/product/${productId}`);
     dispatch({ type: GET_PRODUCT_SUCCESS, payload: response.data });
   } catch (e) {

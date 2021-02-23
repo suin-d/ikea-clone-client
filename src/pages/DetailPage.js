@@ -9,6 +9,7 @@ import ReviewScore from '../components/detail/review/ReviewScore';
 import ReviewDraw from '../components/detail/review/ReviewDraw';
 import DetailInfo from '../components/detail/DetailInfo';
 import { getProduct } from '../modules/product/thunk';
+import Loading from '../components/common/Loading';
 
 const ReviewBox = styled.div`
   display: flex;
@@ -154,7 +155,9 @@ function DetailPic({ product }) {
 
 export default function DetailPage({ match }) {
   const [reviewOpen, setReviewOpen] = useState(false);
-  const { getProductData: product } = useSelector((state) => state.product);
+  const { getProductData: product, getProductLoading: loading } = useSelector(
+    (state) => state.product
+  );
   const dispatch = useDispatch();
 
   const images =
@@ -171,6 +174,7 @@ export default function DetailPage({ match }) {
     document.title = 'IKEA | 상품정보';
     dispatch(getProduct(match.params.id));
   }, [dispatch, match]);
+  if (loading) return <Loading />;
   if (!product) return <div>데이터가 없습니다</div>;
   return (
     <div>

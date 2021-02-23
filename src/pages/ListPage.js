@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getList, loadMoreList } from '../modules/product/thunk';
 import List from '../components/list/List';
 import ButtonFix from '../components/common/buttons/ButtonFix';
+import Loading from '../components/common/Loading';
 
 export default function ListPage({ location, match }) {
   const currentOffset = useRef(24);
@@ -34,7 +35,7 @@ export default function ListPage({ location, match }) {
     beforeId.current = id;
   }, [dispatch, id, currentFilter, query.sc]);
 
-  if (getListLoading) return <div>상품을 로딩중입니다.</div>;
+  if (getListLoading) return <Loading />;
   if (!getListData) return null;
   if (getListError) return <div>에러페이지</div>;
 

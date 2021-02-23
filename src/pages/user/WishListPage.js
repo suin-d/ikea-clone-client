@@ -9,6 +9,7 @@ import WishReceipt from '../../components/wish/WishReceipt';
 import useCheckLogin from '../../hooks/useCheckLogin';
 import { getWishList } from '../../modules/user/thunk';
 import { addCart } from '../../modules/product/thunk';
+import Loading from '../../components/common/Loading';
 
 const CartButtonBox = styled.div`
   width: 100%;
@@ -86,7 +87,7 @@ const WishListContainer = styled.div`
 export default function WishListPage() {
   const userInfo = useCheckLogin();
   const dispatch = useDispatch();
-  const { getWishData } = useSelector((state) => state.user);
+  const { getWishData, getWishLoading } = useSelector((state) => state.user);
   const [navState, setNavState] = useState(1);
   const onNav = (state) => {
     setNavState(state);
@@ -101,6 +102,7 @@ export default function WishListPage() {
       dispatch(getWishList(userInfo.email));
     }
   }, [dispatch]);
+  if (getWishLoading) return <Loading />;
   if (!getWishData) return null;
   return (
     <WishListContainer>

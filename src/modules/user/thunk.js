@@ -43,6 +43,7 @@ import {
   SUCCESS_PAYMENT_SUCCESS,
   SUCCESS_PAYMENT_ERROR,
 } from '.';
+import { delay } from '../product/thunk';
 
 export const signUp = (data) => async (dispatch) => {
   try {
@@ -173,6 +174,7 @@ export const deleteUser = (email) => async (dispatch) => {
 export const getWishList = (email) => async (dispatch) => {
   try {
     dispatch({ type: GET_WISH_REQUEST });
+    await delay(700);
     const response = await axios.get(`api/userproduct/wish/${email}`);
     dispatch({
       type: GET_WISH_SUCCESS,
@@ -207,6 +209,7 @@ export const updateUser = (data) => async (dispatch) => {
 export const getCart = (email) => async (dispatch) => {
   try {
     dispatch({ type: LOAD_CART_REQUEST });
+    await delay(700);
     const response = await axios.get(`/api/userproduct/cart/${email}`);
     dispatch({
       type: LOAD_CART_SUCCESS,
