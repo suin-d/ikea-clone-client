@@ -38,6 +38,9 @@ const CartItem = styled.li`
           margin-bottom: 7px;
           display: inline-block;
         }
+        span: nth-of-type(2) {
+          text-decoration: line-through;
+        }
         div {
           font-weight: 300;
           margin-bottom: 5px;
@@ -63,7 +66,7 @@ const CartItem = styled.li`
         cursor: pointer;
         padding: 3px 0px;
         outline: none;
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       button + button {
         margin-left: 25px;
@@ -129,6 +132,14 @@ export default function CartProduct({ data, userInfo }) {
             <span>{data.Product.summary}</span>
             <div>{data.Product.size}</div>
             <div>{`수량: ${data.quantity}`}</div>
+
+            {data.Product.prCost !== data.Product.slCost && (
+              <span>
+                {`할인 전 가격: ${(
+                  data.Product.prCost * data.quantity
+                ).toLocaleString()}원`}
+              </span>
+            )}
             <div>
               {`총액: ${(
                 data.Product.slCost * data.quantity
