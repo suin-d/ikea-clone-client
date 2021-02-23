@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { IoIosArrowForward } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
+import ReactImageGallery from 'react-image-gallery';
+import 'react-image-gallery/styles/css/image-gallery.css';
 import Cate from '../components/common/Cate';
 import ReviewScore from '../components/detail/review/ReviewScore';
 import ReviewDraw from '../components/detail/review/ReviewDraw';
@@ -45,6 +47,17 @@ const DetailAboutBox = styled.div`
       padding: 5px 12px;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    order: 3;
+  }
+`;
+const DetailPicImageGallery = styled.div`
+  @media ${({ theme }) => theme.desktop} {
+    display: none;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    display: block;
+  }
 `;
 const DetailPicContainer = styled.div`
   width: 100%;
@@ -58,6 +71,11 @@ const DetailPicContainer = styled.div`
       width: 100%;
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 20px;
+    order: 2;
+  }
 `;
 const DetailMainBox = styled.div`
   flex: 7;
@@ -67,12 +85,31 @@ const DetailMainBox = styled.div`
     color: #484848;
     line-height: 1.7;
     margin-top: 80px;
+
+    @media ${({ theme }) => theme.mobile} {
+      width: auto;
+    }
+  }
+  @media ${({ theme }) => theme.mobile} {
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #dfdfdf;
+    padding-top: 60px;
+    p {
+      order: 1;
+      margin-top: 0px;
+    }
   }
 `;
 const DetailTopContainer = styled.div`
   display: flex;
   gap: 62px;
   margin-top: 64px;
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column-reverse;
+    margin-top: 40px;
+    gap: 40px;
+  }
 `;
 
 function DetailAbout({ setReviewOpen, product }) {
@@ -86,7 +123,7 @@ function DetailAbout({ setReviewOpen, product }) {
         <div>
           <p>상품평</p>
           <ReviewScore
-            reviewCnt={product.reviewCnt}
+            reviewCnt={product.Reviews.length}
             setReviewOpen={setReviewOpen}
             grade={product.grade}
           />
@@ -120,6 +157,16 @@ export default function DetailPage({ match }) {
   const { getProductData: product } = useSelector((state) => state.product);
   const dispatch = useDispatch();
 
+  const images =
+    product &&
+    product.ProdImages.map((v) => ({
+      srcSet: `${v.srcSet}`,
+      sizes: `${v.sizes}`,
+      original: `${v.src}`,
+      thumbnail: `${v.src}`,
+      originalAlt: `${v.info}`,
+    }));
+
   useEffect(() => {
     document.title = 'IKEA | 상품정보';
     dispatch(getProduct(match.params.id));
@@ -144,6 +191,9 @@ export default function DetailPage({ match }) {
           product={product}
           grade={product.grade}
         />
+        <DetailPicImageGallery>
+          <ReactImageGallery items={images} />
+        </DetailPicImageGallery>
       </DetailTopContainer>
       {reviewOpen && (
         <ReviewDraw reviewOpen={reviewOpen} setReviewOpen={setReviewOpen} />

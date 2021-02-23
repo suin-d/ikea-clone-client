@@ -53,6 +53,11 @@ const WishNav = styled.ul`
         transform: translateY(2px);
       }
     `};
+  @media ${({ theme }) => theme.mobile} {
+    li {
+      font-size: 13px;
+    }
+  }
 `;
 const PrintIcon = styled(CircleButton)`
   background: none;

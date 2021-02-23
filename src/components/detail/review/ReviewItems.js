@@ -32,6 +32,17 @@ const ItemImage = styled.div`
     max-width: 150px;
     max-height: 150px;
   }
+  @media ${({ theme }) => theme.mobile} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    img {
+      padding: 0px;
+      max-width: 100%;
+      max-height: 200px;
+    }
+  }
 `;
 
 const ItemContent = styled.div`

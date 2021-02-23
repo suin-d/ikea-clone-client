@@ -15,6 +15,15 @@ const ButtonContainer = styled.div`
     font-weight: 600;
     height: 50px;
   }
+  @media ${({ theme }) => theme.mobile} {
+    justify-content: space-between;
+    button {
+      font-size: 13px;
+      padding: 0 12px;
+      border: 1.5px solid #0058a3;
+      height: 40px;
+    }
+  }
 `;
 const ItemInfo = styled.div`
   display: flex;
@@ -46,6 +55,9 @@ const ItemInfo = styled.div`
     font-weight: 400;
     line-height: 1.4;
   }
+  @media ${({ theme }) => theme.mobile} {
+    text-align: center;
+  }
 `;
 const ImgWrapper = styled.div`
   width: 112px;
@@ -60,6 +72,10 @@ const ImgWrapper = styled.div`
 `;
 const ContentLeft = styled.div`
   display: flex;
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+    align-items: center;
+  } ;
 `;
 const ContentContainer = styled.div`
   width: 100%;
@@ -69,6 +85,13 @@ const ContentContainer = styled.div`
   h3 {
     font-size: 15px;
     font-weight: 700;
+  }
+  @media ${({ theme }) => theme.mobile} {
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      margin-top: 10px;
+    }
   }
 `;
 const WishItemContainer = styled.li`
