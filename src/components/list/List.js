@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
 import ButtonRound from '../common/buttons/ButtonRound';
+import Error from '../common/Error';
 import ListFilter from './ListFilter';
 import ListItem from './ListItem';
 
@@ -134,19 +135,28 @@ function List({
           </div>
         </div>
         <ListContainer>
-          {data &&
-            data.map((item) => (
-              <ListItem
-                listState={listState}
-                data={item}
-                key={item.id}
-                userInfo={userInfo}
-              />
-            ))}
+          {data ? (
+            data.length === 0 ? (
+              <Error text="카테고리에 해당하는 아이템이 없습니다" grid />
+            ) : (
+              data.map((item) => (
+                <ListItem
+                  listState={listState}
+                  data={item}
+                  key={item.id}
+                  userInfo={userInfo}
+                />
+              ))
+            )
+          ) : null}
         </ListContainer>
       </ListWrapper>
       <ListBottom>
-        {hasMoreList && <ButtonRound onClick={onLoadMore}>더보기</ButtonRound>}
+        {hasMoreList ? (
+          data.length !== 0 ? (
+            <ButtonRound onClick={onLoadMore}>더보기</ButtonRound>
+          ) : null
+        ) : null}
       </ListBottom>
       {filterOpen && (
         <ListFilter

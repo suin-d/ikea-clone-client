@@ -10,6 +10,7 @@ import useCheckLogin from '../../hooks/useCheckLogin';
 import { getWishList } from '../../modules/user/thunk';
 import { addCart } from '../../modules/product/thunk';
 import Loading from '../../components/common/Loading';
+import Error from '../../components/common/Error';
 
 const CartButtonBox = styled.div`
   width: 100%;
@@ -87,14 +88,16 @@ const WishListContainer = styled.div`
 export default function WishListPage() {
   const userInfo = useCheckLogin();
   const dispatch = useDispatch();
-  const { getWishData, getWishLoading } = useSelector((state) => state.user);
+  const { getWishData: data, getWishLoading } = useSelector(
+    (state) => state.user
+  );
   const [navState, setNavState] = useState(1);
   const onNav = (state) => {
     setNavState(state);
   };
   const onAddCartAll = () => {
-    getWishData.forEach((data) =>
-      dispatch(addCart({ userEmail: userInfo.email, productId: data.id }))
+    data.forEach((v) =>
+      dispatch(addCart({ userEmail: userInfo.email, productId: v.id }))
     );
   };
   useEffect(() => {
@@ -103,7 +106,10 @@ export default function WishListPage() {
     }
   }, [dispatch]);
   if (getWishLoading) return <Loading />;
-  if (!getWishData) return null;
+  if (!data) return null;
+  if (data.length === 0) {
+    return <Error text="위시리스트에 담긴 상품이 없습니다." />;
+  }
   return (
     <WishListContainer>
       <WishListTitle>
@@ -128,11 +134,9 @@ export default function WishListPage() {
         <li onClick={() => onNav(1)}>온라인으로 구매하기</li>
         <li onClick={() => onNav(2)}>매장에서 구매하기</li>
       </WishNav>
-      {navState === 1 && (
-        <WishItems userInfo={userInfo} wishItems={getWishData} />
-      )}
+      {navState === 1 && <WishItems userInfo={userInfo} wishItems={data} />}
       {navState === 2 && <GoStore />}
-      <WishReceipt wishItems={getWishData} />
+      <WishReceipt wishItems={data} />
       <CartButtonBox>
         <p>이 제품을 온라인으로 구매하시겠어요?</p>
         <ButtonBig onClick={onAddCartAll}>
