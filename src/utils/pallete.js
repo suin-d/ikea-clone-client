@@ -1,7 +1,7 @@
 const size = {
   mobile: '770px',
   tablet: '1024px',
-  desktop: '1700px',
+  desktop: '3000px',
 };
 
 const theme = {

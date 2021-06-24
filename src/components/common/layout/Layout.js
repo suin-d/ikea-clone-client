@@ -4,6 +4,13 @@ import styled from 'styled-components';
 import HeaderMenu from '../header/HeaderMenu';
 import NavDraw from '../menu/NavDraw';
 
+export const ViewPortBox = styled.div`
+  width: 100vw;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+`;
+
 const MainContent = styled.div`
   grid-column: 2 / 14;
   width: 100%;
@@ -27,12 +34,12 @@ const LayoutBox = styled.main`
 export default function Layout({ children }) {
   const { open: navOpen } = useSelector(state => state.interfaces.navigation);
   return (
-    <>
+    <ViewPortBox>
       <HeaderMenu />
       <LayoutBox>
         <MainContent>{children}</MainContent>
       </LayoutBox>
       {navOpen && <NavDraw />}
-    </>
+    </ViewPortBox>
   );
 }

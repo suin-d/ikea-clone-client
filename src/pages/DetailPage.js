@@ -53,6 +53,7 @@ const DetailAboutBox = styled.div`
   }
 `;
 const DetailPicImageGallery = styled.div`
+  order: 1;
   @media ${({ theme }) => theme.desktop} {
     display: none;
   }
@@ -82,7 +83,7 @@ const DetailMainBox = styled.div`
   flex: 7;
   & > p {
     font-size: 14px;
-    width: 500px;
+    max-width: 500px;
     color: #484848;
     line-height: 1.7;
     margin-top: 80px;
@@ -171,11 +172,17 @@ export default function DetailPage({ match }) {
     }));
 
   useEffect(() => {
-    document.title = 'IKEA | 상품정보';
     dispatch(getProduct(match.params.id));
   }, [dispatch, match]);
+  useEffect(() => {
+    if (!product) return;
+    document.title = product.title
+      ? `IKEA | ${product.title}`
+      : 'IKEA | 상품정보';
+  }, [product]);
   if (loading) return <Loading />;
   if (!product) return <div>데이터가 없습니다</div>;
+
   return (
     <div>
       <Cate

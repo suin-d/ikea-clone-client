@@ -12,6 +12,11 @@ const ItemContainer = styled.li`
       }
     }
   }
+  @media ${({ theme }) => theme.mobile} {
+    & > ul > li {
+      opacity: 1;
+    }
+  }
 `;
 const DotButton = styled(DotButtonBox)``;
 const DotItemBox = styled.li`
@@ -27,6 +32,10 @@ const DotItemBox = styled.li`
     background: #fff;
     display: none;
     box-shadow: 0px 0px 2px #aaa;
+    div {
+      width: 100%;
+      height: 100%;
+    }
     p {
       font-weight: bold;
     }
@@ -58,10 +67,12 @@ function DotItem({ data }) {
       <DotButton>
         <i />
       </DotButton>
-      <article onClick={goDetail}>
-        <p>{data.Product.title}</p>
-        <span>{data.Product.summary}</span>
-        <p>{`₩ ${data.Product.slCost.toLocaleString()}`}</p>
+      <article>
+        <div onClick={goDetail}>
+          <p>{data.Product.title}</p>
+          <span>{data.Product.summary}</span>
+          <p>{`₩ ${data.Product.slCost.toLocaleString()}`}</p>
+        </div>
       </article>
     </DotItemBox>
   );

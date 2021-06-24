@@ -49,7 +49,7 @@ const SearchContainer = styled.div`
     right: -40px;
     position: absolute;
     bottom: -100%;
-    max-width: 350px;
+    width: 94vw;
   }
 `;
 const SearchBox = styled.form`

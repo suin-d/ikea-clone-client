@@ -110,15 +110,11 @@ const MenuBtnBox = styled.div`
 `;
 const HeaderContainer = styled.div`
   max-width: 1800px;
+  width: 100%;
   margin: 0px 40px 50px 20px;
   display: grid;
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
-  z-index: 100;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
 
   @media ${({ theme }) => theme.mobile} {
     height: 110px;
@@ -144,6 +140,16 @@ const HeaderContainer = styled.div`
       }
     `}
 `;
+
+const HeaderWrapper = styled.div`
+  z-index: 100;
+  position: fixed;
+  overflow-y: visible;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`;
+
 export default function HeaderMenu() {
   const current = useRef(0);
   const [headerOpen, setHeaderOpen] = useState(true);
@@ -168,26 +174,28 @@ export default function HeaderMenu() {
     };
   }, [headerOpen, current]);
   return (
-    <HeaderContainer open={headerOpen}>
-      <MenuBtnBox>
-        <RiMenuLine onClick={() => dispatch({ type: NAV_OPEN })} />
-      </MenuBtnBox>
+    <HeaderWrapper>
+      <HeaderContainer open={headerOpen}>
+        <MenuBtnBox>
+          <RiMenuLine onClick={() => dispatch({ type: NAV_OPEN })} />
+        </MenuBtnBox>
 
-      <HeaderBar open={headerOpen}>
-        <Link to="/">
-          <img src={LOGO} alt="" />
-        </Link>
-        <ul>
-          <li onClick={() => dispatch({ type: NAV_MOVE, payload: 1 })}>
-            모든제품
-          </li>
-          <li onClick={() => dispatch({ type: NAV_MOVE, payload: 2 })}>
-            디지털 쇼룸
-          </li>
-        </ul>
-        <SearchBar headerOpen={headerOpen} />
-        <IconContainer />
-      </HeaderBar>
-    </HeaderContainer>
+        <HeaderBar open={headerOpen}>
+          <Link to="/">
+            <img src={LOGO} alt="" />
+          </Link>
+          <ul>
+            <li onClick={() => dispatch({ type: NAV_MOVE, payload: 1 })}>
+              모든제품
+            </li>
+            <li onClick={() => dispatch({ type: NAV_MOVE, payload: 2 })}>
+              디지털 쇼룸
+            </li>
+          </ul>
+          <SearchBar headerOpen={headerOpen} />
+          <IconContainer />
+        </HeaderBar>
+      </HeaderContainer>
+    </HeaderWrapper>
   );
 }
