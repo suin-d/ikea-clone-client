@@ -138,7 +138,7 @@ function DetailAbout({ setReviewOpen, product }) {
 function DetailPic({ product }) {
   return (
     <DetailPicContainer>
-      {product.ProdImages.map((item) => (
+      {product.ProdImages.map(item => (
         <div key={item.id}>
           <img
             key={item.id}
@@ -156,13 +156,13 @@ function DetailPic({ product }) {
 export default function DetailPage({ match }) {
   const [reviewOpen, setReviewOpen] = useState(false);
   const { getProductData: product, getProductLoading: loading } = useSelector(
-    (state) => state.product
+    state => state.product
   );
   const dispatch = useDispatch();
 
   const images =
     product &&
-    product.ProdImages.map((v) => ({
+    product.ProdImages.map(v => ({
       srcSet: `${v.srcSet}`,
       sizes: `${v.sizes}`,
       original: `${v.src}`,

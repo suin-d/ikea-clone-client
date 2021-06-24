@@ -50,7 +50,7 @@ const MessageBox = styled.div`
     line-height: 1.2;
   }
   animation: ${slideOn} 0.5s normal forwards;
-  ${(props) =>
+  ${props =>
     props.close &&
     css`
       animation: ${slideOff} 0.5s normal forwards;
@@ -72,10 +72,10 @@ const MessageBox = styled.div`
 
 export default function Alert() {
   const dispatch = useDispatch();
-  const { alertMsg } = useSelector((state) => state.interfaces);
+  const { alertMsg } = useSelector(state => state.interfaces);
   const [close, setClose] = useState(false);
   const alert = useCallback(
-    (time) => {
+    time => {
       setTimeout(() => {
         setClose(true);
       }, time - 700);

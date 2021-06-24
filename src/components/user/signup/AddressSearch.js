@@ -6,7 +6,7 @@ import ModalLayout from '../../common/modal/ModalLayout';
 export default function AddressSearch({ setAddress, setEdit = false }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 770);
   const [active, setActive] = useState(false);
-  const handleComplete = (data) => {
+  const handleComplete = data => {
     let fullAddress = data.address;
     let extraAddress = '';
 

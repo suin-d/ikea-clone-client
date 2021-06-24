@@ -121,16 +121,18 @@ const CartInner = styled.div`
   }
 `;
 
-const getTotal = (data) =>
+const getTotal = data =>
   data.reduce(
     (acc, v) => parseInt(v.quantity, 10) * parseInt(v.Product.slCost, 10) + acc,
     0
   );
 export default function CartPage({ history }) {
   const userInfo = useCheckLogin();
-  const { loadCartLoading, loadCartData: data, loadCartError } = useSelector(
-    (state) => state.user
-  );
+  const {
+    loadCartLoading,
+    loadCartData: data,
+    loadCartError,
+  } = useSelector(state => state.user);
 
   const dispatch = useDispatch();
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
@@ -156,7 +158,7 @@ export default function CartPage({ history }) {
         </ButtonBig>
         <ul>
           {data &&
-            data.map((item) => (
+            data.map(item => (
               <CartProduct data={item} key={item.id} userInfo={userInfo} />
             ))}
         </ul>

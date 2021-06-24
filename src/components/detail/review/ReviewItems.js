@@ -111,7 +111,7 @@ export default function ReviewItems({ reviewList }) {
   return (
     <ReviewListContainer>
       {reviewList &&
-        reviewList.map((item) => <ReviewItem key={item.id} item={item} />)}
+        reviewList.map(item => <ReviewItem key={item.id} item={item} />)}
     </ReviewListContainer>
   );
 }

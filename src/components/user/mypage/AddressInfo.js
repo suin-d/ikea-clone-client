@@ -16,7 +16,7 @@ export default function AddressInfo({ userInfo }) {
     userInfo.address.split(')')[1]
   );
   const dispatch = useDispatch();
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(updateUser({ address: `${addressValue}${detailAddValue}` }));
     setEditMode(false);

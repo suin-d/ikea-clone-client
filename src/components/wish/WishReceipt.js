@@ -26,7 +26,7 @@ const ReceiptBox = styled.div`
     font-size: 20px;
     font-weight: 700;
   }
-  ${(props) =>
+  ${props =>
     props.top
       ? css`
           border-bottom: 2px solid #111;
@@ -45,7 +45,7 @@ export default function WishReceipt({ wishItems }) {
   let totalCost = 0;
   (() => {
     if (wishItems) {
-      wishItems.forEach((v) => {
+      wishItems.forEach(v => {
         totalCost += v.slCost;
       });
     }

@@ -32,7 +32,7 @@ function PhoneInfo({ email, phone }) {
   const [phoneValue, setPhone] = useState(phone);
   const [phoneError, setPhoneError] = useState(false);
   const dispatch = useDispatch();
-  const onChangePhone = (e) => {
+  const onChangePhone = e => {
     const phoneRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
     setPhone(e.target.value);
     setPhoneError(
@@ -41,7 +41,7 @@ function PhoneInfo({ email, phone }) {
         : false
     );
   };
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     if (phoneError) return dispatch(addAlert('정확한 정보를 입력해주세요.'));
     dispatch(updateUser({ phone: phoneValue }));
@@ -96,7 +96,7 @@ function PersonalInfo({ gender, name, birth }) {
         return null;
     }
   };
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(
       updateUser({

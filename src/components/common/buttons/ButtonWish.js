@@ -31,9 +31,9 @@ const WishButton = styled(CircleButton)`
 export default function ButtonWish({ data }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
   const isWish = () => {
-    const result = userInfo.wishItem.findIndex((v) => v.id === data.id);
+    const result = userInfo.wishItem.findIndex(v => v.id === data.id);
     if (result !== -1) {
       return true;
     }

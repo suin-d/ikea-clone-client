@@ -162,7 +162,7 @@ function WishItems({ userInfo, wishItems }) {
   return (
     <WishListContainer>
       {wishItems ? (
-        wishItems.map((item) => (
+        wishItems.map(item => (
           <WishItem key={item.id} userInfo={userInfo} item={item} />
         ))
       ) : (

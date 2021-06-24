@@ -15,7 +15,7 @@ const NewsBox = styled.div`
 export default function News({ newsItems }) {
   return (
     <NewsBox>
-      {newsItems.map((item) => (
+      {newsItems.map(item => (
         <NewsItem key={item.id} data={item} />
       ))}
     </NewsBox>

@@ -15,7 +15,7 @@ const ListMenuBox = styled.ul`
     border-bottom: 3px solid #dfdfdf;
     cursor: pointer;
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       li:nth-child(${props.active}) {

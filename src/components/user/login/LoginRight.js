@@ -40,10 +40,10 @@ export const LoginRightSection = styled.section`
 
 export default function LoginRight({ history }) {
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
   const [email, onChangeEmail] = useInput('');
   const [password, onChangePassword] = useInput('');
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(login({ email, password }));
   };

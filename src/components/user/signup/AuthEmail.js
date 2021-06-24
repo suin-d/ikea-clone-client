@@ -43,7 +43,7 @@ const AuthEmailContainer = styled.div`
 `;
 function AuthEmail({ email, close, history }) {
   const dispatch = useDispatch();
-  const { signUpData, verificationData } = useSelector((state) => state.user);
+  const { signUpData, verificationData } = useSelector(state => state.user);
   const [count, setCount] = useState(100);
   const [first, onChangeFirst] = useInput('');
   const [second, onChangeSecond] = useInput('');
@@ -107,9 +107,9 @@ function AuthEmail({ email, close, history }) {
             maxLength={1}
           />
         </div>
-        <ButtonBig onClick={onSubmit}>
-          {`인증 - ${count}초 남았습니다.`}
-        </ButtonBig>
+        <ButtonBig
+          onClick={onSubmit}
+        >{`인증 - ${count}초 남았습니다.`}</ButtonBig>
         <ButtonBig gray onClick={onAddCount}>
           5분 연장
         </ButtonBig>

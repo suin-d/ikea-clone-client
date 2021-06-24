@@ -18,7 +18,7 @@ const ContentContainer = styled.div`
   }
 `;
 
-const getTotal = (data) =>
+const getTotal = data =>
   data.reduce(
     (acc, v) => parseInt(v.quantity, 10) * parseInt(v.Product.slCost, 10) + acc,
     0
@@ -26,7 +26,7 @@ const getTotal = (data) =>
 export default function PaymentPage({ history }) {
   const userInfo = useCheckLogin();
   const { loadCartData: data, successPaymentData: paySuccess } = useSelector(
-    (state) => state.user
+    state => state.user
   );
   const [name, onChangeName] = useInput(userInfo.name);
   const [email, onChangeEmail] = useInput(userInfo.email);

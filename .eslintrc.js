@@ -4,11 +4,11 @@ module.exports = {
     es6: true,
     node: true,
   },
-  extends: ['react-app', 'airbnb'],
+  extends: ['react-app', 'prettier'],
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
-      'error',
+      'warn',
       {
         singleQuote: true,
         semi: true,
@@ -16,8 +16,8 @@ module.exports = {
         tabWidth: 2,
         printWidth: 80,
         bracketSpacing: true,
+        arrowParens: 'avoid',
         endOfLine: 'auto',
-        // arrowParens: 'avoid',
       },
     ],
     'react/jsx-filename-extension': 0,

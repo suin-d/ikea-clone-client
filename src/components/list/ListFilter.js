@@ -67,7 +67,7 @@ const FilterBottom = styled.div`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.down &&
     css`
       opacity: 0;
@@ -123,7 +123,7 @@ const FilterTop = styled(NavTop)`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.down &&
     css`
       div > i > svg {
@@ -140,7 +140,7 @@ const FilterBox = styled.nav`
   bottom: 0;
   display: flex;
   animation: ${slideOn} 0.3s ease-in-out forwards;
-  ${(props) =>
+  ${props =>
     !props.visible &&
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
@@ -161,9 +161,9 @@ export default function ListFilter({
   const [filterVisible, setFilterVisible] = useState(true);
   const [filterDown, setFilterDown] = useState(false);
 
-  const onChangeRadio = (e) => {
+  const onChangeRadio = e => {
     const currentNumber = parseInt(e.target.value, 10);
-    const selected = Filters.find((v) => v.id === currentNumber);
+    const selected = Filters.find(v => v.id === currentNumber);
     setCurrentFilter(selected.id);
   };
 
@@ -188,7 +188,7 @@ export default function ListFilter({
           </div>
         </FilterTop>
         <FilterBottom down={filterDown}>
-          {Filters.map((v) => (
+          {Filters.map(v => (
             <div key={v.id}>
               <span>{v.name}</span>
               <input

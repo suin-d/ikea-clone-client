@@ -21,7 +21,7 @@ const StyledSelectBox = styled.div`
       display: none;
     }
   }
-  ${(props) =>
+  ${props =>
     props.width &&
     css`
       width: ${props.width};

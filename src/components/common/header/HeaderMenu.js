@@ -72,12 +72,12 @@ const HeaderBar = styled.div`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.open &&
     css`
       animation: ${slideDown} 0.3s normal forwards;
     `}
-  ${(props) =>
+  ${props =>
     props.open ||
     css`
       animation: ${slideUp} 0.3s normal forwards;
@@ -132,7 +132,7 @@ const HeaderContainer = styled.div`
     transition: all 0.3s ease;
     max-width: 100vw;
   }
-  ${(props) =>
+  ${props =>
     !props.open &&
     css`
       @media ${({ theme }) => theme.mobile} {

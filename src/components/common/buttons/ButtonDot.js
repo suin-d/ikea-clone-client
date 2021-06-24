@@ -30,7 +30,7 @@ export const DotButtonBox = styled.div`
     border-radius: 50%;
     z-index: 11;
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       display: none;

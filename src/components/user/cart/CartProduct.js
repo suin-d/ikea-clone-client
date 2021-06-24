@@ -38,7 +38,7 @@ const CartItem = styled.li`
           margin-bottom: 7px;
           display: inline-block;
         }
-        span: nth-of-type(2) {
+        span:nth-of-type(2) {
           text-decoration: line-through;
         }
         div {
@@ -93,7 +93,7 @@ export default function CartProduct({ data, userInfo }) {
   const dispatch = useDispatch();
   const [quantity, setQuantity] = useState(data.quantity);
 
-  const onChangeQuantity = (e) => {
+  const onChangeQuantity = e => {
     setQuantity(e.target.value);
     const data1 = {
       cartId: data.id,

@@ -98,7 +98,7 @@ const ListItemBox = styled.div`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.hover &&
     css`
       i {
@@ -160,7 +160,7 @@ export default function ListItem({ data, listState, userInfo }) {
   const dispatch = useDispatch();
   const history = useHistory();
   const isWished = () => {
-    const result = userInfo.wishItem.filter((v) => v.id === data.id);
+    const result = userInfo.wishItem.filter(v => v.id === data.id);
     if (result.length === 0) {
       return false;
     }
@@ -175,23 +175,23 @@ export default function ListItem({ data, listState, userInfo }) {
   const goDetail = () => {
     history.push(`/detail/${data.id}`);
   };
-  const goLogin = (e) => {
+  const goLogin = e => {
     e.stopPropagation();
     history.push('/user/signin');
   };
   const iconStyle = {
     opacity: hover ? 1 : 0,
   };
-  const onAddWish = (e) => {
+  const onAddWish = e => {
     e.stopPropagation();
     dispatch(addWish({ userEmail: userInfo.email, productId: data.id }));
   };
-  const onRemoveWish = (e) => {
+  const onRemoveWish = e => {
     e.stopPropagation();
     dispatch(removeWish({ userEmail: userInfo.email, productId: data.id }));
   };
 
-  const onAddCart = (e) => {
+  const onAddCart = e => {
     e.stopPropagation();
     if (!userInfo) {
       goLogin(e);

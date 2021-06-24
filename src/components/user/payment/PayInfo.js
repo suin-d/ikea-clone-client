@@ -123,7 +123,7 @@ export default function PayInfo({ data, total }) {
     <PayInfoContainer>
       <h1>주문정보</h1>
       <ul>
-        {data.map((v) => (
+        {data.map(v => (
           <PayItem key={v.id} data={v} />
         ))}
       </ul>

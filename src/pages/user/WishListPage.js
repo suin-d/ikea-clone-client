@@ -45,7 +45,7 @@ const WishNav = styled.ul`
     padding-bottom: 18px;
     cursor: pointer;
   }
-  ${(props) =>
+  ${props =>
     props.navState &&
     css`
       li:nth-child(${props.navState}) {
@@ -89,14 +89,14 @@ export default function WishListPage() {
   const userInfo = useCheckLogin();
   const dispatch = useDispatch();
   const { getWishData: data, getWishLoading } = useSelector(
-    (state) => state.user
+    state => state.user
   );
   const [navState, setNavState] = useState(1);
-  const onNav = (state) => {
+  const onNav = state => {
     setNavState(state);
   };
   const onAddCartAll = () => {
-    data.forEach((v) =>
+    data.forEach(v =>
       dispatch(addCart({ userEmail: userInfo.email, productId: v.id }))
     );
   };

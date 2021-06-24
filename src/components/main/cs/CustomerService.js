@@ -37,7 +37,7 @@ const csItems = [
 export default function CustomerService() {
   return (
     <CsBox>
-      {csItems.map((item) => (
+      {csItems.map(item => (
         <CsItem key={item.id} data={item} />
       ))}
     </CsBox>

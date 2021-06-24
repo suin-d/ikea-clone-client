@@ -9,7 +9,7 @@ import { passwordChange } from '../../../modules/user/thunk';
 export default function FindPasswordForm() {
   const dispatch = useDispatch();
   const [email, onChangeEmail] = useInput('');
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(passwordChange(email));
   };

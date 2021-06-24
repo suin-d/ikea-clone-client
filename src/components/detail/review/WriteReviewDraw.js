@@ -42,7 +42,7 @@ const InputRecom = styled.label`
     color: #484848;
     font-size: 13px;
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       span {
@@ -69,9 +69,9 @@ const initialGrade = [
 ];
 export default function WriteReviewDraw({ setReviewOpen }) {
   const { getProductData: product, uploadImagesData: imageData } = useSelector(
-    (state) => state.product
+    state => state.product
   );
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   const [recom, setRecom] = useState(false);
@@ -79,7 +79,7 @@ export default function WriteReviewDraw({ setReviewOpen }) {
   const [content, onChangeContent] = useInput('');
   const [grade, setGrade] = useState(initialGrade);
   const [userGrade, setUserGrade] = useState(0);
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(
       addReview({

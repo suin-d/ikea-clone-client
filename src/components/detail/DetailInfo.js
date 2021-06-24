@@ -111,7 +111,7 @@ const DetailInfoWrapper = styled.div`
 export default function DetailInfo({ setReviewOpen, product, grade }) {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
   const onAddCart = () => {
     if (userInfo) {
       dispatch(addCart({ userEmail: userInfo.email, productId: product.id }));

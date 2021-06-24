@@ -125,7 +125,7 @@ const SearchBox = styled.form`
       margin: 0;
     }
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       background: #fff;
@@ -157,12 +157,12 @@ function ResultItem({ data, close }) {
   );
 }
 export default function SearchBar({ headerOpen }) {
-  const { searchData } = useSelector((state) => state.product);
+  const { searchData } = useSelector(state => state.product);
   const dispatch = useDispatch();
   const [searchActive, setSearchActive] = useState(false);
   const [keyword, setKeyword] = useState('');
 
-  const onChangeKeyword = (e) => {
+  const onChangeKeyword = e => {
     setKeyword(e.target.value);
     dispatch(search(e.target.value));
   };
@@ -196,7 +196,7 @@ export default function SearchBar({ headerOpen }) {
           </span>
           <ul>
             {searchData &&
-              searchData.map((v) => (
+              searchData.map(v => (
                 <ResultItem key={v.id} data={v} close={searchClose} />
               ))}
           </ul>

@@ -8,7 +8,7 @@ const StyledInputSet = styled.fieldset`
   border: none;
   overflow: visible;
   width: 100%;
-  ${(props) =>
+  ${props =>
     props.width &&
     css`
       width: ${props.width};
@@ -71,7 +71,7 @@ const StyledInputSet = styled.fieldset`
   input:valid ~ label {
     transform: scale(0.75);
   }
-  ${(props) =>
+  ${props =>
     props.warn &&
     css`
       hr {

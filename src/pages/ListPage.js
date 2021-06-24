@@ -12,7 +12,7 @@ export default function ListPage({ location, match }) {
   const query = qs.parse(location.search, { ignoreQueryPrefix: true });
   const [currentFilter, setCurrentFilter] = useState(0);
   const { getListLoading, getListData, getListError, hasMore } = useSelector(
-    (state) => state.product
+    state => state.product
   );
   const dispatch = useDispatch();
   const { id } = match.params;

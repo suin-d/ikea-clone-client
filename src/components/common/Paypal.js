@@ -6,9 +6,9 @@ import { successPayment } from '../../modules/user/thunk';
 
 export default function Paypal({ priceTotal = 0, userInfo, productInfo }) {
   const dispatch = useDispatch();
-  const onSuccess = (payment) => {
+  const onSuccess = payment => {
     console.log('The payment was succeeded!', payment);
-    const data = productInfo.map((v) => ({
+    const data = productInfo.map(v => ({
       id: v.Product.id,
       title: v.Product.title,
       slCost: v.Product.slCost,
@@ -17,12 +17,12 @@ export default function Paypal({ priceTotal = 0, userInfo, productInfo }) {
     dispatch(successPayment({ payment, userInfo, productInfo: data }));
   };
 
-  const onCancel = (data) => {
+  const onCancel = data => {
     console.log('The payment was cancelled!', data);
     dispatch(addAlert('결제가 취소되었습니다.'));
   };
 
-  const onError = (err) => {
+  const onError = err => {
     console.log('Error!', err);
   };
 

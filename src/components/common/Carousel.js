@@ -65,7 +65,7 @@ export default function Carousel({
     <Container>
       <h1>{title}</h1>
       <Slider {...setting}>
-        {data.map((item) => (
+        {data.map(item => (
           <ItemComponent data={item} key={item.id} />
         ))}
       </Slider>

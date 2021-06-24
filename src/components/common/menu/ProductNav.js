@@ -63,7 +63,7 @@ const DetailNavBox = styled(ProductNavBox)`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       padding-left: 30px;
@@ -71,7 +71,7 @@ const DetailNavBox = styled(ProductNavBox)`
     `}
   @media ${({ theme }) => theme.mobile} {
     flex: 0;
-    ${(props) =>
+    ${props =>
       props.active &&
       css`
         position: relative;
@@ -414,7 +414,7 @@ const navData = [
 function DetailNav({ data, active }) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const goList = (v) => {
+  const goList = v => {
     history.push(`/list/${v.id}?bc=${data.name}&sc=${v.name}`);
     dispatch({ type: NAV_CLOSE });
   };
@@ -424,7 +424,7 @@ function DetailNav({ data, active }) {
       <h2>전체보기</h2>
       <ul>
         {data &&
-          data.detail.map((v) => (
+          data.detail.map(v => (
             <li key={v.id} onClick={() => goList(v)}>
               {v.name}
             </li>
@@ -457,7 +457,7 @@ export default function ProductNav({ onToggleNav }) {
           <h1>모든 제품</h1>
           <h2>지속가능한 제품</h2>
           <ul>
-            {navData.map((v) => (
+            {navData.map(v => (
               <NavItem
                 key={v.id}
                 data={v}
@@ -469,7 +469,7 @@ export default function ProductNav({ onToggleNav }) {
         </ProductNavBox>
       </NavContentBox>
       <DetailNav
-        data={navData.find((v) => v.id === navNumber)}
+        data={navData.find(v => v.id === navNumber)}
         active={navNumber !== 0}
       />
     </>

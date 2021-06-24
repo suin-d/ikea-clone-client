@@ -19,7 +19,7 @@ export const LoadingContainer = styled.div`
     font-size: 18px;
     letter-spacing: 1.2;
   }
-  ${(props) =>
+  ${props =>
     props.grid &&
     css`
       grid-column: 2/4;

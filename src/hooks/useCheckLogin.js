@@ -6,7 +6,7 @@ import { addAlert } from '../modules/interface';
 export default function useCheckLogin() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
 
   useEffect(() => {
     if (!userInfo) {

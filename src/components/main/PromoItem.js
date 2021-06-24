@@ -38,7 +38,7 @@ const ListItemBox = styled.li`
       justify-content: flex-start;
     }
   }
-  ${(props) => {
+  ${props => {
     switch (props.color) {
       case 'yellow':
         return css`

@@ -65,9 +65,9 @@ function HistoryListItem({ data }) {
             <strong>{`${data.quantity}개`}</strong>
           </span>
         </p>
-        <span>
-          {`금액: ₩ ${(data.Product.slCost * data.quantity).toLocaleString()}`}
-        </span>
+        <span>{`금액: ₩ ${(
+          data.Product.slCost * data.quantity
+        ).toLocaleString()}`}</span>
       </article>
     </ItemBox>
   );
@@ -135,7 +135,7 @@ function HistoryPakage({ data }) {
         </p>
       </article>
       <ul>
-        {data.Histories.map((v) => (
+        {data.Histories.map(v => (
           <HistoryListItem data={v} key={v.id} />
         ))}
       </ul>
@@ -182,11 +182,11 @@ const HistoryList = styled.div`
     }
   }
 `;
-const getTotal = (data) =>
+const getTotal = data =>
   data.reduce((acc, v) => parseInt(v.totalPrice, 10) + acc, 0);
 
 export default function History({ close, userInfo }) {
-  const { getHistoryData: data } = useSelector((state) => state.user);
+  const { getHistoryData: data } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const totalPrice = useMemo(() => data && getTotal(data), [data]);
   useEffect(() => {
@@ -198,7 +198,7 @@ export default function History({ close, userInfo }) {
       <HistoryList>
         <ul>
           {data.length !== 0
-            ? data.map((v) => <HistoryPakage data={v} key={v.id} />)
+            ? data.map(v => <HistoryPakage data={v} key={v.id} />)
             : '구매내역이 존재하지 않습니다.'}
         </ul>
         <article>

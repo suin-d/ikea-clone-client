@@ -27,7 +27,7 @@ export const NAV_CLOSE = 'interface/NAV_CLOSE';
 export const NAV_OPEN = 'interface/NAV_OPEN';
 export const NAV_MOVE = 'interface/NAV_MOVE';
 
-export const addAlert = (message) => ({
+export const addAlert = message => ({
   type: ADD_ALERT,
   payload: message,
 });

@@ -8,13 +8,13 @@ import { passwordSubmit } from '../../../modules/user/thunk';
 
 export default function ChangePasswordForm({ match, history }) {
   const dispatch = useDispatch();
-  const { passwordSubmitData } = useSelector((state) => state.user);
+  const { passwordSubmitData } = useSelector(state => state.user);
   const [password, setPassword] = useState('');
   const [passwordCheck, setPasswordCheck] = useState('');
   const [passwordError, setPasswordError] = useState(false);
   const [passwordCheckError, setPasswordCheckError] = useState(false);
 
-  const onChangePassword = (e) => {
+  const onChangePassword = e => {
     const regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
     setPassword(e.target.value);
     if (!regex.test(e.target.value)) {
@@ -23,7 +23,7 @@ export default function ChangePasswordForm({ match, history }) {
       setPasswordError(false);
     }
   };
-  const onChangePasswordCheck = (e) => {
+  const onChangePasswordCheck = e => {
     setPasswordCheck(e.target.value);
     if (password !== e.target.value) {
       setPasswordCheckError('비밀번호와 동일하게 입력해주세요');
@@ -31,7 +31,7 @@ export default function ChangePasswordForm({ match, history }) {
       setPasswordCheckError(false);
     }
   };
-  const onSubmit = (e) => {
+  const onSubmit = e => {
     e.preventDefault();
     dispatch(passwordSubmit({ email: match.params.email, password }));
   };

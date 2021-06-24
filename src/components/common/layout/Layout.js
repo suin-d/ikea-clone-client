@@ -25,7 +25,7 @@ const LayoutBox = styled.main`
 `;
 
 export default function Layout({ children }) {
-  const { open: navOpen } = useSelector((state) => state.interfaces.navigation);
+  const { open: navOpen } = useSelector(state => state.interfaces.navigation);
   return (
     <>
       <HeaderMenu />

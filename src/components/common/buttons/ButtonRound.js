@@ -17,13 +17,13 @@ const StyledButton = styled.button`
   &:hover {
     background: #dfdfdf;
   }
-  ${(props) =>
+  ${props =>
     props.white &&
     css`
       background: #fff;
       border: 1px solid #fff;
     `}
-  ${(props) =>
+  ${props =>
     props.gray &&
     css`
       background: #f5f5f5;
@@ -32,7 +32,7 @@ const StyledButton = styled.button`
         background: #dfdfdf;
       }
     `}
-    ${(props) =>
+    ${props =>
     props.black &&
     css`
       background: #000;

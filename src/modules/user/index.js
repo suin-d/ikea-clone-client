@@ -283,12 +283,12 @@ export default function user(state = initialState, action) {
         userInfo: {
           ...state.userInfo,
           wishItem: state.userInfo.wishItem.filter(
-            (v) => v.id !== action.payload.productId
+            v => v.id !== action.payload.productId
           ),
         },
         getWishData:
           state.getWishData &&
-          state.getWishData.filter((v) => v.id !== action.payload.productId),
+          state.getWishData.filter(v => v.id !== action.payload.productId),
       };
     case GET_WISH_REQUEST:
       return {
@@ -359,13 +359,13 @@ export default function user(state = initialState, action) {
         userInfo: {
           ...state.userInfo,
           Carts: state.userInfo.Carts.filter(
-            (v) => v.ProductId !== action.payload.productId
+            v => v.ProductId !== action.payload.productId
           ),
         },
         loadCartData:
           state.loadCartData &&
           state.loadCartData.filter(
-            (v) => v.Product.id !== action.payload.productId
+            v => v.Product.id !== action.payload.productId
           ),
       };
     case REMOVE_CART_ERROR:
@@ -389,7 +389,7 @@ export default function user(state = initialState, action) {
         updateCartData: action.payload,
         updateCartError: null,
         loadCartData: state.loadCartData.map(
-          (v) =>
+          v =>
             v.id === action.payload.cartId
               ? { ...v, quantity: action.payload.quantity }
               : v

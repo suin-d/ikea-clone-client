@@ -43,7 +43,7 @@ const HFLayoutContainer = styled.section`
 `;
 
 export default function HFLayout() {
-  const { getHfData, hasMore } = useSelector((state) => state.product);
+  const { getHfData, hasMore } = useSelector(state => state.product);
   const currentOffset = useRef(12);
   const [isDone, setIsDone] = useState(false);
   const [cateId, setCateId] = useState(0);
@@ -78,7 +78,7 @@ export default function HFLayout() {
       <HFCategory cateId={cateId} setCateId={setCateId} />
       <ResponsiveMasonry columnsCountBreakPoints={{ 300: 1, 800: 2, 1100: 3 }}>
         <Masonry gutter="20px">
-          {getHfData && getHfData.map((v) => <HFItem data={v} key={v.id} />)}
+          {getHfData && getHfData.map(v => <HFItem data={v} key={v.id} />)}
         </Masonry>
       </ResponsiveMasonry>
       {hasMore && <ButtonRound onClick={loadMore}>12개 더보기</ButtonRound>}

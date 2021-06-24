@@ -36,7 +36,7 @@ const DrawContentContainer = styled.div`
 const DrawHeaderContainer = styled.div`
   padding-right: 50px;
   margin: 35px 0;
-  ${(props) =>
+  ${props =>
     props.writeReview &&
     css`
       height: 30px;
@@ -50,7 +50,7 @@ const DrawHeaderContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    ${(props) =>
+    ${props =>
       props.writeReview &&
       css`
         & {
@@ -60,7 +60,7 @@ const DrawHeaderContainer = styled.div`
         }
       `};
     section.first-section {
-      ${(props) =>
+      ${props =>
         props.writeReview &&
         css`
           display: none;
@@ -76,7 +76,7 @@ const DrawHeaderContainer = styled.div`
       button {
         transition: none;
       }
-      ${(props) =>
+      ${props =>
         props.writeReview &&
         css`
           button {
@@ -144,7 +144,7 @@ const ReviewDrawBox = styled.div`
   right: 0;
   bottom: 0;
   animation: ${slideOn} 0.3s ease-in-out forwards;
-  ${(props) =>
+  ${props =>
     !props.visible &&
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
@@ -169,8 +169,8 @@ function DrawContainer({ setReviewOpen }) {
   const {
     getProductData: { id, grade },
     getReviewsData: reviewList,
-  } = useSelector((state) => state.product);
-  const { userInfo } = useSelector((state) => state.user);
+  } = useSelector(state => state.product);
+  const { userInfo } = useSelector(state => state.user);
   const dispatch = useDispatch();
   const [writeReview, setWriteReview] = useState(false);
 

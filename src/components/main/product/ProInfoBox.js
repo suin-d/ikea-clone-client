@@ -41,7 +41,7 @@ const InfoBox = styled.div`
       font-size: 15px;
     }
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       display: flex;

@@ -86,7 +86,7 @@ const ListWrapper = styled.div`
       }
     }
   }
-  ${(props) =>
+  ${props =>
     props.active &&
     css`
       div {
@@ -111,7 +111,7 @@ function List({
 }) {
   const [filterOpen, setFilterOpen] = useState(false);
   const [listState, setListState] = useState(0);
-  const { userInfo } = useSelector((state) => state.user);
+  const { userInfo } = useSelector(state => state.user);
 
   return (
     <>
@@ -139,7 +139,7 @@ function List({
             data.length === 0 ? (
               <Error text="카테고리에 해당하는 아이템이 없습니다" grid />
             ) : (
-              data.map((item) => (
+              data.map(item => (
                 <ListItem
                   listState={listState}
                   data={item}

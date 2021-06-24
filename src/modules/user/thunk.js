@@ -45,7 +45,7 @@ import {
 } from '.';
 import { delay } from '../product/thunk';
 
-export const signUp = (data) => async (dispatch) => {
+export const signUp = data => async dispatch => {
   try {
     dispatch({
       type: SIGN_UP_REQUEST,
@@ -63,7 +63,7 @@ export const signUp = (data) => async (dispatch) => {
   }
 };
 
-export const verification = (data) => async (dispatch) => {
+export const verification = data => async dispatch => {
   try {
     dispatch({
       type: VERIFICATION_REQUEST,
@@ -81,7 +81,7 @@ export const verification = (data) => async (dispatch) => {
   }
 };
 
-export const passwordChange = (data) => async (dispatch) => {
+export const passwordChange = data => async dispatch => {
   try {
     dispatch({
       type: PASSWORD_CHANGE_REQUEST,
@@ -99,7 +99,7 @@ export const passwordChange = (data) => async (dispatch) => {
   }
 };
 
-export const passwordSubmit = (data) => async (dispatch) => {
+export const passwordSubmit = data => async dispatch => {
   try {
     dispatch({
       type: PASSWORD_SUBMIT_REQUEST,
@@ -117,7 +117,7 @@ export const passwordSubmit = (data) => async (dispatch) => {
   }
 };
 
-export const login = (data) => async (dispatch) => {
+export const login = data => async dispatch => {
   try {
     dispatch({
       type: LOG_IN_REQUEST,
@@ -135,7 +135,7 @@ export const login = (data) => async (dispatch) => {
   }
 };
 
-export const logout = (email) => async (dispatch) => {
+export const logout = email => async dispatch => {
   try {
     dispatch({
       type: LOG_OUT_REQUEST,
@@ -153,7 +153,7 @@ export const logout = (email) => async (dispatch) => {
   }
 };
 
-export const deleteUser = (email) => async (dispatch) => {
+export const deleteUser = email => async dispatch => {
   try {
     dispatch({
       type: DELETE_USER_REQUEST,
@@ -171,7 +171,7 @@ export const deleteUser = (email) => async (dispatch) => {
   }
 };
 
-export const getWishList = (email) => async (dispatch) => {
+export const getWishList = email => async dispatch => {
   try {
     dispatch({ type: GET_WISH_REQUEST });
     await delay(700);
@@ -188,7 +188,7 @@ export const getWishList = (email) => async (dispatch) => {
     });
   }
 };
-export const updateUser = (data) => async (dispatch) => {
+export const updateUser = data => async dispatch => {
   try {
     dispatch({
       type: UPDATE_USER_REQUEST,
@@ -206,7 +206,7 @@ export const updateUser = (data) => async (dispatch) => {
   }
 };
 
-export const getCart = (email) => async (dispatch) => {
+export const getCart = email => async dispatch => {
   try {
     dispatch({ type: LOAD_CART_REQUEST });
     await delay(700);
@@ -223,7 +223,7 @@ export const getCart = (email) => async (dispatch) => {
     });
   }
 };
-export const getHistory = (email) => async (dispatch) => {
+export const getHistory = email => async dispatch => {
   try {
     dispatch({
       type: GET_HISTORY_REQUEST,
@@ -240,7 +240,7 @@ export const getHistory = (email) => async (dispatch) => {
     });
   }
 };
-export const removeCart = (data) => async (dispatch) => {
+export const removeCart = data => async dispatch => {
   try {
     dispatch({ type: REMOVE_CART_REQUEST });
     const response = await axios.delete(
@@ -253,7 +253,7 @@ export const removeCart = (data) => async (dispatch) => {
   }
 };
 
-export const changeCart = (data) => async (dispatch) => {
+export const changeCart = data => async dispatch => {
   try {
     dispatch({ type: UPDATE_CART_REQUEST });
     const response = await axios.patch('api/userproduct/cart', data);
@@ -263,7 +263,7 @@ export const changeCart = (data) => async (dispatch) => {
     dispatch({ type: UPDATE_CART_ERROR, payload: e.response.data });
   }
 };
-export const successPayment = (data) => async (dispatch) => {
+export const successPayment = data => async dispatch => {
   try {
     dispatch({ type: SUCCESS_PAYMENT_REQUEST });
     const response = await axios.post('/api/userproduct/payment/paypal', data);

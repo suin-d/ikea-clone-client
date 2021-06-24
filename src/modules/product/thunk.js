@@ -38,7 +38,7 @@ import {
   GET_REVIEWS_ERROR,
 } from '.';
 
-export const delay = (ms) =>
+export const delay = ms =>
   new Promise((resolve, reject) => {
     try {
       setTimeout(() => resolve(), ms);
@@ -47,7 +47,7 @@ export const delay = (ms) =>
     }
   });
 
-export const search = (keyword) => async (dispatch) => {
+export const search = keyword => async dispatch => {
   try {
     dispatch({ type: SEARCH_REQUEST });
     const response = await axios.get(`/api/product/search?keyword=${keyword}`);
@@ -57,7 +57,7 @@ export const search = (keyword) => async (dispatch) => {
   }
 };
 
-export const getList = (data) => async (dispatch) => {
+export const getList = data => async dispatch => {
   try {
     dispatch({ type: GET_LIST_REQUEST });
     await delay(1000);
@@ -71,7 +71,7 @@ export const getList = (data) => async (dispatch) => {
   }
 };
 
-export const loadMoreList = (data) => async (dispatch) => {
+export const loadMoreList = data => async dispatch => {
   try {
     dispatch({ type: LOAD_MORE_LIST_REQUEST });
     const response = await axios.get(
@@ -84,7 +84,7 @@ export const loadMoreList = (data) => async (dispatch) => {
   }
 };
 
-export const addWish = (data) => async (dispatch) => {
+export const addWish = data => async dispatch => {
   try {
     dispatch({ type: ADD_WISH_REQUEST });
     const response = await axios.post('/api/userproduct/wish', data);
@@ -94,7 +94,7 @@ export const addWish = (data) => async (dispatch) => {
   }
 };
 
-export const removeWish = (data) => async (dispatch) => {
+export const removeWish = data => async dispatch => {
   try {
     dispatch({ type: REMOVE_WISH_REQUEST });
     const response = await axios.delete(
@@ -107,7 +107,7 @@ export const removeWish = (data) => async (dispatch) => {
   }
 };
 
-export const addCart = (data) => async (dispatch) => {
+export const addCart = data => async dispatch => {
   try {
     dispatch({ type: ADD_CART_REQUEST });
     const response = await axios.post('/api/userproduct/cart', data);
@@ -118,7 +118,7 @@ export const addCart = (data) => async (dispatch) => {
   }
 };
 
-export const getProduct = (productId) => async (dispatch) => {
+export const getProduct = productId => async dispatch => {
   try {
     dispatch({ type: GET_PRODUCT_REQUEST });
     await delay(1000);
@@ -129,7 +129,7 @@ export const getProduct = (productId) => async (dispatch) => {
   }
 };
 
-export const getHf = (cateId) => async (dispatch) => {
+export const getHf = cateId => async dispatch => {
   try {
     dispatch({ type: GET_HF_REQUEST });
     const response = await axios.get(`/api/product/homefurnishing/${cateId}`);
@@ -138,7 +138,7 @@ export const getHf = (cateId) => async (dispatch) => {
     dispatch({ type: GET_HF_ERROR, payload: e.response.data });
   }
 };
-export const loadMoreHf = (data) => async (dispatch) => {
+export const loadMoreHf = data => async dispatch => {
   try {
     dispatch({ type: LOAD_MORE_HF_REQUEST });
     const response = await axios.get(
@@ -149,7 +149,7 @@ export const loadMoreHf = (data) => async (dispatch) => {
     dispatch({ type: LOAD_MORE_HF_ERROR, payload: e.response.data });
   }
 };
-export const uploadImages = (data) => async (dispatch) => {
+export const uploadImages = data => async dispatch => {
   try {
     dispatch({ type: UPLOAD_IMAGES_REQUEST });
     const response = await axios.post('/api/product/images', data);
@@ -158,7 +158,7 @@ export const uploadImages = (data) => async (dispatch) => {
     dispatch({ type: UPLOAD_IMAGES_ERROR, payload: e.response.data });
   }
 };
-export const addReview = (data) => async (dispatch) => {
+export const addReview = data => async dispatch => {
   try {
     dispatch({ type: ADD_REVIEW_REQUEST });
     const response = await axios.post('/api/product/review', data);
@@ -167,7 +167,7 @@ export const addReview = (data) => async (dispatch) => {
     dispatch({ type: ADD_REVIEW_ERROR, payload: e.response.data });
   }
 };
-export const getReviews = (productId) => async (dispatch) => {
+export const getReviews = productId => async dispatch => {
   try {
     dispatch({ type: GET_REVIEWS_REQUEST });
     const response = await axios.get(`/api/product/review/${productId}`);

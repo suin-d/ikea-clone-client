@@ -35,7 +35,7 @@ export default function SelectNumber({ onChange, value }) {
   return (
     <StyledSelect name="quantity">
       <select name="" id="" onChange={onChange} defaultValue={value}>
-        {arr.map((v) => (
+        {arr.map(v => (
           <option value={v.value} key={v.id}>
             {v.value}
           </option>

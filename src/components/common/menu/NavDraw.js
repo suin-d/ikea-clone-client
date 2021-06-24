@@ -63,7 +63,7 @@ export const NavDrawBox = styled.nav`
   animation: ${slideOn} 0.3s ease-in-out forwards;
   padding-top: 92px;
   /* overflow-y: scroll; */
-  ${(props) =>
+  ${props =>
     !props.visible &&
     css`
       animation: ${slideOff} 0.3s ease-in-out forwards;
@@ -96,9 +96,9 @@ export default function NavDraw() {
   const dispatch = useDispatch();
   const {
     navigation: { navState },
-  } = useSelector((state) => state.interfaces);
+  } = useSelector(state => state.interfaces);
   const [navVisible, setNavVisible] = useState(true);
-  const onToggleNav = (number) => {
+  const onToggleNav = number => {
     dispatch({ type: NAV_MOVE, payload: number });
   };
   const navClose = () => {

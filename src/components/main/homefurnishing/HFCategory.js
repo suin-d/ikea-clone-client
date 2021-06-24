@@ -36,7 +36,7 @@ const cateData = [
 export default function HFCategory({ setCateId, cateId }) {
   return (
     <HFCateContainer>
-      {cateData.map((v) =>
+      {cateData.map(v =>
         cateId === v.id ? (
           <ButtonRound black key={v.id} onClick={() => setCateId(v.id)}>
             {v.name}

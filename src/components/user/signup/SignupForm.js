@@ -15,7 +15,7 @@ import { signUp } from '../../../modules/user/thunk';
 import { addAlert } from '../../../modules/interface';
 
 export const Gap = styled.div`
-  ${(props) =>
+  ${props =>
     props.h &&
     css`
       height: ${props.h};
@@ -37,7 +37,7 @@ const initialValid = {
 };
 function SignupForm() {
   const dispatch = useDispatch();
-  const { signUpData, signUpLoading } = useSelector((state) => state.user);
+  const { signUpData, signUpLoading } = useSelector(state => state.user);
   const [authOpen, setAuthOpen] = useState(false);
   const [lastName, onChangeLastName] = useInput('');
   const [firstName, onChangeFirstName] = useInput('');
@@ -53,9 +53,10 @@ function SignupForm() {
   const [term, setTerm] = useState(false);
 
   const { emailError, phoneError, passwordError } = validation;
-  const onChangeEmail = (e) => {
+  const onChangeEmail = e => {
     setEmail(e.target.value);
-    const emailRegExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+    const emailRegExp =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
     setValidation({
       ...validation,
       emailError: !emailRegExp.test(e.target.value)
@@ -63,7 +64,7 @@ function SignupForm() {
         : false,
     });
   };
-  const onChangePhone = (e) => {
+  const onChangePhone = e => {
     const phoneRegExp = /^\d{3}-\d{3,4}-\d{4}$/;
     setPhone(e.target.value);
     setValidation({
@@ -73,7 +74,7 @@ function SignupForm() {
         : false,
     });
   };
-  const onChangePasswordCheck = (e) => {
+  const onChangePasswordCheck = e => {
     const regex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
     setPasswordCheck(e.target.value);
     setValidation({

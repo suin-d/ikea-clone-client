@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components';
 import { BsStar, BsStarHalf, BsStarFill } from 'react-icons/bs';
 
 const Star = styled.i`
-  ${(props) =>
+  ${props =>
     props.state === 0 &&
     css`
       color: #bfbfbf;
     `};
-  ${(props) =>
+  ${props =>
     (props.state === 1 || props.state === 2) &&
     css`
       color: #0058a3;
@@ -54,7 +54,7 @@ export default function GradeForm({ grade, setGrade, setUserGrade }) {
   return (
     <InputGrade>
       <ul>
-        {grade.map((star) => (
+        {grade.map(star => (
           <li onClick={() => onClickStar(star.id, star.state)} key={star.id}>
             {star.state === 0 && (
               <Star state={star.state}>
