@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
-import ButtonBig from '../../components/common/buttons/ButtonBig';
-import { CircleButton } from '../../components/common/buttons/ButtonCart';
-import GoStore from '../../components/wish/GoStore';
-import WishItems from '../../components/wish/WishItems';
-import WishReceipt from '../../components/wish/WishReceipt';
-import useCheckLogin from '../../hooks/useCheckLogin';
-import { getWishList } from '../../modules/user/thunk';
-import { addCart } from '../../modules/product/thunk';
-import Loading from '../../components/common/Loading';
-import Error from '../../components/common/Error';
+import ButtonBig from 'components/common/buttons/ButtonBig';
+import { CircleButton } from 'components/common/buttons/ButtonCart';
+import GoStore from 'components/wish/GoStore';
+import WishItems from 'components/wish/WishItems';
+import WishReceipt from 'components/wish/WishReceipt';
+import useCheckLogin from 'hooks/useCheckLogin';
+import { getWishList } from 'modules/user/thunk';
+import { addCart } from 'modules/product/thunk';
+import Loading from 'components/common/Loading';
+import Error from 'components/common/Error';
 
 const CartButtonBox = styled.div`
   width: 100%;

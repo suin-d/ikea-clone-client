@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ButtonRound from '../../components/common/buttons/ButtonRound';
-import History from '../../components/user/history/History';
-import useCheckLogin from '../../hooks/useCheckLogin';
+import ButtonRound from 'components/common/buttons/ButtonRound';
+import History from 'components/user/history/History';
+import useCheckLogin from 'hooks/useCheckLogin';
 
 const HistoryLayout = styled.div`
   letter-spacing: 1.2px;

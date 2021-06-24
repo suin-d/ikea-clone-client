@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LoadingImg from '../../assets/img/loading.gif';
+import LoadingImg from 'assets/img/loading.gif';
 
 export const LoadingContainer = styled.div`
   margin-right: 60px;

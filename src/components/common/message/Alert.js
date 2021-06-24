@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { RiNotification4Line } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { css, keyframes } from 'styled-components';
-import { ALERT_RESET } from '../../../modules/interface';
+import { ALERT_RESET } from 'modules/interface';
 
 const slideOff = keyframes`
 from{

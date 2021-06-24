@@ -1,65 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import ButtonNext from '../common/buttons/ButtonNext';
-
-export const promoMocks = [
-  {
-    id: 1,
-    srcset: `https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxxl 1400w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxl 950w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xl 800w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=l 750w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=m 600w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=s 500w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xs 400w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxs 300w,
-    https://www.ikea.com/images/-d0db0e821a764834c2cda2156613c0c8.jpg?f=xxxs 240w`,
-    name: '정돈된 집에서 시작되는 여유로운 삶',
-    color: 'cheese',
-  },
-  {
-    id: 2,
-    srcset: `https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xxxl 1400w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xxl 950w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xl 800w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=l 750w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=m 600w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=s 500w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xs 400w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xxs 300w,
-        https://www.ikea.com/images/-332f18337ddd4afb16ccf216ea033775.jpg?f=xxxs 240w`,
-    name: '언택트로 만나는 IKEA: 비대면 서비스로 제품주문부터 플래닝까지',
-    color: 'gray',
-  },
-  {
-    id: 3,
-    srcset: `https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xxxl 1400w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xxl 950w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xl 800w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=l 750w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=m 600w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=s 500w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xs 400w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xxs 300w,
-        https://www.ikea.com/images/71/e5/71e54164506d0cb52c8dfc9f3308bca4.jpg?f=xxxs 240w`,
-    name: '보여주세요! IKEA로 꾸민 당신의 집',
-    color: 'yellow',
-  },
-  {
-    id: 4,
-    srcset: `https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxxl 1400w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxl 950w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xl 800w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=l 750w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=m 600w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=s 500w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xs 400w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxs 300w,
-    https://www.ikea.com/images/-04b04195bdd6e4d665c95b3f9d1e48ad.jpg?f=xxxs 240w`,
-    name: '화초로 여유로운 오아시스 만들기',
-    color: 'blue',
-  },
-];
+import ButtonNext from 'components/common/buttons/ButtonNext';
 
 const ListItemBox = styled.li`
   outline: none;

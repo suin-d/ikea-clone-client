@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RiAddLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
 import styled, { css, keyframes } from 'styled-components';
-import { getReviews } from '../../../modules/product/thunk';
+import { getReviews } from 'modules/product/thunk';
 import ButtonRound from '../../common/buttons/ButtonRound';
 import ReviewItems from './ReviewItems';
 import ReviewScore from './ReviewScore';

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import ButtonBig from '../../common/buttons/ButtonBig';
-import useInput from '../../../hooks/useInput';
+import useInput from 'hooks/useInput';
+import { addReview } from 'modules/product/thunk';
+import ButtonBig from 'components/common/buttons/ButtonBig';
 import GradeForm from './GradeForm';
 import ImgBox from './ImgBox';
-import { addReview } from '../../../modules/product/thunk';
 
 const InputContent = styled.textarea`
   width: 100%;

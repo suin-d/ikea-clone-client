@@ -1,12 +1,12 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import PayAddress from '../../components/user/payment/PayAddress';
-import PayInfo from '../../components/user/payment/PayInfo';
-import PayInsertForm from '../../components/user/payment/PayInsertForm';
-import PayMethod from '../../components/user/payment/PayMethod';
-import useCheckLogin from '../../hooks/useCheckLogin';
-import useInput from '../../hooks/useInput';
+import PayAddress from 'components/user/payment/PayAddress';
+import PayInfo from 'components/user/payment/PayInfo';
+import PayInsertForm from 'components/user/payment/PayInsertForm';
+import PayMethod from 'components/user/payment/PayMethod';
+import useCheckLogin from 'hooks/useCheckLogin';
+import useInput from 'hooks/useInput';
 
 const ContentContainer = styled.div`
   max-width: 600px;

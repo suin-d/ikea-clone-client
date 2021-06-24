@@ -4,7 +4,7 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { search } from '../../../modules/product/thunk';
+import { search } from 'modules/product/thunk';
 
 const ResultBox = styled.li`
   width: 100%;

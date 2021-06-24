@@ -3,8 +3,8 @@ import { RiHeartFill, RiHeartLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { addCart, addWish, removeWish } from '../../modules/product/thunk';
-import ButtonCart from '../common/buttons/ButtonCart';
+import { addCart, addWish, removeWish } from 'modules/product/thunk';
+import ButtonCart from 'components/common/buttons/ButtonCart';
 
 const ListItemBox = styled.div`
   display: flex;

@@ -3,12 +3,12 @@ import { RiHeartLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import ButtonBig from '../../components/common/buttons/ButtonBig';
-import CartProduct from '../../components/user/cart/CartProduct';
-import useCheckLogin from '../../hooks/useCheckLogin';
-import { getCart } from '../../modules/user/thunk';
-import Loading from '../../components/common/Loading';
-import Error from '../../components/common/Error';
+import ButtonBig from 'components/common/buttons/ButtonBig';
+import CartProduct from 'components/user/cart/CartProduct';
+import useCheckLogin from 'hooks/useCheckLogin';
+import { getCart } from 'modules/user/thunk';
+import Loading from 'components/common/Loading';
+import Error from 'components/common/Error';
 
 const CartBottomContainer = styled.div`
   font-weight: 500;

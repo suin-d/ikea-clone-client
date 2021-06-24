@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import MyInfo from '../../components/user/mypage/MyInfo';
-import WellComeNav from '../../components/user/mypage/WellComeNav';
-import useCheckLogin from '../../hooks/useCheckLogin';
+import MyInfo from 'components/user/mypage/MyInfo';
+import WellComeNav from 'components/user/mypage/WellComeNav';
+import useCheckLogin from 'hooks/useCheckLogin';
 
 const Inner = styled.div`
   max-width: 1000px;

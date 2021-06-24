@@ -16,11 +16,15 @@ import theme from './utils/pallete';
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_HOST;
 axios.defaults.withCredentials = true;
 
+const prod = process.env.NODE_ENV === 'production';
+
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(Thunk))
+  prod ? applyMiddleware(Thunk) : composeWithDevTools(applyMiddleware(Thunk))
 );
+
 const persistor = persistStore(store);
+
 ReactDOM.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>

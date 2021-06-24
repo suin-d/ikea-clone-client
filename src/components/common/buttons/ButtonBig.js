@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import LOADING from '../../../assets/img/loading-small.gif';
+import LOADING from 'assets/img/loading-small.gif';
 
 const StyledBtn = styled.button`
   width: 100%;

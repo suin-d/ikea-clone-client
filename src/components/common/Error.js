@@ -1,6 +1,6 @@
 import React from 'react';
+import SpaceShip from 'assets/img/spaceship.svg';
 import { LoadingContainer } from './Loading';
-import SpaceShip from '../../assets/img/spaceship.svg';
 
 export default function Error({ text = '', ...rest }) {
   return (

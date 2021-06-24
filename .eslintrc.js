@@ -41,4 +41,11 @@ module.exports = {
     'function-paren-newline': 0,
     'react-hooks/exhaustive-deps': 0,
   },
+  settings: {
+    'import/resolver': {
+      node: {
+        moduleDirectory: ['node_modules', 'src'],
+      },
+    },
+  },
 };

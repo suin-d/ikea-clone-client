@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoArrowForwardOutline } from 'react-icons/io5';
 import styled from 'styled-components';
-import ButtonRound from '../../common/buttons/ButtonRound';
+import ButtonRound from 'components/common/buttons/ButtonRound';
 import SolutionItem from './SolutionItem';
 
 const TitleBox = styled.div`

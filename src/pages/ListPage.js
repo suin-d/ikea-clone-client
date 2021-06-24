@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react';
 import qs from 'qs';
 import { useDispatch, useSelector } from 'react-redux';
-import { getList, loadMoreList } from '../modules/product/thunk';
-import List from '../components/list/List';
-import ButtonFix from '../components/common/buttons/ButtonFix';
-import Loading from '../components/common/Loading';
+import { getList, loadMoreList } from 'modules/product/thunk';
+import List from 'components/list/List';
+import ButtonFix from 'components/common/buttons/ButtonFix';
+import Loading from 'components/common/Loading';
 
 export default function ListPage({ location, match }) {
   const currentOffset = useRef(24);

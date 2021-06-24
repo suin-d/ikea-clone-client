@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled, { css } from 'styled-components';
-import ButtonRound from '../common/buttons/ButtonRound';
-import Error from '../common/Error';
+import ButtonRound from 'components/common/buttons/ButtonRound';
+import Error from 'components/common/Error';
 import ListFilter from './ListFilter';
 import ListItem from './ListItem';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import ButtonRound from '../common/buttons/ButtonRound';
+import ButtonRound from 'components/common/buttons/ButtonRound';
 
 const BannerBox = styled.div`
   width: 100%;

@@ -3,10 +3,10 @@ import styled, { css, keyframes } from 'styled-components';
 import { RiMenuLine } from 'react-icons/ri';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import LOGO from '../../../assets/img/logo.svg';
+import LOGO from 'assets/img/logo.svg';
+import { NAV_MOVE, NAV_OPEN } from 'modules/interface';
 import IconContainer from './IconContainer';
 import SearchBar from './SearchBar';
-import { NAV_MOVE, NAV_OPEN } from '../../../modules/interface';
 
 const slideUp = keyframes`
 from{

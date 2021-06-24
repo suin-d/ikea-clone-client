@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { RiAddLine } from 'react-icons/ri';
 import { useDispatch, useSelector } from 'react-redux';
-import LOGO from '../../../assets/img/logo.svg';
+import LOGO from 'assets/img/logo.svg';
+import { NAV_CLOSE, NAV_MOVE, NAV_OPEN } from 'modules/interface';
 import MainNav from './MainNav';
 import ProductNav from './ProductNav';
 import ShowRoomNav from './ShowRoomNav';
-import { NAV_CLOSE, NAV_MOVE, NAV_OPEN } from '../../../modules/interface';
 
 const slideOn = keyframes`
 from{

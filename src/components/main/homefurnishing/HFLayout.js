@@ -2,10 +2,10 @@ import React, { useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry';
 import { useDispatch, useSelector } from 'react-redux';
+import ButtonRound from 'components/common/buttons/ButtonRound';
+import { getHf, loadMoreHf } from 'modules/product/thunk';
 import HFCategory from './HFCategory';
 import HFItem from './HFItem';
-import ButtonRound from '../../common/buttons/ButtonRound';
-import { getHf, loadMoreHf } from '../../../modules/product/thunk';
 
 const HFLayoutContainer = styled.section`
   padding-bottom: 100px;

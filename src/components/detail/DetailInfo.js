@@ -4,9 +4,9 @@ import { GrDeliver } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { addCart } from '../../modules/product/thunk';
-import ButtonBig from '../common/buttons/ButtonBig';
-import ButtonWish from '../common/buttons/ButtonWish';
+import { addCart } from 'modules/product/thunk';
+import ButtonBig from 'components/common/buttons/ButtonBig';
+import ButtonWish from 'components/common/buttons/ButtonWish';
 import ReviewScore from './review/ReviewScore';
 
 const CheckMsg = styled.div`

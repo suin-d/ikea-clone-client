@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { BsPlus } from 'react-icons/bs';
 import styled from 'styled-components';
-import { uploadImages } from '../../../modules/product/thunk';
+import { uploadImages } from 'modules/product/thunk';
 
 const ImgContainer = styled.div`
   min-width: 130px;

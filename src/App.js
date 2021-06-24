@@ -1,15 +1,15 @@
 import React, { lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
-import './assets/css/reset.css';
-import Error from './components/common/Error';
-import Layout from './components/common/layout/Layout';
-import Loading from './components/common/Loading';
-import Alert from './components/common/message/Alert';
+import 'assets/css/reset.css';
+import Error from 'components/common/Error';
+import Layout from 'components/common/layout/Layout';
+import Loading from 'components/common/Loading';
+import Alert from 'components/common/message/Alert';
 
-const MainPage = lazy(() => import('./pages/MainPage'));
-const DetailPage = lazy(() => import('./pages/DetailPage'));
-const ListPage = lazy(() => import('./pages/ListPage'));
-const UserRouter = lazy(() => import('./pages/user'));
+const MainPage = lazy(() => import('pages/MainPage'));
+const DetailPage = lazy(() => import('pages/DetailPage'));
+const ListPage = lazy(() => import('pages/ListPage'));
+const UserRouter = lazy(() => import('pages/user'));
 
 function App() {
   return (
@@ -24,8 +24,8 @@ function App() {
           <Route path="/list/:id" component={ListPage} />
           {/* 디테일 페이지 */}
           <Route path="/detail/:id" component={DetailPage} />
-          {/* 디테일 페이지 */}
-          <Route path="/eeeee">
+          {/* 에러 페이지 */}
+          <Route path="/err">
             <Error text="상품이 없습니다" />
           </Route>
         </Suspense>

@@ -3,7 +3,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { addWish, removeWish } from '../../../modules/product/thunk';
+import { addWish, removeWish } from 'modules/product/thunk';
 import { CircleButton } from './ButtonCart';
 
 const WishButton = styled(CircleButton)`

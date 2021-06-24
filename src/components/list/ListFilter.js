@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css, keyframes } from 'styled-components';
 import { RiAddLine, RiArrowDownSLine } from 'react-icons/ri';
-import { NavTop, NavDrawContainer } from '../common/menu/NavDraw';
+import { NavTop, NavDrawContainer } from 'components/common/menu/NavDraw';
 
 const Filters = [
   { id: 0, name: '신제품 순' },

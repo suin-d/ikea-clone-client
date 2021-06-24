@@ -1,7 +1,7 @@
 /* eslint-disable function-paren-newline */
 import React from 'react';
 import styled from 'styled-components';
-import ButtonRound from '../../common/buttons/ButtonRound';
+import ButtonRound from 'components/common/buttons/ButtonRound';
 
 const HFCateContainer = styled.ul`
   display: flex;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
-import { DotButtonBox } from '../../common/buttons/ButtonDot';
+import { DotButtonBox } from 'components/common/buttons/ButtonDot';
 
 const ItemContainer = styled.li`
   position: relative;

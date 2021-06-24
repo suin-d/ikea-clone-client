@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import ButtonDot from '../../common/buttons/ButtonDot';
-import ButtonRound from '../../common/buttons/ButtonRound';
+import ButtonDot from 'components/common/buttons/ButtonDot';
+import ButtonRound from 'components/common/buttons/ButtonRound';
 import ProInfoBox from './ProInfoBox';
 
 const TitleBox = styled.div`

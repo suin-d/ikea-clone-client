@@ -4,12 +4,12 @@ import { IoIosArrowForward } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import Cate from '../components/common/Cate';
-import ReviewScore from '../components/detail/review/ReviewScore';
-import ReviewDraw from '../components/detail/review/ReviewDraw';
-import DetailInfo from '../components/detail/DetailInfo';
-import { getProduct } from '../modules/product/thunk';
-import Loading from '../components/common/Loading';
+import Cate from 'components/common/Cate';
+import ReviewScore from 'components/detail/review/ReviewScore';
+import ReviewDraw from 'components/detail/review/ReviewDraw';
+import DetailInfo from 'components/detail/DetailInfo';
+import { getProduct } from 'modules/product/thunk';
+import Loading from 'components/common/Loading';
 
 const ReviewBox = styled.div`
   display: flex;

@@ -3,7 +3,7 @@ import { RiArrowLeftLine, RiArrowRightSLine } from 'react-icons/ri';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import styled, { css } from 'styled-components';
-import { NAV_CLOSE } from '../../../modules/interface';
+import { NAV_CLOSE } from 'modules/interface';
 import { NavContentBox } from './MainNav';
 
 const ProductNavBox = styled.div`
