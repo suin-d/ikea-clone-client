@@ -1,39 +1,36 @@
-export const SEARCH_REQUEST = "product/SEARCH_REQUEST";
-export const SEARCH_SUCCESS = "product/SEARCH_SUCCESS";
-export const SEARCH_ERROR = "product/SEARCH_ERROR";
-export const GET_LIST_REQUEST = "product/GET_LIST_REQUEST";
-export const GET_LIST_SUCCESS = "product/GET_LIST_SUCCESS";
-export const GET_LIST_ERROR = "product/GET_LIST_ERROR";
-export const ADD_WISH_REQUEST = "product/ADD_WISH_REQUEST";
-export const ADD_WISH_SUCCESS = "product/ADD_WISH_SUCCESS";
-export const ADD_WISH_ERROR = "product/ADD_WISH_ERROR";
-export const REMOVE_WISH_REQUEST = "product/REMOVE_WISH_REQUEST";
-export const REMOVE_WISH_SUCCESS = "product/REMOVE_WISH_SUCCESS";
-export const REMOVE_WISH_ERROR = "product/REMOVE_WISH_ERROR";
-export const GET_PRODUCT_REQUEST = "product/GET_PRODUCT_REQUEST";
-export const GET_PRODUCT_SUCCESS = "product/GET_PRODUCT_SUCCESS";
-export const GET_PRODUCT_ERROR = "product/GET_PRODUCT_ERROR";
-export const ADD_CART_REQUEST = "product/ADD_CART_REQUEST";
-export const ADD_CART_SUCCESS = "product/ADD_CART_SUCCESS";
-export const ADD_CART_ERROR = "product/ADD_CART_ERROR";
-export const LOAD_MORE_LIST_REQUEST = "product/LOAD_MORE_LIST_REQUEST";
-export const LOAD_MORE_LIST_SUCCESS = "product/LOAD_MORE_LIST_SUCCESS";
-export const LOAD_MORE_LIST_ERROR = "product/LOAD_MORE_LIST_ERROR";
-export const GET_HF_REQUEST = "product/GET_HF_REQUEST";
-export const GET_HF_SUCCESS = "product/GET_HF_SUCCESS";
-export const GET_HF_ERROR = "product/GET_HF_ERROR";
-export const LOAD_MORE_HF_REQUEST = "product/LOAD_MORE_HF_REQUEST";
-export const LOAD_MORE_HF_SUCCESS = "product/LOAD_MORE_HF_SUCCESS";
-export const LOAD_MORE_HF_ERROR = "product/LOAD_MORE_HF_ERROR";
-export const UPLOAD_IMAGES_REQUEST = "product/UPLOAD_IMAGES_REQUEST";
-export const UPLOAD_IMAGES_SUCCESS = "product/UPLOAD_IMAGES_SUCCESS";
-export const UPLOAD_IMAGES_ERROR = "product/UPLOAD_IMAGES_ERROR";
-export const ADD_REVIEW_REQUEST = "product/ADD_REVIEW_REQUEST";
-export const ADD_REVIEW_SUCCESS = "product/ADD_REVIEW_SUCCESS";
-export const ADD_REVIEW_ERROR = "product/ADD_REVIEW_ERROR";
-export const GET_REVIEWS_REQUEST = "product/GET_REVIEWS_REQUEST";
-export const GET_REVIEWS_SUCCESS = "product/GET_REVIEWS_SUCCESS";
-export const GET_REVIEWS_ERROR = "product/GET_REVIEWS_ERROR";
+export const SEARCH_REQUEST = 'product/SEARCH_REQUEST';
+export const SEARCH_SUCCESS = 'product/SEARCH_SUCCESS';
+export const SEARCH_ERROR = 'product/SEARCH_ERROR';
+export const GET_LIST_REQUEST = 'product/GET_LIST_REQUEST';
+export const GET_LIST_SUCCESS = 'product/GET_LIST_SUCCESS';
+export const GET_LIST_ERROR = 'product/GET_LIST_ERROR';
+export const ADD_WISH_REQUEST = 'product/ADD_WISH_REQUEST';
+export const ADD_WISH_SUCCESS = 'product/ADD_WISH_SUCCESS';
+export const ADD_WISH_ERROR = 'product/ADD_WISH_ERROR';
+export const REMOVE_WISH_REQUEST = 'product/REMOVE_WISH_REQUEST';
+export const REMOVE_WISH_SUCCESS = 'product/REMOVE_WISH_SUCCESS';
+export const REMOVE_WISH_ERROR = 'product/REMOVE_WISH_ERROR';
+export const GET_PRODUCT_REQUEST = 'product/GET_PRODUCT_REQUEST';
+export const GET_PRODUCT_SUCCESS = 'product/GET_PRODUCT_SUCCESS';
+export const GET_PRODUCT_ERROR = 'product/GET_PRODUCT_ERROR';
+export const ADD_CART_REQUEST = 'product/ADD_CART_REQUEST';
+export const ADD_CART_SUCCESS = 'product/ADD_CART_SUCCESS';
+export const ADD_CART_ERROR = 'product/ADD_CART_ERROR';
+export const LOAD_MORE_LIST_REQUEST = 'product/LOAD_MORE_LIST_REQUEST';
+export const LOAD_MORE_LIST_SUCCESS = 'product/LOAD_MORE_LIST_SUCCESS';
+export const LOAD_MORE_LIST_ERROR = 'product/LOAD_MORE_LIST_ERROR';
+export const GET_HF_REQUEST = 'product/GET_HF_REQUEST';
+export const GET_HF_SUCCESS = 'product/GET_HF_SUCCESS';
+export const GET_HF_ERROR = 'product/GET_HF_ERROR';
+export const LOAD_MORE_HF_REQUEST = 'product/LOAD_MORE_HF_REQUEST';
+export const LOAD_MORE_HF_SUCCESS = 'product/LOAD_MORE_HF_SUCCESS';
+export const LOAD_MORE_HF_ERROR = 'product/LOAD_MORE_HF_ERROR';
+export const ADD_REVIEW_REQUEST = 'product/ADD_REVIEW_REQUEST';
+export const ADD_REVIEW_SUCCESS = 'product/ADD_REVIEW_SUCCESS';
+export const ADD_REVIEW_ERROR = 'product/ADD_REVIEW_ERROR';
+export const GET_REVIEWS_REQUEST = 'product/GET_REVIEWS_REQUEST';
+export const GET_REVIEWS_SUCCESS = 'product/GET_REVIEWS_SUCCESS';
+export const GET_REVIEWS_ERROR = 'product/GET_REVIEWS_ERROR';
 
 const initialState = {
   searchLoading: false,
@@ -57,9 +54,6 @@ const initialState = {
   getHfLoading: false,
   getHfData: null,
   getHfError: null,
-  uploadImagesLoading: false,
-  uploadImagesData: null,
-  uploadImagesError: null,
   addReviewLoading: false,
   addReviewData: null,
   addReviewError: null,
@@ -247,27 +241,6 @@ export default function product(state = initialState, action) {
         getHfData: null,
         getHfError: action.payload,
       };
-    case UPLOAD_IMAGES_REQUEST:
-      return {
-        ...state,
-        uploadImagesLoading: true,
-        uploadImagesData: null,
-        uploadImagesError: null,
-      };
-    case UPLOAD_IMAGES_SUCCESS:
-      return {
-        ...state,
-        uploadImagesLoading: false,
-        uploadImagesData: action.payload,
-        uploadImagesError: null,
-      };
-    case UPLOAD_IMAGES_ERROR:
-      return {
-        ...state,
-        uploadImagesLoading: false,
-        uploadImagesData: null,
-        uploadImagesError: action.payload,
-      };
     case ADD_REVIEW_REQUEST:
       return {
         ...state,
@@ -284,7 +257,7 @@ export default function product(state = initialState, action) {
         uploadImagesData: null,
         getProductData: {
           ...state.getProductData,
-          Reviews: [...state.getProductData.Reviews, {id: action.payload.id}],
+          Reviews: [...state.getProductData.Reviews, { id: action.payload.id }],
         },
       };
     case ADD_REVIEW_ERROR:

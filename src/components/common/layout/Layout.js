@@ -1,8 +1,8 @@
-import React from "react";
-import {useSelector} from "react-redux";
-import styled from "styled-components";
-import HeaderMenu from "../header/HeaderMenu";
-import NavDraw from "../menu/NavDraw";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+import HeaderMenu from '../header/HeaderMenu';
+import NavDraw from '../menu/NavDraw';
 
 export const ViewPortBox = styled.div`
   width: 100vw;
@@ -21,7 +21,7 @@ const LayoutBox = styled.main`
   display: grid;
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
-  @media ${({theme}) => theme.mobile} {
+  @media ${({ theme }) => theme.mobile} {
     /* transform: translateX(0px); */
     display: block;
     box-sizing: initial;
@@ -32,8 +32,8 @@ const LayoutBox = styled.main`
   }
 `;
 
-export default function Layout({children}) {
-  const {open: navOpen} = useSelector((state) => state.interfaces.navigation);
+export default function Layout({ children }) {
+  const { open: navOpen } = useSelector(state => state.interfaces.navigation);
   return (
     <ViewPortBox>
       <HeaderMenu />

@@ -1,11 +1,11 @@
-import React from "react";
-import {BiCheck} from "react-icons/bi";
-import styled from "styled-components";
-import dayjs from "dayjs";
-import ReviewScore from "./ReviewScore";
-import "dayjs/locale/ko";
+import React from 'react';
+import { BiCheck } from 'react-icons/bi';
+import styled from 'styled-components';
+import dayjs from 'dayjs';
+import ReviewScore from './ReviewScore';
+import 'dayjs/locale/ko';
 
-dayjs.locale("ko");
+dayjs.locale('ko');
 
 const CommentRecom = styled.div`
   display: flex;
@@ -32,7 +32,7 @@ const ItemImage = styled.div`
     max-width: 150px;
     max-height: 150px;
   }
-  @media ${({theme}) => theme.mobile} {
+  @media ${({ theme }) => theme.mobile} {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,15 +73,15 @@ const ReviewListContainer = styled.div`
   width: 100%;
 `;
 
-function ReviewItem({item}) {
+function ReviewItem({ item }) {
   return (
     <ItemBox>
       <ItemTop>
         <ReviewScore grade={item.grade} />
         <span>
           {`${item.User.name} - ${dayjs(item.createdAt)
-            .locale("ko")
-            .format("YYYY년 MMMM D일 HH시 ")}`}
+            .locale('ko')
+            .format('YYYY년 MMMM D일 HH시 ')}`}
         </span>
       </ItemTop>
       <ItemContent>
@@ -103,10 +103,11 @@ function ReviewItem({item}) {
   );
 }
 
-export default function ReviewItems({reviewList}) {
+export default function ReviewItems({ reviewList }) {
   return (
     <ReviewListContainer>
-      {reviewList && reviewList.map((item) => <ReviewItem key={item.id} item={item} />)}
+      {reviewList &&
+        reviewList.map(item => <ReviewItem key={item.id} item={item} />)}
     </ReviewListContainer>
   );
 }

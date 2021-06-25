@@ -1,4 +1,4 @@
-import {BlobServiceClient} from "@azure/storage-blob";
+import { BlobServiceClient } from '@azure/storage-blob';
 
 const sasToken = process.env.REACT_APP_AZURE_SAS_TOKEN;
 const containerName = `reviews`;
@@ -18,12 +18,12 @@ const createBlobInContainer = async (containerClient, file) => {
     await blobClient.uploadData(file);
     return newFileName;
   } catch (e) {
-    throw new Error("ERROR!");
+    throw new Error('ERROR!');
   }
 };
 
 // <snippet_uploadFileToBlob>
-const uploadFileToBlob = async (file) => {
+const uploadFileToBlob = async file => {
   if (!file) return [];
 
   const blobService = new BlobServiceClient(

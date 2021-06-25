@@ -27,9 +27,6 @@ import {
   LOAD_MORE_HF_REQUEST,
   LOAD_MORE_HF_SUCCESS,
   LOAD_MORE_HF_ERROR,
-  UPLOAD_IMAGES_REQUEST,
-  UPLOAD_IMAGES_SUCCESS,
-  UPLOAD_IMAGES_ERROR,
   ADD_REVIEW_REQUEST,
   ADD_REVIEW_SUCCESS,
   ADD_REVIEW_ERROR,
@@ -147,15 +144,6 @@ export const loadMoreHf = data => async dispatch => {
     dispatch({ type: LOAD_MORE_HF_SUCCESS, payload: response.data });
   } catch (e) {
     dispatch({ type: LOAD_MORE_HF_ERROR, payload: e.response.data });
-  }
-};
-export const uploadImages = data => async dispatch => {
-  try {
-    dispatch({ type: UPLOAD_IMAGES_REQUEST });
-    const response = await axios.post('/api/product/images', data);
-    dispatch({ type: UPLOAD_IMAGES_SUCCESS, payload: response.data });
-  } catch (e) {
-    dispatch({ type: UPLOAD_IMAGES_ERROR, payload: e.response.data });
   }
 };
 export const addReview = data => async dispatch => {
