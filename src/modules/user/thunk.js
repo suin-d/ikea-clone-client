@@ -68,7 +68,10 @@ export const verification = data => async dispatch => {
     dispatch({
       type: VERIFICATION_REQUEST,
     });
-    const response = await axios.post('/api/user/verif', data);
+    const response = await axios.get(
+      `/api/user/verif?email=${data.email}&number=${data.number}`,
+      data
+    );
     dispatch({
       type: VERIFICATION_SUCCESS,
       payload: response.data,
