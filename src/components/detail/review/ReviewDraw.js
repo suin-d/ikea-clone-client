@@ -204,6 +204,7 @@ function DrawContainer({ setReviewOpen }) {
     </DrawBox>
   );
 }
+
 export default function ReviewDraw({ reviewOpen, setReviewOpen }) {
   if (reviewOpen) document.body.style.overflow = 'hidden';
   const [drawVisible, setDrawVisible] = useState(true);

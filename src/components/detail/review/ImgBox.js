@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { BsPlus } from 'react-icons/bs';
 import styled from 'styled-components';
-import { uploadImages } from 'modules/product/thunk';
+import uploadFileToBlob from 'utils/azure';
 
 const ImgContainer = styled.div`
   min-width: 130px;
@@ -33,16 +32,33 @@ const ImgContainer = styled.div`
     }
   }
 `;
-export default function ImgBox({ imageData }) {
+export default function ImgBox({ imageList, setImageList }) {
   const imgInput = useRef();
-  const dispatch = useDispatch();
-  const onChangeImage = e => {
-    const imageFormData = new FormData();
-    [].forEach.call(e.target.files, f => {
-      imageFormData.append('image', f);
-    });
-    dispatch(uploadImages(imageFormData));
+
+  const onChangeImage = async e => {
+    const FormatArr = ['gif', 'jpeg', 'jpg', 'png', 'bmp', 'exif'];
+    const files = e.target.files;
+    const length = e.target.files.length;
+    for (let i = 0; i < length; i++) {
+      const ext = files[i].name
+        .split('.')
+        [files[i].name.split('.').length - 1].toLowerCase();
+
+      if (FormatArr.findIndex(format => format === ext) === -1)
+        return alert(`${ext}형식은 업로드할 수 없습니다.`);
+
+      if (files[i].size > 5 * 1024 * 1024)
+        return alert('5mb이상의 사진은 지원되지 않습니다.');
+
+      const blobsInContainer = await uploadFileToBlob(files[i]);
+      setImageList(prev =>
+        prev.concat(
+          `https://ikeaclone.blob.core.windows.net/reviews/${blobsInContainer}`
+        )
+      );
+    }
   };
+
   return (
     <ImgContainer>
       <input
@@ -54,16 +70,11 @@ export default function ImgBox({ imageData }) {
         hidden
       />
       <div onClick={() => imgInput.current.click()}>
-        {!imageData ? (
+        {!imageList ? (
           <BsPlus />
         ) : (
-          imageData.map(v => (
-            <img
-              src={`${process.env.REACT_APP_SERVER_HOST}/u/r/${v}`}
-              alt="업로드된 제품 이미지"
-              id="selectImg"
-              key={v}
-            />
+          imageList.map(src => (
+            <img src={src} alt="업로드된 제품 이미지" key={src} />
           ))
         )}
       </div>

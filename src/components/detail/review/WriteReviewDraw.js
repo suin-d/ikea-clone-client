@@ -68,10 +68,9 @@ const initialGrade = [
   { id: 4, state: 0 },
 ];
 export default function WriteReviewDraw({ setReviewOpen }) {
-  const { getProductData: product, uploadImagesData: imageData } = useSelector(
-    state => state.product
-  );
+  const { getProductData: product } = useSelector(state => state.product);
   const { userInfo } = useSelector(state => state.user);
+  const [imageList, setImageList] = useState([]);
   const dispatch = useDispatch();
 
   const [recom, setRecom] = useState(false);
@@ -89,7 +88,7 @@ export default function WriteReviewDraw({ setReviewOpen }) {
         recommend: recom,
         userId: userInfo.id,
         productId: product.id,
-        images: imageData,
+        images: imageList,
       })
     );
     setReviewOpen(false);
@@ -127,7 +126,7 @@ export default function WriteReviewDraw({ setReviewOpen }) {
         onChange={onChangeContent}
         required
       />
-      <ImgBox imageData={imageData} />
+      <ImgBox imageList={imageList} setImageList={setImageList} />
       <ButtonBig type="submit">작성하기</ButtonBig>
     </CommentForm>
   );
