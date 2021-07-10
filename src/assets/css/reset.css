@@ -99,6 +99,9 @@ video {
 a {
   color: #000;
 }
+body{
+  overflow-x: hidden;
+}
 /* HTML5 display-role reset for older browsers */
 article,
 aside,

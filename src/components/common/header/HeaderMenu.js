@@ -109,13 +109,13 @@ const MenuBtnBox = styled.div`
   }
 `;
 const HeaderContainer = styled.div`
-  max-width: 1800px;
+  max-width: 1740px;
   width: 100%;
   margin: 0px 40px 50px 20px;
   display: grid;
   grid-template-columns: repeat(13, minmax(0, 1fr));
   grid-gap: 20px;
-
+  /* background-color: #fff; */
   @media ${({ theme }) => theme.mobile} {
     height: 110px;
     align-items: flex-start;

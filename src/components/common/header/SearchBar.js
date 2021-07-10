@@ -46,10 +46,9 @@ const SearchContainer = styled.div`
   align-items: center;
   @media ${({ theme }) => theme.mobile} {
     left: 0;
-    right: -40px;
     position: absolute;
     bottom: -100%;
-    width: 94vw;
+    width: calc(100% + 40px);
   }
 `;
 const SearchBox = styled.form`
