@@ -30,7 +30,7 @@ const CloseBtn = styled.i`
     font-weight: bold;
   }
 `;
-const ModalContainer = styled.div`
+export const ModalContainer = styled.div`
   position: fixed;
   top: 0;
   left: 0;
