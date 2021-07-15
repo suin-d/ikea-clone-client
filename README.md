@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Wikea
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+IKEA의 **클론 프로젝트** 입니다.
 
-## Available Scripts
+![AnimatedImage.gif](https://i.ibb.co/qgbPXqm/Jul-15-2021-13-27-50.gif)
 
-In the project directory, you can run:
+> 현재 이케아측의 요청으로 소비자의 혼동을 야기할 수 있다는 문제가 발생하였습니다.
 
-### `yarn start`
+> 이케아 저작권팀에 요청을 해놓은 상황입니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 개발기간 :  2021.1 ~ 2021.2 약 3주
+- 인원 : 3명
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 관련 링크
+#### 사이트 링크
 
-### `yarn test`
+[wIKEA](https://wikea.netlify.app/)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### 클라이언트 깃헙 저장소 링크
 
-### `yarn build`
+[forCozi/ikea-clone-client](https://github.com/forCozi/ikea-clone-client)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### 백앤드 서버 깃헙 저장소 링크
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[forCozi/ikea-clone-server](https://github.com/forCozi/ikea-clone-server)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### 스크래핑용 서버 저장소 링크
 
-### `yarn eject`
+[Conradmaker/ikea-clone-env](https://github.com/Conradmaker/ikea-clone-env)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 프로젝트 스택
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### 클라이언트
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- JavaScript
+- React
+- Redux + redux-saga + redux-persist
+- type-safe-actions
+- styled-components
+- 배포도구 - netlify +Azure DNS
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### 백앤드 서버
 
-## Learn More
+- TypeScript
+- puppeteer
+- Node.js
+- Express
+- passport.js
+- Sequelize
+- MySQL
+- Jest - unit & e2e 테스트
+- AWS - RDS
+- Azure -VM, BLOB Storage,  DNS
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 프로젝트 아키텍쳐
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![developic V2 (1).png.png](https://res.craft.do/user/full/b1bfd0d5-f25f-9cb2-4956-fa895ea5961c/doc/124075C2-FDE8-4DBA-8070-67F4FEE980FE/F6FA16F7-9EF6-49F6-9779-E271F234BAAF_2/developic%20V2%201.png.png)
 
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
