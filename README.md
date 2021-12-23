@@ -1,12 +1,8 @@
 # Wikea
 
-IKEA의 **클론 프로젝트** 입니다.
+글로벌 홈퍼니싱 브랜드 IKEA의 **클론 프로젝트** 입니다.
 
-![AnimatedImage.gif](https://i.ibb.co/qgbPXqm/Jul-15-2021-13-27-50.gif)
-
-> 현재 이케아측의 요청으로 소비자의 혼동을 야기할 수 있다는 문제가 발생하였습니다.
-
-> 이케아 저작권팀에 요청을 해놓은 상황입니다.
+![image](https://user-images.githubusercontent.com/63634174/147222946-28f05f50-9d94-44f7-bd8d-47e9bbb73048.png)
 
 - 개발기간 :  2021.1 ~ 2021.2 약 3주
 - 인원 : 3명
@@ -34,8 +30,7 @@ IKEA의 **클론 프로젝트** 입니다.
 
 - JavaScript
 - React
-- Redux + redux-saga + redux-persist
-- type-safe-actions
+- Redux + redux-thunk + redux-persist
 - styled-components
 - 배포도구 - netlify +Azure DNS
 
@@ -55,4 +50,5 @@ IKEA의 **클론 프로젝트** 입니다.
 ## 프로젝트 아키텍쳐
 
 ![developic V2 (1).png.png](https://res.craft.do/user/full/b1bfd0d5-f25f-9cb2-4956-fa895ea5961c/doc/124075C2-FDE8-4DBA-8070-67F4FEE980FE/F6FA16F7-9EF6-49F6-9779-E271F234BAAF_2/developic%20V2%201.png.png)
+
 
